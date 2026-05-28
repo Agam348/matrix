@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [trailPosition, setTrailPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const trailRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Only enable custom cursor on devices that support hover (desktops)
     const isMobile = window.matchMedia("(max-width: 768px)").matches || !("ontouchstart" in window);
     let timer: NodeJS.Timeout;
     if (isMobile) {
@@ -48,7 +46,7 @@ export default function CustomCursor() {
     };
   }, []);
 
-  // Smooth trail lagging interpolation
+  // Smooth trail lagging interpolation for the background glow spotlight
   useEffect(() => {
     let animId: number;
     
@@ -57,10 +55,9 @@ export default function CustomCursor() {
         const dx = position.x - prev.x;
         const dy = position.y - prev.y;
         
-        // Speed scaling interpolation
         return {
-          x: prev.x + dx * 0.15,
-          y: prev.y + dy * 0.15,
+          x: prev.x + dx * 0.12,
+          y: prev.y + dy * 0.12,
         };
       });
       
@@ -74,31 +71,31 @@ export default function CustomCursor() {
   if (!isVisible) return null;
 
   return (
-    <div className="hidden lg:block pointer-events-none fixed inset-0 z-50">
-      {/* Target Dot */}
-      <div
-        className="fixed w-1.5 h-1.5 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isHovered ? 0.5 : 1})`,
-          transition: "transform 0.15s ease",
-        }}
-      />
-      
-      {/* Outer Lagging Orbit Ring */}
-      <div
-        ref={trailRef}
-        className={`fixed rounded-full -translate-x-1/2 -translate-y-1/2 border transition-all duration-300 ${
-          isHovered
-            ? "w-8 h-8 border-white bg-white/5"
-            : "w-6 h-6 border-zinc-500/40"
-        }`}
-        style={{
-          left: `${trailPosition.x}px`,
-          top: `${trailPosition.y}px`,
-        }}
-      />
-    </div>
+    <>
+      {/* 1. Global Ambient Cursor Follow-Glow backplate */}
+      <div className="hidden lg:block pointer-events-none fixed inset-0 z-[1]">
+        <div
+          className="absolute w-[360px] h-[360px] rounded-full -translate-x-1/2 -translate-y-1/2 mix-blend-screen opacity-70 pointer-events-none transition-all duration-300"
+          style={{
+            left: `${trailPosition.x}px`,
+            top: `${trailPosition.y}px`,
+            background: "radial-gradient(circle, rgba(99, 102, 241, 0.055) 0%, rgba(99, 102, 241, 0.01) 50%, rgba(0, 0, 0, 0) 80%)",
+          }}
+        />
+      </div>
+
+      {/* 2. Restored Target Center Dot (Small white dot) */}
+      <div className="hidden lg:block pointer-events-none fixed inset-0 z-50">
+        <div
+          className="fixed w-3 h-3 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"
+          style={{
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            transform: `translate(-50%, -50%) scale(${isHovered ? 0.5 : 1})`,
+            transition: "transform 0.15s ease",
+          }}
+        />
+      </div>
+    </>
   );
 }

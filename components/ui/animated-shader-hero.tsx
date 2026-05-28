@@ -308,55 +308,7 @@ export default function AnimatedShaderHero({
 
   return (
     <div className={`relative w-full min-h-screen overflow-hidden bg-black ${className}`}>
-      {/* Fallback cross-platform keyframe injects without requiring styled-jsx library */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes fade-in-down {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fade-in-down {
-          animation: fade-in-down 0.8s ease-out forwards;
-        }
-        
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out forwards;
-          opacity: 0;
-        }
-        
-        .animation-delay-200 {
-          animation-delay: 0.2s;
-        }
-        
-        .animation-delay-400 {
-          animation-delay: 0.4s;
-        }
-        
-        .animation-delay-600 {
-          animation-delay: 0.6s;
-        }
-        
-        .animation-delay-800 {
-          animation-delay: 0.8s;
-        }
-      `}} />
+
       
       {/* 3D WebGL Shader Canvas Background */}
       <canvas

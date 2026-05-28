@@ -105,7 +105,7 @@ export default function HangingIdCard() {
             alt="Agampreet Singh Profile"
             fill
             sizes="208px"
-            className="object-cover grayscale brightness-95 contrast-105 hover:grayscale-0 transition-all duration-500"
+            className="object-cover transition-all duration-500"
             draggable={false}
             priority
           />
@@ -128,8 +128,24 @@ export default function HangingIdCard() {
             </p>
           </div>
 
-          {/* Barcode Overlay */}
-          <div className="flex flex-col items-center space-y-1">
+          {/* Barcode Overlay — Click to visit LinkedIn */}
+          <div className="relative group flex flex-col items-center">
+            {/* Custom Tooltip */}
+            <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-zinc-900 border border-zinc-700 rounded-md text-[9px] font-space font-semibold text-zinc-200 tracking-wider whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50">
+              View LinkedIn Profile
+              {/* Tooltip arrow */}
+              <div className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-2.5 h-1.5 overflow-hidden">
+                <div className="w-2 h-2 bg-zinc-900 border-r border-b border-zinc-700 rotate-45 mx-auto -mt-1" />
+              </div>
+            </div>
+
+            <a
+              href="https://www.linkedin.com/in/agam17"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex flex-col items-center space-y-1 cursor-pointer"
+            >
             {/* Dynamic CSS Barcode Lines */}
             <div className="flex items-center gap-[1.5px] h-5 opacity-80">
               <div className="w-[1px] h-full bg-zinc-400" />
@@ -147,11 +163,12 @@ export default function HangingIdCard() {
               <div className="w-[1px] h-full bg-zinc-400" />
               <div className="w-[4px] h-full bg-zinc-400" />
             </div>
-            
-            {/* Barcode code numbers */}
+
+            {/* Barcode number */}
             <span className="font-mono text-[7px] text-zinc-500 tracking-[0.25em]">
               SYSNODE-3145-7492
             </span>
+            </a>
           </div>
         </div>
       </motion.div>

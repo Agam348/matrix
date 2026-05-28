@@ -8,11 +8,8 @@ import {
   Terminal, 
   Briefcase, 
   Calendar, 
-  Sparkles, 
   Cpu, 
-  Layers, 
-  ChevronRight,
-  Code
+  ChevronRight 
 } from "lucide-react";
 
 interface Role {
@@ -39,15 +36,14 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
     duration: "Apr 2026 — Present",
     status: "ACTIVE",
     themeColor: "indigo",
-    glowColor: "rgba(129, 140, 248, 0.4)",
+    glowColor: "rgba(129, 140, 248, 0.2)",
     roles: [
       {
         title: "App Developer",
         year: "Apr 2026 — Present",
         desc: [
-          "Contributing to the development of a mobile application for Gurmat Darbar.",
-          "Working on UI/UX design and feature implementation.",
-          "Collaborating with team members to improve app functionality and user experience."
+          "Designing and developing cross-platform mobile UI/UX and feature frameworks using Flutter.",
+          "Collaborating on code reviews and functional testing cycles to optimize user retention."
         ],
         skills: ["Flutter", "Dart", "UI/UX Design", "Mobile Development"],
       }
@@ -59,18 +55,15 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
     duration: "2024 — Present",
     status: "ACTIVE",
     themeColor: "emerald",
-    glowColor: "rgba(52, 211, 153, 0.4)",
+    glowColor: "rgba(52, 211, 153, 0.2)",
     roles: [
       {
         title: "Finance Head",
         year: "Aug 2025 — Present",
         desc: [
-          "Organized a 3-day Tech Fest and 30+ hour Hackathon, managing resources for 170+ participants and 50 teams.",
-          "Utilized Excel and Google Sheets for advanced expense tracking and financial modeling.",
-          "Managed budgeting and financial planning for multiple student-led events.",
-          "Handled sponsorship funds, expense tracking, and financial reporting.",
-          "Coordinated with different teams to ensure cost-effective execution of events.",
-          "Maintained transparency and accountability in all financial operations."
+          "Directed budget allocation and financial reporting for a 3-day regional Tech Fest and 30+ hour Hackathon.",
+          "Optimized resources and sponsorship records using advanced Excel spreadsheets for 170+ active participants.",
+          "Supervised cost-benefit strategies across committees, ensuring budget transparency and positive ROI."
         ],
         skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
       },
@@ -78,9 +71,8 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Core Team Member",
         year: "2024 — Jul 2025",
         desc: [
-          "Volunteered in a Tech Fest (in 1st year), supporting event execution and coordination.",
-          "Managed and organized small-scale events, ensuring smooth operations.",
-          "Led an art club event, including designing posters and handling promotions."
+          "Coordinated event schedules, logistics, and visual promotion assets for first-year technical exhibitions.",
+          "Led art and creative design teams to design high-engagement marketing posters and banners."
         ],
         skills: ["Event Execution", "Teamwork", "Event Operations"],
       }
@@ -92,15 +84,14 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
     duration: "Oct 2024 — Nov 2025",
     status: "ARCHIVED",
     themeColor: "purple",
-    glowColor: "rgba(168, 85, 247, 0.4)",
+    glowColor: "rgba(168, 85, 247, 0.2)",
     roles: [
       {
         title: "Multimedia Team Member",
         year: "Oct 2024 — Nov 2025",
         desc: [
-          "Designed posters, certificates and digital creatives using Canva.",
-          "Created visual content for events and promotions.",
-          "Maintained consistency in branding and design."
+          "Designed promotional digital banners, branding materials, and certificates using Canva.",
+          "Maintained strict design guidelines and consistency for paradox campaign rollouts."
         ],
         skills: ["Canva", "Graphic Design", "Visual Content", "Branding Layouts"],
       }
@@ -112,15 +103,13 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
     duration: "Sep 2024 — May 2025",
     status: "ARCHIVED",
     themeColor: "cyan",
-    glowColor: "rgba(6, 182, 212, 0.4)",
+    glowColor: "rgba(6, 182, 212, 0.2)",
     roles: [
       {
         title: "PR and Outreach Team",
         year: "Feb 2025 — May 2025",
         desc: [
-          "Managed outreach activities and communication strategies.",
-          "Helped promote events and increase participation.",
-          "Coordinated with teams to ensure smooth execution."
+          "Managed outreach communications and PR pipelines to maximize regional event registration."
         ],
         skills: ["Public Relations", "Outreach Strategy", "Event Marketing"],
       },
@@ -128,9 +117,7 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Content Team (Graphic Designer)",
         year: "Sep 2024 — Feb 2025",
         desc: [
-          "Designed posters, social media creatives, and promotional content.",
-          "Worked on visual branding for events.",
-          "Delivered designs within deadlines."
+          "Created custom graphic assets and social media branding banners for house campaigns."
         ],
         skills: ["Graphic Design", "Content Creation", "Visual Branding"],
       }
@@ -158,37 +145,37 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="relative w-full bg-[#09090b]">
+    <section id="experience" className="relative w-full bg-[#09090b] py-16">
       {/* Absolute subtle background lights */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none z-0" />
 
       <ContainerScroll
         titleComponent={
-          <div className="flex flex-col items-center justify-center space-y-4 mb-6 z-10 px-4">
-            <div className="font-space text-[10px] font-bold tracking-[0.25em] text-indigo-400 bg-indigo-950/20 px-3 py-1.5 rounded border border-indigo-500/10 uppercase">
+          <div className="flex flex-col items-center justify-center space-y-4 mb-10 z-10 px-4">
+            <div className="font-space text-[9px] font-bold tracking-[0.25em] text-indigo-400 bg-indigo-950/20 px-3 py-1.5 rounded border border-indigo-500/10 uppercase">
               Chronology Node
             </div>
-            <h2 className="font-orbitron text-3xl sm:text-6xl font-extrabold tracking-tight text-white uppercase select-none leading-none">
+            <h2 className="font-orbitron text-3xl sm:text-5xl font-extrabold tracking-widest text-white uppercase select-none leading-none">
               MY{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 via-indigo-200 to-zinc-400">
                 EXPERIENCE
               </span>
             </h2>
-            <p className="font-sora text-[11px] sm:text-xs text-zinc-500 uppercase tracking-widest max-w-lg text-center leading-relaxed">
+            <p className="font-sora text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest max-w-lg text-center leading-relaxed mt-2">
               Scroll down to adjust perspective & interact with my workspace history console
             </p>
           </div>
         }
       >
         {/* Main Dashboard Layout inside tilted card */}
-        <div className="w-full h-full flex flex-col md:flex-row bg-zinc-950/40 backdrop-blur-md text-zinc-100 font-sora">
+        <div className="w-full h-full flex flex-col md:flex-row bg-zinc-950/20 backdrop-blur-md text-zinc-100 font-sora border border-zinc-900/30 rounded-2xl overflow-hidden">
           
           {/* LEFT SIDEBAR: Organization Navigation */}
-          <div className="w-full md:w-[32%] border-b md:border-b-0 md:border-r border-zinc-800/60 p-4 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible md:overflow-y-auto gap-2 md:gap-2.5 shrink-0 select-none custom-scrollbar scrollbar-thin">
+          <div className="w-full md:w-[32%] border-b md:border-b-0 md:border-r border-zinc-900/40 p-4 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible md:overflow-y-auto gap-2 md:gap-2.5 shrink-0 select-none custom-scrollbar scrollbar-thin">
             
             {/* Terminal Sidebar Header (Desktop only) */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-2 text-zinc-500 border-b border-zinc-900/60 pb-3 mb-2 w-full">
+            <div className="hidden md:flex items-center gap-2 px-3 py-2 text-zinc-500 border-b border-zinc-900/40 pb-3 mb-2 w-full">
               <Terminal className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
               <span className="font-space text-[9px] tracking-wider uppercase font-bold text-zinc-400">
                 SYS_DATABASE //
@@ -201,10 +188,10 @@ export default function Experience() {
               
               // Dynamic themes
               const activeBorderColor = 
-                exp.themeColor === "indigo" ? "border-indigo-500/40 bg-indigo-950/15" :
-                exp.themeColor === "emerald" ? "border-emerald-500/40 bg-emerald-950/15" :
-                exp.themeColor === "purple" ? "border-purple-500/40 bg-purple-950/15" :
-                "border-cyan-500/40 bg-cyan-950/15";
+                exp.themeColor === "indigo" ? "border-indigo-500/20 bg-indigo-950/10" :
+                exp.themeColor === "emerald" ? "border-emerald-500/20 bg-emerald-950/10" :
+                exp.themeColor === "purple" ? "border-purple-500/20 bg-purple-950/10" :
+                "border-cyan-500/20 bg-cyan-950/10";
 
               const activeIndicator = 
                 exp.themeColor === "indigo" ? "bg-indigo-400" :
@@ -221,7 +208,7 @@ export default function Experience() {
                   className={`flex-1 md:flex-initial flex items-center gap-3 px-4 py-3 text-left border rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap md:whitespace-normal shrink-0 ${
                     isActive
                       ? `${activeBorderColor} text-white shadow-[0_4px_20px_-2px_rgba(0,0,0,0.4)]`
-                      : "border-zinc-900/80 bg-zinc-950/30 text-zinc-400 hover:text-zinc-200 hover:border-zinc-800/80 hover:bg-zinc-900/20"
+                      : "border-zinc-900/30 bg-zinc-950/10 text-zinc-400 hover:text-zinc-200 hover:border-zinc-800/40 hover:bg-zinc-900/10"
                   }`}
                   style={{
                     boxShadow: isActive ? `0 0 15px -3px ${exp.glowColor}` : ""
@@ -233,7 +220,7 @@ export default function Experience() {
                   }`} />
 
                   <div className="flex flex-col space-y-0.5">
-                    <span className="font-space text-xs font-bold tracking-tight">
+                    <span className="font-space text-[11px] font-bold tracking-tight">
                       {exp.shortName}
                     </span>
                     <span className="text-[9px] text-zinc-500 font-mono tracking-wider">
@@ -261,32 +248,32 @@ export default function Experience() {
                 className="flex flex-col space-y-5 h-full"
               >
                 {/* Header Node Info */}
-                <div className="border-b border-zinc-800/40 pb-4">
+                <div className="border-b border-zinc-900/40 pb-4">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[9px] text-zinc-600 bg-zinc-900/60 px-2 py-0.5 rounded uppercase tracking-widest border border-zinc-900">
+                      <span className="font-mono text-[9px] text-zinc-500 bg-zinc-900/40 px-2 py-0.5 rounded uppercase tracking-widest border border-zinc-900/60">
                         NODE_0{activeTab + 1}
                       </span>
                       {activeExp.status === "ACTIVE" ? (
-                        <span className="flex items-center gap-1.5 text-[9px] font-mono font-bold tracking-wider text-emerald-400 bg-emerald-950/20 px-2 py-0.5 border border-emerald-500/10 rounded uppercase">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block shrink-0" />
+                        <span className="flex items-center gap-1.5 text-[8px] font-mono font-bold tracking-wider text-emerald-400 bg-emerald-950/20 px-2 py-0.5 border border-emerald-500/10 rounded uppercase">
+                          <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping inline-block shrink-0" />
                           STATUS: ONGOING
                         </span>
                       ) : (
-                        <span className="flex items-center gap-1.5 text-[9px] font-mono font-bold tracking-wider text-zinc-400 bg-zinc-900/40 px-2 py-0.5 border border-zinc-800/40 rounded uppercase">
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 inline-block shrink-0" />
+                        <span className="flex items-center gap-1.5 text-[8px] font-mono font-bold tracking-wider text-zinc-400 bg-zinc-900/40 px-2 py-0.5 border border-zinc-800/40 rounded uppercase">
+                          <span className="w-1 h-1 rounded-full bg-zinc-650 inline-block shrink-0" />
                           STATUS: RETRIEVED
                         </span>
                       )}
                     </div>
                     
-                    <div className="flex items-center gap-1 text-[10px] text-zinc-500 font-mono">
-                      <Calendar className="w-3 h-3 text-zinc-600" />
+                    <div className="flex items-center gap-1 text-[9px] text-zinc-500 font-mono">
+                      <Calendar className="w-3 h-3 text-zinc-650" />
                       <span>{activeExp.duration}</span>
                     </div>
                   </div>
 
-                  <h3 className="font-space text-lg md:text-xl font-bold text-white mt-2 leading-snug">
+                  <h3 className="font-space text-base md:text-lg font-bold text-white mt-2 leading-snug">
                     {activeExp.organization}
                   </h3>
                 </div>
@@ -297,13 +284,13 @@ export default function Experience() {
                     <div 
                       key={role.title} 
                       className={`space-y-3 pb-5 ${
-                        rIndex < activeExp.roles.length - 1 ? "border-b border-zinc-900/80" : ""
+                        rIndex < activeExp.roles.length - 1 ? "border-b border-zinc-900/40" : ""
                       }`}
                     >
                       {/* Role header */}
                       <div className="flex items-center justify-between flex-wrap gap-2">
                         <div className="flex items-center gap-2">
-                          <div className={`p-1 rounded bg-zinc-900/80 border border-zinc-800 shrink-0 ${
+                          <div className={`p-1 rounded bg-zinc-900/50 border border-zinc-900 shrink-0 ${
                             activeExp.themeColor === "indigo" ? "text-indigo-400" :
                             activeExp.themeColor === "emerald" ? "text-emerald-400" :
                             activeExp.themeColor === "purple" ? "text-purple-400" :
@@ -311,27 +298,27 @@ export default function Experience() {
                           }`}>
                             <Briefcase className="w-3.5 h-3.5" />
                           </div>
-                          <span className="font-space text-sm font-extrabold text-zinc-200 tracking-wide">
+                          <span className="font-space text-xs font-bold text-zinc-200 tracking-wide">
                             {role.title}
                           </span>
                         </div>
-                        <span className="font-mono text-[9px] text-zinc-500 bg-zinc-950 px-2 py-0.5 rounded border border-zinc-900">
+                        <span className="font-mono text-[8px] text-zinc-500 bg-zinc-950 px-2 py-0.5 rounded border border-zinc-900/60">
                           {role.year}
                         </span>
                       </div>
 
                       {/* Bullet point accomplishments */}
-                      <ul className="space-y-2.5 pl-1.5">
+                      <ul className="space-y-2 pl-1">
                         {role.desc.map((bullet, bIndex) => (
                           <li 
                             key={bIndex} 
-                            className="flex items-start gap-2.5 text-zinc-400 font-sora text-[11px] leading-relaxed group"
+                            className="flex items-start gap-2 text-zinc-400 font-sora text-[11px] leading-relaxed group"
                           >
-                            <span className={`font-mono text-[9px] mt-1 shrink-0 select-none ${
-                              activeExp.themeColor === "indigo" ? "text-indigo-500/70" :
-                              activeExp.themeColor === "emerald" ? "text-emerald-500/70" :
-                              activeExp.themeColor === "purple" ? "text-purple-500/70" :
-                              "text-cyan-500/70"
+                            <span className={`font-mono text-[8px] mt-1 shrink-0 select-none ${
+                              activeExp.themeColor === "indigo" ? "text-indigo-500/50" :
+                              activeExp.themeColor === "emerald" ? "text-emerald-500/50" :
+                              activeExp.themeColor === "purple" ? "text-purple-500/50" :
+                              "text-cyan-500/50"
                             }`}>
                               [#]
                             </span>
@@ -346,15 +333,15 @@ export default function Experience() {
                       <div className="flex flex-wrap gap-1.5 pt-2">
                         {role.skills.map((skill) => {
                           const tagColor = 
-                            activeExp.themeColor === "indigo" ? "border-indigo-500/10 hover:border-indigo-500/30 hover:bg-indigo-950/20 text-indigo-400/80 hover:text-indigo-300" :
-                            activeExp.themeColor === "emerald" ? "border-emerald-500/10 hover:border-emerald-500/30 hover:bg-emerald-950/20 text-emerald-400/80 hover:text-emerald-300" :
-                            activeExp.themeColor === "purple" ? "border-purple-500/10 hover:border-purple-500/30 hover:bg-purple-950/20 text-purple-400/80 hover:text-purple-300" :
-                            "border-cyan-500/10 hover:border-cyan-500/30 hover:bg-cyan-950/20 text-cyan-400/80 hover:text-cyan-300";
+                            activeExp.themeColor === "indigo" ? "border-indigo-500/5 hover:border-indigo-500/20 hover:bg-indigo-950/10 text-indigo-400/80 hover:text-indigo-300" :
+                            activeExp.themeColor === "emerald" ? "border-emerald-500/5 hover:border-emerald-500/20 hover:bg-emerald-950/10 text-emerald-400/80 hover:text-emerald-300" :
+                            activeExp.themeColor === "purple" ? "border-purple-500/5 hover:border-purple-500/20 hover:bg-purple-950/10 text-purple-400/80 hover:text-purple-300" :
+                            "border-cyan-500/5 hover:border-cyan-500/20 hover:bg-cyan-950/10 text-cyan-400/80 hover:text-cyan-300";
 
                           return (
                             <span
                               key={skill}
-                              className={`px-2 py-0.5 border bg-zinc-950/60 text-[9px] font-space tracking-wider rounded-md font-bold uppercase transition-all duration-300 shrink-0 ${tagColor}`}
+                              className={`px-2 py-0.5 border bg-zinc-950/40 text-[8px] font-space tracking-wider rounded-md font-bold uppercase transition-all duration-300 shrink-0 ${tagColor}`}
                             >
                               {skill}
                             </span>
@@ -366,7 +353,7 @@ export default function Experience() {
                 </div>
 
                 {/* Mini System status footer (Desktop only) */}
-                <div className="hidden md:flex items-center gap-1.5 justify-end font-mono text-[8px] text-zinc-600 border-t border-zinc-900/60 pt-3 mt-auto w-full select-none">
+                <div className="hidden md:flex items-center gap-1.5 justify-end font-mono text-[8px] text-zinc-650 border-t border-zinc-900/40 pt-3 mt-auto w-full select-none">
                   <Cpu className="w-2.5 h-2.5 text-zinc-700 animate-spin [animation-duration:8s]" />
                   <span>MATRIXCORE_SYSV4 // DATALOG_DEC_SECURE // OK</span>
                 </div>
@@ -387,11 +374,11 @@ export default function Experience() {
           background: rgba(9, 9, 11, 0.2);
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(39, 39, 42, 0.6);
+          background: rgba(39, 39, 42, 0.4);
           border-radius: 2px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(63, 63, 70, 0.8);
+          background: rgba(63, 63, 70, 0.6);
         }
       `}</style>
     </section>
