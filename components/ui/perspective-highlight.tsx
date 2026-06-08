@@ -10,12 +10,15 @@ interface PerspectiveProps extends React.HTMLAttributes<HTMLDivElement> {
   maxRotateY?: number;
   /** Lerp factor 0–1. Higher = snappier follow. Default 0.12. */
   smoothing?: number;
+  /** If true, stops the interactive mouse tilt. */
+  disabled?: boolean;
 }
 
 export const Perspective = ({
   maxRotateX = 14,
   maxRotateY = 30,
   smoothing = 0.12,
+  disabled = false,
   className,
   children,
   ...props
@@ -27,6 +30,14 @@ export const Perspective = ({
     const container = containerRef.current;
     const card = cardRef.current;
     if (!container || !card) return;
+
+    if (disabled) {
+      container.style.setProperty("--rx", "0deg");
+      container.style.setProperty("--ry", "0deg");
+      container.style.setProperty("--lift", "0");
+      return;
+    }
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let targetX = 0;
@@ -78,7 +89,7 @@ export const Perspective = ({
       document.removeEventListener("mouseleave", onLeave);
       cancelAnimationFrame(raf);
     };
-  }, [maxRotateX, maxRotateY, smoothing]);
+  }, [maxRotateX, maxRotateY, smoothing, disabled]);
 
   return (
     <div

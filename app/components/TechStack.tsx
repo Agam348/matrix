@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { soundManager } from "../lib/sound";
-import CyberneticGridShader from "@/components/ui/cybernetic-grid-shader";
 
 interface TechItem {
   name: string;
@@ -34,6 +33,18 @@ const TECH_DATA: TechItem[] = [
   },
   // Web Development
   {
+    name: "HTML5",
+    desc: "Structuring clean, semantic web layouts and accessibility.",
+    category: "web",
+    icon: "🌐",
+  },
+  {
+    name: "CSS3",
+    desc: "Advanced visual styling, complex transitions, and custom variables.",
+    category: "web",
+    icon: "💎",
+  },
+  {
     name: "React JS",
     desc: "Component lifecycle management and responsive interfaces.",
     category: "web",
@@ -50,6 +61,12 @@ const TECH_DATA: TechItem[] = [
     desc: "Utility-first frameworks for rapid, clean styling layouts.",
     category: "web",
     icon: "🎨",
+  },
+  {
+    name: "GSAP",
+    desc: "High-performance timeline animations and smooth visual sequencing.",
+    category: "web",
+    icon: "🟢",
   },
   // Mobile Development
   {
@@ -91,8 +108,14 @@ export default function TechStack() {
       id="skills"
       className="relative w-full py-32 px-6 sm:px-12 overflow-hidden flex items-center justify-center bg-transparent z-0"
     >
-      {/* 1. Full-screen WebGL Cybernetic Grid Backdrop */}
-      <CyberneticGridShader />
+      {/* 1. Static Cybernetic Grid Backdrop */}
+      <div 
+        className="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0" 
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px)",
+          backgroundSize: "24px 24px"
+        }}
+      />
 
       {/* 2. Dark glass overlay to keep text completely readable */}
       <div className="absolute inset-0 bg-[#09090b]/90 backdrop-blur-[1px] z-0 pointer-events-none" />

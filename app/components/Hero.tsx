@@ -46,7 +46,7 @@ export default function Hero() {
 
   const handleScrollTo = (id: string) => {
     soundManager.playClick(900);
-    const lenis = (window as any).lenis;
+    const lenis = (window as unknown as { lenis?: { scrollTo: (target: string | number) => void; stop: () => void; start: () => void } }).lenis;
     if (lenis) {
       lenis.scrollTo(`#${id}`);
     } else {
@@ -93,7 +93,7 @@ export default function Hero() {
 
   // Pause Lenis smooth scrolling when the terminal console overlay is active
   useEffect(() => {
-    const lenis = (window as any).lenis;
+    const lenis = (window as unknown as { lenis?: { scrollTo: (target: string | number) => void; stop: () => void; start: () => void } }).lenis;
     if (!lenis) return;
     
     if (isTerminalOpen) {
@@ -135,15 +135,18 @@ export default function Hero() {
       } else {
         // Line typed completely, transition to the next line
         const timer = setTimeout(() => {
-          setCurrentLineIndex(prev => prev + 1);
-          setCurrentCharIndex(0);
-          soundManager.playBeep(500, 0.015); // Confirmation tick
+          if (currentLineIndex + 1 < TERMINAL_LINES.length) {
+            setCurrentLineIndex(prev => prev + 1);
+            setCurrentCharIndex(0);
+            soundManager.playBeep(500, 0.015); // Confirmation tick
+          } else {
+            setIsFinished(true);
+            soundManager.playBeep(980, 0.08); // Success sound
+            setCurrentLineIndex(prev => prev + 1);
+          }
         }, 40); 
         return () => clearTimeout(timer);
       }
-    } else {
-      setIsFinished(true);
-      soundManager.playBeep(980, 0.08); // Success sound
     }
   }, [isTerminalOpen, currentLineIndex, currentCharIndex]);
 
@@ -181,9 +184,8 @@ export default function Hero() {
                 </span>
               </h1>
               
-              {/* Stronger, Impactful Tagline */}
               <p className="font-space text-base sm:text-lg text-zinc-200 font-extrabold tracking-wide max-w-xl animate-fade-in-up animation-delay-400 leading-relaxed">
-                Building modern digital experiences through code, design, and technology.
+                Building modern digital experiences through code, design and technology.
               </p>
             </div>
 
@@ -269,7 +271,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 select-none"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black backdrop-blur-none p-4 sm:p-6 select-none"
           >
             {/* Scanning terminal CRT grid line overlay effect */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none z-10 opacity-30" />

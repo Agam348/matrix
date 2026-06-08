@@ -9,7 +9,7 @@ export function ShaderAnimation() {
     camera: THREE.Camera | null;
     scene: THREE.Scene | null;
     renderer: THREE.WebGLRenderer | null;
-    uniforms: any;
+    uniforms: Record<string, THREE.IUniform> | null;
     animationId: number | null;
   }>({
     camera: null,
@@ -19,28 +19,8 @@ export function ShaderAnimation() {
     animationId: null,
   });
 
-  useEffect(() => {
-    let cleanupResize: (() => void) | undefined;
-
-    if (containerRef.current) {
-      cleanupResize = initThreeJS();
-    }
-
-    return () => {
-      // Cleanup
-      if (sceneRef.current.animationId) {
-        cancelAnimationFrame(sceneRef.current.animationId);
-      }
-      if (sceneRef.current.renderer) {
-        sceneRef.current.renderer.dispose();
-      }
-      if (cleanupResize) {
-        cleanupResize();
-      }
-    };
-  }, []);
-
-  const initThreeJS = () => {
+  // Declare initThreeJS above useEffect to resolve static analysis hoisting warnings
+  function initThreeJS() {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
@@ -85,7 +65,7 @@ export function ShaderAnimation() {
       }
       float random (vec2 st) {
           return fract(sin(dot(st.xy,
-                               vec2(12.9898,78.233)))*
+                                vec2(12.9898,78.233)))*
               43758.5453123);
       }
       
@@ -163,7 +143,28 @@ export function ShaderAnimation() {
     return () => {
       window.removeEventListener("resize", onWindowResize);
     };
-  };
+  }
+
+  useEffect(() => {
+    let cleanupResize: (() => void) | undefined;
+
+    if (containerRef.current) {
+      cleanupResize = initThreeJS();
+    }
+
+    return () => {
+      // Cleanup
+      if (sceneRef.current.animationId) {
+        cancelAnimationFrame(sceneRef.current.animationId);
+      }
+      if (sceneRef.current.renderer) {
+        sceneRef.current.renderer.dispose();
+      }
+      if (cleanupResize) {
+        cleanupResize();
+      }
+    };
+  }, []);
 
   return (
     <div

@@ -54,7 +54,7 @@ export default function Navbar() {
 
   const handleLinkClick = (id: string) => {
     soundManager.playClick(800);
-    const lenis = (window as any).lenis;
+    const lenis = (window as unknown as { lenis?: { scrollTo: (target: string | number) => void } }).lenis;
     if (lenis) {
       lenis.scrollTo(`#${id}`);
     } else {

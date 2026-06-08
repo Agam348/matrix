@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { soundManager } from "../lib/sound";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -46,6 +46,27 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
           "Collaborating on code reviews and functional testing cycles to optimize user retention."
         ],
         skills: ["Flutter", "Dart", "UI/UX Design", "Mobile Development"],
+      }
+    ]
+  },
+  {
+    organization: "VTAP",
+    shortName: "VTAP",
+    duration: "Mar 2026 — May 2026",
+    status: "ARCHIVED",
+    themeColor: "cyan",
+    glowColor: "rgba(6, 182, 212, 0.2)",
+    roles: [
+      {
+        title: "Intern at VTAP-Web Developer",
+        year: "Mar 2026 — May 2026",
+        desc: [
+          "Contributed to the development of Tischtap, a smart QR & NFC-based restaurant solution platform.",
+          "Built and improved responsive web interfaces for digital menus and customer interaction.",
+          "Worked on enhancing UI/UX for seamless ordering and user experience.",
+          "Collaborated with the team to deliver scalable and performance-focused web solutions."
+        ],
+        skills: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations", "UI/UX Design"],
       }
     ]
   },
@@ -127,7 +148,7 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState(0);
-  const [hoveredTab, setHoveredTab] = useState<number | null>(null);
+
 
   const activeExp = EXPERIENCES_DATA[activeTab];
 
@@ -137,12 +158,7 @@ export default function Experience() {
     soundManager.playClick(1000 + index * 100);
   };
 
-  const handleTabHover = (index: number | null) => {
-    setHoveredTab(index);
-    if (index !== null) {
-      soundManager.playClick(850);
-    }
-  };
+
 
   return (
     <section id="experience" className="relative w-full bg-[#09090b] py-16">
@@ -184,7 +200,6 @@ export default function Experience() {
 
             {EXPERIENCES_DATA.map((exp, index) => {
               const isActive = activeTab === index;
-              const isHovered = hoveredTab === index;
               
               // Dynamic themes
               const activeBorderColor = 
@@ -203,8 +218,7 @@ export default function Experience() {
                 <button
                   key={exp.organization}
                   onClick={() => handleTabClick(index)}
-                  onMouseEnter={() => handleTabHover(index)}
-                  onMouseLeave={() => handleTabHover(null)}
+                  onMouseEnter={() => soundManager.playClick(850)}
                   className={`flex-1 md:flex-initial flex items-center gap-3 px-4 py-3 text-left border rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap md:whitespace-normal shrink-0 ${
                     isActive
                       ? `${activeBorderColor} text-white shadow-[0_4px_20px_-2px_rgba(0,0,0,0.4)]`

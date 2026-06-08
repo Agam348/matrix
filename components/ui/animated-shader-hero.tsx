@@ -7,6 +7,248 @@ interface AnimatedShaderHeroProps {
   className?: string;
 }
 
+// WebGL Renderer class
+class WebGLRenderer {
+  private canvas: HTMLCanvasElement;
+  private gl: WebGL2RenderingContext;
+  private program: WebGLProgram | null = null;
+  private vs: WebGLShader | null = null;
+  private fs: WebGLShader | null = null;
+  private buffer: WebGLBuffer | null = null;
+  private scale: number;
+  private shaderSource: string;
+  private mouseMove = [0, 0];
+  private mouseCoords = [0, 0];
+  private pointerCoords = [0, 0];
+  private nbrOfPointers = 0;
+
+  // Storing locations in a typed object instead of casting WebGLProgram to 'any'
+  private uniforms: {
+    resolution: WebGLUniformLocation | null;
+    time: WebGLUniformLocation | null;
+    move: WebGLUniformLocation | null;
+    touch: WebGLUniformLocation | null;
+    pointerCount: WebGLUniformLocation | null;
+    pointers: WebGLUniformLocation | null;
+  } = {
+    resolution: null,
+    time: null,
+    move: null,
+    touch: null,
+    pointerCount: null,
+    pointers: null,
+  };
+
+  private vertexSrc = `#version 300 es
+precision highp float;
+in vec4 position;
+void main(){gl_Position=position;}`;
+
+  private vertices = [-1, 1, -1, -1, 1, 1, 1, -1];
+
+  constructor(canvas: HTMLCanvasElement, scale: number) {
+    this.canvas = canvas;
+    this.scale = scale;
+    this.gl = canvas.getContext("webgl2")!;
+    this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
+    this.shaderSource = defaultShaderSource;
+  }
+
+  updateShader(source: string) {
+    this.reset();
+    this.shaderSource = source;
+    this.setup();
+    this.init();
+  }
+
+  updateMove(deltas: number[]) {
+    this.mouseMove = deltas;
+  }
+
+  updateMouse(coords: number[]) {
+    this.mouseCoords = coords;
+  }
+
+  updatePointerCoords(coords: number[]) {
+    this.pointerCoords = coords;
+  }
+
+  updatePointerCount(nbr: number) {
+    this.nbrOfPointers = nbr;
+  }
+
+  updateScale(scale: number) {
+    this.scale = scale;
+    this.gl.viewport(0, 0, this.canvas.width * scale, this.canvas.height * scale);
+  }
+
+  compile(shader: WebGLShader, source: string) {
+    const gl = this.gl;
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      const error = gl.getShaderInfoLog(shader);
+      console.error("Shader compilation error:", error);
+    }
+  }
+
+  test(source: string) {
+    let result = null;
+    const gl = this.gl;
+    const shader = gl.createShader(gl.FRAGMENT_SHADER)!;
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      result = gl.getShaderInfoLog(shader);
+    }
+    gl.deleteShader(shader);
+    return result;
+  }
+
+  reset() {
+    const gl = this.gl;
+    if (this.program && !gl.getProgramParameter(this.program, gl.DELETE_STATUS)) {
+      if (this.vs) {
+        gl.detachShader(this.program, this.vs);
+        gl.deleteShader(this.vs);
+      }
+      if (this.fs) {
+        gl.detachShader(this.program, this.fs);
+        gl.deleteShader(this.fs);
+      }
+      gl.deleteProgram(this.program);
+    }
+  }
+
+  setup() {
+    const gl = this.gl;
+    this.vs = gl.createShader(gl.VERTEX_SHADER)!;
+    this.fs = gl.createShader(gl.FRAGMENT_SHADER)!;
+    this.compile(this.vs, this.vertexSrc);
+    this.compile(this.fs, this.shaderSource);
+    this.program = gl.createProgram()!;
+    gl.attachShader(this.program, this.vs);
+    gl.attachShader(this.program, this.fs);
+    gl.linkProgram(this.program);
+
+    if (!gl.getProgramParameter(this.program, gl.LINK_STATUS)) {
+      console.error(gl.getProgramInfoLog(this.program));
+    }
+  }
+
+  init() {
+    const gl = this.gl;
+    const program = this.program!;
+    
+    this.buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
+
+    const position = gl.getAttribLocation(program, "position");
+    gl.enableVertexAttribArray(position);
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+    this.uniforms.resolution = gl.getUniformLocation(program, "resolution");
+    this.uniforms.time = gl.getUniformLocation(program, "time");
+    this.uniforms.move = gl.getUniformLocation(program, "move");
+    this.uniforms.touch = gl.getUniformLocation(program, "touch");
+    this.uniforms.pointerCount = gl.getUniformLocation(program, "pointerCount");
+    this.uniforms.pointers = gl.getUniformLocation(program, "pointers");
+  }
+
+  render(now = 0) {
+    const gl = this.gl;
+    const program = this.program;
+    
+    if (!program || gl.getProgramParameter(program, gl.DELETE_STATUS)) return;
+
+    gl.clearColor(0, 0, 0, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.useProgram(program);
+    gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+    
+    gl.uniform2f(this.uniforms.resolution, this.canvas.width, this.canvas.height);
+    gl.uniform1f(this.uniforms.time, now * 1e-3);
+    gl.uniform2f(this.uniforms.move, this.mouseMove[0], this.mouseMove[1]);
+    gl.uniform2f(this.uniforms.touch, this.mouseCoords[0], this.mouseCoords[1]);
+    gl.uniform1i(this.uniforms.pointerCount, this.nbrOfPointers);
+    gl.uniform2fv(this.uniforms.pointers, this.pointerCoords);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+}
+
+// Pointer Handler class
+class PointerHandler {
+  private scale: number;
+  private active = false;
+  private pointers = new Map<number, number[]>();
+  private lastCoords = [0, 0];
+  private moves = [0, 0];
+
+  constructor(element: HTMLCanvasElement, scale: number) {
+    this.scale = scale;
+    
+    const map = (el: HTMLCanvasElement, scaleVal: number, x: number, y: number) => 
+      [x * scaleVal, el.height - y * scaleVal];
+
+    element.addEventListener("pointerdown", (e) => {
+      this.active = true;
+      this.pointers.set(e.pointerId, map(element, this.getScale(), e.clientX, e.clientY));
+    });
+
+    element.addEventListener("pointerup", (e) => {
+      if (this.count === 1) {
+        this.lastCoords = this.first;
+      }
+      this.pointers.delete(e.pointerId);
+      this.active = this.pointers.size > 0;
+    });
+
+    element.addEventListener("pointerleave", (e) => {
+      if (this.count === 1) {
+        this.lastCoords = this.first;
+      }
+      this.pointers.delete(e.pointerId);
+      this.active = this.pointers.size > 0;
+    });
+
+    element.addEventListener("pointermove", (e) => {
+      if (!this.active) return;
+      this.lastCoords = [e.clientX, e.clientY];
+      this.pointers.set(e.pointerId, map(element, this.getScale(), e.clientX, e.clientY));
+      this.moves = [this.moves[0] + e.movementX, this.moves[1] + e.movementY];
+    });
+  }
+
+  getScale() {
+    return this.scale;
+  }
+
+  updateScale(scale: number) {
+    this.scale = scale;
+  }
+
+  get count() {
+    return this.pointers.size;
+  }
+
+  get move() {
+    return this.moves;
+  }
+
+  get coords() {
+    return this.pointers.size > 0 
+      ? Array.from(this.pointers.values()).flat() 
+      : [0, 0];
+  }
+
+  get first() {
+    return this.pointers.values().next().value || this.lastCoords;
+  }
+}
+
 // Reusable WebGL Shader Background Hook
 const useShaderBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,286 +256,68 @@ const useShaderBackground = () => {
   const rendererRef = useRef<WebGLRenderer | null>(null);
   const pointersRef = useRef<PointerHandler | null>(null);
 
-  // WebGL Renderer class
-  class WebGLRenderer {
-    private canvas: HTMLCanvasElement;
-    private gl: WebGL2RenderingContext;
-    private program: WebGLProgram | null = null;
-    private vs: WebGLShader | null = null;
-    private fs: WebGLShader | null = null;
-    private buffer: WebGLBuffer | null = null;
-    private scale: number;
-    private shaderSource: string;
-    private mouseMove = [0, 0];
-    private mouseCoords = [0, 0];
-    private pointerCoords = [0, 0];
-    private nbrOfPointers = 0;
-
-    private vertexSrc = `#version 300 es
-precision highp float;
-in vec4 position;
-void main(){gl_Position=position;}`;
-
-    private vertices = [-1, 1, -1, -1, 1, 1, 1, -1];
-
-    constructor(canvas: HTMLCanvasElement, scale: number) {
-      this.canvas = canvas;
-      this.scale = scale;
-      this.gl = canvas.getContext("webgl2")!;
-      this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
-      this.shaderSource = defaultShaderSource;
-    }
-
-    updateShader(source: string) {
-      this.reset();
-      this.shaderSource = source;
-      this.setup();
-      this.init();
-    }
-
-    updateMove(deltas: number[]) {
-      this.mouseMove = deltas;
-    }
-
-    updateMouse(coords: number[]) {
-      this.mouseCoords = coords;
-    }
-
-    updatePointerCoords(coords: number[]) {
-      this.pointerCoords = coords;
-    }
-
-    updatePointerCount(nbr: number) {
-      this.nbrOfPointers = nbr;
-    }
-
-    updateScale(scale: number) {
-      this.scale = scale;
-      this.gl.viewport(0, 0, this.canvas.width * scale, this.canvas.height * scale);
-    }
-
-    compile(shader: WebGLShader, source: string) {
-      const gl = this.gl;
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        const error = gl.getShaderInfoLog(shader);
-        console.error("Shader compilation error:", error);
-      }
-    }
-
-    test(source: string) {
-      let result = null;
-      const gl = this.gl;
-      const shader = gl.createShader(gl.FRAGMENT_SHADER)!;
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        result = gl.getShaderInfoLog(shader);
-      }
-      gl.deleteShader(shader);
-      return result;
-    }
-
-    reset() {
-      const gl = this.gl;
-      if (this.program && !gl.getProgramParameter(this.program, gl.DELETE_STATUS)) {
-        if (this.vs) {
-          gl.detachShader(this.program, this.vs);
-          gl.deleteShader(this.vs);
-        }
-        if (this.fs) {
-          gl.detachShader(this.program, this.fs);
-          gl.deleteShader(this.fs);
-        }
-        gl.deleteProgram(this.program);
-      }
-    }
-
-    setup() {
-      const gl = this.gl;
-      this.vs = gl.createShader(gl.VERTEX_SHADER)!;
-      this.fs = gl.createShader(gl.FRAGMENT_SHADER)!;
-      this.compile(this.vs, this.vertexSrc);
-      this.compile(this.fs, this.shaderSource);
-      this.program = gl.createProgram()!;
-      gl.attachShader(this.program, this.vs);
-      gl.attachShader(this.program, this.fs);
-      gl.linkProgram(this.program);
-
-      if (!gl.getProgramParameter(this.program, gl.LINK_STATUS)) {
-        console.error(gl.getProgramInfoLog(this.program));
-      }
-    }
-
-    init() {
-      const gl = this.gl;
-      const program = this.program!;
-      
-      this.buffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.vertices), gl.STATIC_DRAW);
-
-      const position = gl.getAttribLocation(program, "position");
-      gl.enableVertexAttribArray(position);
-      gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-
-      (program as any).resolution = gl.getUniformLocation(program, "resolution");
-      (program as any).time = gl.getUniformLocation(program, "time");
-      (program as any).move = gl.getUniformLocation(program, "move");
-      (program as any).touch = gl.getUniformLocation(program, "touch");
-      (program as any).pointerCount = gl.getUniformLocation(program, "pointerCount");
-      (program as any).pointers = gl.getUniformLocation(program, "pointers");
-    }
-
-    render(now = 0) {
-      const gl = this.gl;
-      const program = this.program;
-      
-      if (!program || gl.getProgramParameter(program, gl.DELETE_STATUS)) return;
-
-      gl.clearColor(0, 0, 0, 1);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.useProgram(program);
-      gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
-      
-      gl.uniform2f((program as any).resolution, this.canvas.width, this.canvas.height);
-      gl.uniform1f((program as any).time, now * 1e-3);
-      gl.uniform2f((program as any).move, this.mouseMove[0], this.mouseMove[1]);
-      gl.uniform2f((program as any).touch, this.mouseCoords[0], this.mouseCoords[1]);
-      gl.uniform1i((program as any).pointerCount, this.nbrOfPointers);
-      gl.uniform2fv((program as any).pointers, this.pointerCoords);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    }
-  }
-
-  // Pointer Handler class
-  class PointerHandler {
-    private scale: number;
-    private active = false;
-    private pointers = new Map<number, number[]>();
-    private lastCoords = [0, 0];
-    private moves = [0, 0];
-
-    constructor(element: HTMLCanvasElement, scale: number) {
-      this.scale = scale;
-      
-      const map = (element: HTMLCanvasElement, scale: number, x: number, y: number) => 
-        [x * scale, element.height - y * scale];
-
-      element.addEventListener("pointerdown", (e) => {
-        this.active = true;
-        this.pointers.set(e.pointerId, map(element, this.getScale(), e.clientX, e.clientY));
-      });
-
-      element.addEventListener("pointerup", (e) => {
-        if (this.count === 1) {
-          this.lastCoords = this.first;
-        }
-        this.pointers.delete(e.pointerId);
-        this.active = this.pointers.size > 0;
-      });
-
-      element.addEventListener("pointerleave", (e) => {
-        if (this.count === 1) {
-          this.lastCoords = this.first;
-        }
-        this.pointers.delete(e.pointerId);
-        this.active = this.pointers.size > 0;
-      });
-
-      element.addEventListener("pointermove", (e) => {
-        if (!this.active) return;
-        this.lastCoords = [e.clientX, e.clientY];
-        this.pointers.set(e.pointerId, map(element, this.getScale(), e.clientX, e.clientY));
-        this.moves = [this.moves[0] + e.movementX, this.moves[1] + e.movementY];
-      });
-    }
-
-    getScale() {
-      return this.scale;
-    }
-
-    updateScale(scale: number) {
-      this.scale = scale;
-    }
-
-    get count() {
-      return this.pointers.size;
-    }
-
-    get move() {
-      return this.moves;
-    }
-
-    get coords() {
-      return this.pointers.size > 0 
-        ? Array.from(this.pointers.values()).flat() 
-        : [0, 0];
-    }
-
-    get first() {
-      return this.pointers.values().next().value || this.lastCoords;
-    }
-  }
-
-  const resize = () => {
-    if (!canvasRef.current) return;
-    
-    const canvas = canvasRef.current;
-    const dpr = Math.max(1, 0.5 * window.devicePixelRatio);
-    
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    
-    if (rendererRef.current) {
-      rendererRef.current.updateScale(dpr);
-    }
-  };
-
-  const loop = (now: number) => {
-    if (!rendererRef.current || !pointersRef.current) return;
-    
-    rendererRef.current.updateMouse(pointersRef.current.first);
-    rendererRef.current.updatePointerCount(pointersRef.current.count);
-    rendererRef.current.updatePointerCoords(pointersRef.current.coords);
-    rendererRef.current.updateMove(pointersRef.current.move);
-    rendererRef.current.render(now);
-    animationFrameRef.current = requestAnimationFrame(loop);
-  };
-
   useEffect(() => {
     if (!canvasRef.current) return;
 
     const canvas = canvasRef.current;
     const dpr = Math.max(1, 0.5 * window.devicePixelRatio);
     
-    rendererRef.current = new WebGLRenderer(canvas, dpr);
-    pointersRef.current = new PointerHandler(canvas, dpr);
+    const renderer = new WebGLRenderer(canvas, dpr);
+    const pointers = new PointerHandler(canvas, dpr);
     
-    rendererRef.current.setup();
-    rendererRef.current.init();
+    rendererRef.current = renderer;
+    pointersRef.current = pointers;
     
+    renderer.setup();
+    renderer.init();
+    
+    const resize = () => {
+      const dprVal = Math.max(1, 0.5 * window.devicePixelRatio);
+      canvas.width = window.innerWidth * dprVal;
+      canvas.height = window.innerHeight * dprVal;
+      renderer.updateScale(dprVal);
+    };
+
     resize();
     
-    if (rendererRef.current.test(defaultShaderSource) === null) {
-      rendererRef.current.updateShader(defaultShaderSource);
+    if (renderer.test(defaultShaderSource) === null) {
+      renderer.updateShader(defaultShaderSource);
     }
     
+    // Intersection Observer to pause calculations when off-screen
+    let isVisible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(canvas);
+
+    const loop = (now: number) => {
+      if (!isVisible) {
+        animationFrameRef.current = requestAnimationFrame(loop);
+        return;
+      }
+      renderer.updateMouse(pointers.first);
+      renderer.updatePointerCount(pointers.count);
+      renderer.updatePointerCoords(pointers.coords);
+      renderer.updateMove(pointers.move);
+      renderer.render(now);
+      animationFrameRef.current = requestAnimationFrame(loop);
+    };
+
     loop(0);
     
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
     
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", resize);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      if (rendererRef.current) {
-        rendererRef.current.reset();
-      }
+      renderer.reset();
     };
   }, []);
 
@@ -308,8 +332,6 @@ export default function AnimatedShaderHero({
 
   return (
     <div className={`relative w-full min-h-screen overflow-hidden bg-black ${className}`}>
-
-      
       {/* 3D WebGL Shader Canvas Background */}
       <canvas
         ref={canvasRef}
@@ -327,10 +349,6 @@ export default function AnimatedShaderHero({
 
 // Customized fragment shader to render a stunning shifting indigo/cyan nebula space cloud
 const defaultShaderSource = `#version 300 es
-/*********
-* made by Matthias Hurrle (@atzedent)
-* Customized for MATRIX Cyber Indigo theme
-*/
 precision highp float;
 out vec4 O;
 uniform vec2 resolution;
@@ -390,7 +408,6 @@ void main(void) {
 		float b=noise(i+p+bg*1.731);
 		col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
     
-    // CUSTOM THEME: Shifting Indigo, Purple & Sky Blue space nebula (rather than hot orange)
 		col=mix(col,vec3(bg*.04, bg*.12, bg*.32),d);
 	}
 	O=vec4(col,1);

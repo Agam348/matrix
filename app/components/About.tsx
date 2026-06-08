@@ -4,26 +4,36 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import { X, GraduationCap, Award, MapPin, Globe } from "lucide-react";
-import dynamic from "next/dynamic";
 
-// High-performance client-side dynamic import for the 3D Spline Canvas
-// SSR is disabled to guarantee zero compilation crashes on Next.js server-side operations
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-[#09090b] flex flex-col items-center justify-center text-zinc-650 font-space text-[9px] tracking-[0.2em] uppercase select-none">
-      <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping mb-3 shrink-0" />
-      RETRIEVING 3D GEOMETRY NODES...
-    </div>
-  ),
-});
+type LenisControls = {
+  scrollTo: (target: string) => void;
+  start: () => void;
+  stop: () => void;
+};
+
+const getLenisControls = (): LenisControls | undefined => {
+  const lenis = (window as unknown as { lenis?: unknown }).lenis;
+
+  if (!lenis || typeof lenis !== "object") return undefined;
+
+  const controls = lenis as Partial<LenisControls>;
+  if (
+    typeof controls.scrollTo === "function" &&
+    typeof controls.start === "function" &&
+    typeof controls.stop === "function"
+  ) {
+    return controls as LenisControls;
+  }
+
+  return undefined;
+};
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleScrollTo = (id: string) => {
     soundManager.playClick(900);
-    const lenis = (window as any).lenis;
+    const lenis = getLenisControls();
     if (lenis) {
       lenis.scrollTo(`#${id}`);
     } else {
@@ -58,7 +68,7 @@ export default function About() {
 
   // Pause Lenis smooth scrolling when the education overlay is active to prevent background scrolling
   useEffect(() => {
-    const lenis = (window as any).lenis;
+    const lenis = getLenisControls();
     if (!lenis) return;
     
     if (isModalOpen) {
@@ -78,13 +88,6 @@ export default function About() {
       className="relative min-h-screen w-full flex items-end bg-[#09090b] overflow-hidden select-none"
     >
       
-      {/* 3D Spline Interactive scene embedded in the background (hue-rotated by 115deg to shift glowing green elements to glowing neon blue/indigo) */}
-      <div className="absolute inset-0 z-0 w-full h-full select-none" style={{ filter: "hue-rotate(115deg) saturate(1.2)" }}>
-        <Spline 
-          scene="https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode" 
-          className="w-full h-full"
-        />
-      </div>
 
       {/* Top Gradient Blend: Cross-fades the Hero section background into the 3D Spline scene */}
       <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#09090b] via-[#09090b]/80 to-transparent z-[2] pointer-events-none" />

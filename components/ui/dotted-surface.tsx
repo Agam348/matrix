@@ -103,12 +103,23 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
+    // Intersection Observer to pause animation loop when off-screen
+    let isVisible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(container);
+
     let count = 0;
     let animationId = 0;
 
     // Animation function
     const animate = () => {
       animationId = requestAnimationFrame(animate);
+      if (!isVisible) return; // Skip updating & rendering if off-screen
 
       const positionAttribute = geometry.attributes.position;
       const positionsArray = positionAttribute.array as Float32Array;
@@ -165,6 +176,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
     // Cleanup function
     return () => {
+      observer.disconnect();
       window.removeEventListener("resize", handleResize);
 
       if (sceneRef.current) {

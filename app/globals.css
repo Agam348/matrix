@@ -19,6 +19,22 @@
   }
 }
 
+/* Custom Cursor Resets: Hide default cursor globally on desktop */
+.has-custom-cursor,
+.has-custom-cursor *,
+.has-custom-cursor body,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [role="button"],
+.has-custom-cursor .cursor-pointer,
+.has-custom-cursor select,
+.has-custom-cursor input,
+.has-custom-cursor .cursor-grab,
+.has-custom-cursor .cursor-grabbing,
+.has-custom-cursor [drag] {
+  cursor: none !important;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

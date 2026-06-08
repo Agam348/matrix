@@ -198,43 +198,78 @@ export const WovenCanvas = () => {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
+    // Intersection Observer to pause animation loop when off-screen
+    let isVisible = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.01 }
+    );
+    observer.observe(container);
+
     let animationId = 0;
     const animate = () => {
         animationId = requestAnimationFrame(animate);
-        const elapsedTime = clock.getElapsedTime();
+        if (!isVisible) return; // Skip updating & rendering if off-screen
         
-        const mouseWorld = new THREE.Vector3(mouse.x * 3, mouse.y * 3, 0);
+        const elapsedTime = clock.getElapsedTime();
+        const mouseWorldX = mouse.x * 3;
+        const mouseWorldY = mouse.y * 3;
+        const mouseWorldZ = 0;
 
         for (let i = 0; i < particleCount; i++) {
             const ix = i * 3;
             const iy = i * 3 + 1;
             const iz = i * 3 + 2;
 
-            const currentPos = new THREE.Vector3(positions[ix], positions[iy], positions[iz]);
-            const originalPos = new THREE.Vector3(originalPositions[ix], originalPositions[iy], originalPositions[iz]);
-            const velocity = new THREE.Vector3(velocities[ix], velocities[iy], velocities[iz]);
+            const px = positions[ix];
+            const py = positions[iy];
+            const pz = positions[iz];
 
-            const dist = currentPos.distanceTo(mouseWorld);
-            if (dist < 1.5) {
+            const ox = originalPositions[ix];
+            const oy = originalPositions[iy];
+            const oz = originalPositions[iz];
+
+            let vx = velocities[ix];
+            let vy = velocities[iy];
+            let vz = velocities[iz];
+
+            // Direct arithmetic distance calculations (0 object allocations)
+            const dx = px - mouseWorldX;
+            const dy = py - mouseWorldY;
+            const dz = pz - mouseWorldZ;
+            const distSq = dx * dx + dy * dy + dz * dz;
+            const dist = Math.sqrt(distSq);
+
+            if (dist < 1.5 && dist > 0.0001) {
                 const force = (1.5 - dist) * 0.01;
-                const direction = new THREE.Vector3().subVectors(currentPos, mouseWorld).normalize();
-                velocity.add(direction.multiplyScalar(force));
+                vx += (dx / dist) * force;
+                vy += (dy / dist) * force;
+                vz += (dz / dist) * force;
             }
 
-            // Return to original position
-            const returnForce = new THREE.Vector3().subVectors(originalPos, currentPos).multiplyScalar(0.001);
-            velocity.add(returnForce);
+            // Return to original position force
+            const rx = ox - px;
+            const ry = oy - py;
+            const rz = oz - pz;
             
-            // Damping
-            velocity.multiplyScalar(0.95);
+            vx += rx * 0.001;
+            vy += ry * 0.001;
+            vz += rz * 0.001;
+            
+            // Damping velocity
+            vx *= 0.95;
+            vy *= 0.95;
+            vz *= 0.95;
 
-            positions[ix] += velocity.x;
-            positions[iy] += velocity.y;
-            positions[iz] += velocity.z;
+            positions[ix] = px + vx;
+            positions[iy] = py + vy;
+            positions[iz] = pz + vz;
             
-            velocities[ix] = velocity.x;
-            velocities[iy] = velocity.y;
-            velocities[iz] = velocity.z;
+            velocities[ix] = vx;
+            velocities[iy] = vy;
+            velocities[iz] = vz;
         }
         geometry.attributes.position.needsUpdate = true;
 
@@ -255,6 +290,7 @@ export const WovenCanvas = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
+        observer.disconnect();
         cancelAnimationFrame(animationId);
         window.removeEventListener('resize', handleResize);
         window.removeEventListener('mousemove', handleMouseMove);

@@ -43,7 +43,7 @@ export default function Home() {
       touchMultiplier: 1.5,
     });
 
-    (window as any).lenis = lenis;
+    (window as unknown as { lenis: unknown }).lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -54,7 +54,7 @@ export default function Home() {
 
     return () => {
       lenis.destroy();
-      (window as any).lenis = undefined;
+      (window as unknown as { lenis: unknown }).lenis = undefined;
     };
   }, []);
 
@@ -120,7 +120,7 @@ export default function Home() {
             >
               GITHUB
             </a>
-            <span className="text-zinc-800 font-normal select-none">//</span>
+            <span className="text-zinc-800 font-normal select-none">{"//"}</span>
             <a
               href="https://www.linkedin.com/in/Agam17"
               target="_blank"
@@ -129,7 +129,7 @@ export default function Home() {
             >
               LINKEDIN
             </a>
-            <span className="text-zinc-800 font-normal select-none">//</span>
+            <span className="text-zinc-800 font-normal select-none">{"//"}</span>
             <a
               href="https://www.instagram.com/agampreetsingh382/"
               target="_blank"

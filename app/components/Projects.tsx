@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import { WovenCanvas } from "@/components/ui/woven-light-hero";
+import { ExternalLink } from "lucide-react";
 
 interface Project {
   title: string;
@@ -11,6 +12,7 @@ interface Project {
   role: string;
   tech: string[];
   stats: string;
+  link?: string;
 }
 
 const PROJECTS_DATA: Project[] = [
@@ -20,6 +22,7 @@ const PROJECTS_DATA: Project[] = [
     desc: "Designed and developed a cross-platform mobile application dedicated to Gurmat Darbar. Integrated custom widget layouts and responsive screens to streamline the user interface.",
     tech: ["Flutter", "Dart", "UI/UX Design", "Mobile Development"],
     stats: "Mobile Application",
+    link: "https://www.gurmatdarbar.com/",
   },
   {
     title: "Tischtap (VTAP Internship)",
@@ -119,8 +122,24 @@ export default function Projects() {
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="font-space text-base font-bold text-white group-hover:text-indigo-100 transition-colors duration-300">
-                      {project.title}
+                    <h3 className="font-space text-base font-bold text-white group-hover:text-indigo-100 transition-colors duration-300 flex items-center gap-1.5">
+                      {project.link ? (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-indigo-400 flex items-center gap-1.5 transition-colors"
+                          onClick={(e) => {
+                            soundManager.playClick(900);
+                            e.stopPropagation();
+                          }}
+                        >
+                          {project.title}
+                          <ExternalLink className="w-3.5 h-3.5 text-zinc-500 group-hover:text-indigo-400 transition-colors" />
+                        </a>
+                      ) : (
+                        project.title
+                      )}
                     </h3>
                     <div className="font-space text-[10px] font-bold text-indigo-400/70 uppercase tracking-wider">
                       {project.role}

@@ -33,6 +33,30 @@ const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+interface GithubEvent {
+  type: string;
+  created_at: string;
+  repo: { name: string };
+  payload: {
+    ref_type?: string;
+    action?: string;
+    number?: number;
+    commits?: Array<{ sha: string; message: string }>;
+  };
+}
+
+const formatRelativeTime = (date: Date): string => {
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMins / 60);
+  const diffDays = Math.floor(diffHours / 24);
+
+  if (diffMins < 60) return `${diffMins}m ago`;
+  if (diffHours < 24) return `${diffHours}h ago`;
+  return `${diffDays}d ago`;
+};
+
 export default function Activity() {
   const [commits, setCommits] = useState<Commit[]>(STATIC_COMMITS);
   const [stats, setStats] = useState<GithubStats>({ repos: 24, stars: 36, commits: 1492, prs: 72 });
@@ -70,7 +94,7 @@ export default function Activity() {
 
         if (reposRes.ok) {
           const reposData = await reposRes.json();
-          starsCount = reposData.reduce((acc: number, curr: any) => acc + (curr.stargazers_count || 0), 0);
+          starsCount = reposData.reduce((acc: number, curr: { stargazers_count?: number }) => acc + (curr.stargazers_count || 0), 0);
         }
 
         const eventsRes = await fetch("https://api.github.com/users/Agam348/events");
@@ -78,13 +102,13 @@ export default function Activity() {
           const eventsData = await eventsRes.json();
           const parsedCommits: Commit[] = [];
           
-          eventsData.forEach((event: any) => {
+          eventsData.forEach((event: GithubEvent) => {
             const repoName = event.repo.name.replace(/^Agam348\//, "");
             const date = new Date(event.created_at);
             const timeStr = formatRelativeTime(date);
 
             if (event.type === "PushEvent" && event.payload.commits) {
-              event.payload.commits.forEach((c: any) => {
+              event.payload.commits.forEach((c: { sha: string; message: string }) => {
                 parsedCommits.push({
                   hash: c.sha.substring(0, 7),
                   repo: repoName,
@@ -131,17 +155,7 @@ export default function Activity() {
     fetchGitHubData();
   }, []);
 
-  const formatRelativeTime = (date: Date): string => {
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMins / 60);
-    const diffDays = Math.floor(diffHours / 24);
 
-    if (diffMins < 60) return `${diffMins}m ago`;
-    if (diffHours < 24) return `${diffHours}h ago`;
-    return `${diffDays}d ago`;
-  };
 
   const handleCellClick = (r: number, c: number) => {
     soundManager.playBeep(800 + r * 50 + c * 10, 0.05);

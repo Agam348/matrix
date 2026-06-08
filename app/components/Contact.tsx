@@ -108,7 +108,7 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="md:col-span-7 w-full h-full relative"
         >
-          <Perspective className="w-full h-full">
+          <Perspective className="w-full h-full" disabled>
             <div className="p-2 flex flex-col justify-center bg-transparent relative w-full h-full min-h-[360px]">
               
               {isSuccess ? (

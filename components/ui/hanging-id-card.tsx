@@ -22,7 +22,7 @@ export default function HangingIdCard() {
 
   // Dynamic SVG lanyard path
   // Connects top anchor point (150, 0) to card top center (x + 150, y)
-  const lanyardPath = useTransform([x, y], ([currX, currY]: any[]) => {
+  const lanyardPath = useTransform([x, y], ([currX, currY]: number[]) => {
     const startX = 150; // Anchor X
     const startY = 0;   // Anchor Y
     const endX = currX + 150; // Card connection point X
