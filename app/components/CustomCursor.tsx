@@ -7,7 +7,8 @@ export default function CustomCursor() {
   const glowRef = useRef<HTMLDivElement>(null);
   const haloRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<SVGSVGElement>(null);
-  const handRef = useRef<SVGSVGElement>(null);
+  const openHandRef = useRef<SVGSVGElement>(null);
+  const closedHandRef = useRef<SVGSVGElement>(null);
   
   const [isVisible, setIsVisible] = useState(false);
   
@@ -154,15 +155,15 @@ export default function CustomCursor() {
         }
       }
 
-      // 4. Update custom grab hand icon, centered on drag targets like the ID card
-      if (handRef.current) {
-        if (state === "grab" || state === "grabbing") {
-          handRef.current.style.opacity = "1";
-          const grabScale = state === "grabbing" ? "scale(0.85)" : "scale(1)";
-          handRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) ${grabScale}`;
-        } else {
-          handRef.current.style.opacity = "0";
-        }
+      // 4. Update grab hands: open while hover-ready, closed while actively dragging.
+      if (openHandRef.current) {
+        openHandRef.current.style.opacity = state === "grab" ? "1" : "0";
+        openHandRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(1)`;
+      }
+
+      if (closedHandRef.current) {
+        closedHandRef.current.style.opacity = state === "grabbing" ? "1" : "0";
+        closedHandRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(0.92)`;
       }
 
       // 5. Update background glow backplate
@@ -242,13 +243,13 @@ export default function CustomCursor() {
           />
         </svg>
 
-        {/* Custom Grab Hand Icon - visible on draggable/grab targets */}
+        {/* Open grab hand - visible when a draggable target can be stretched */}
         <svg
-          ref={handRef}
+          ref={openHandRef}
           viewBox="0 0 24 24"
           fill="none"
-          stroke="rgba(255,255,255,0.98)"
-          strokeWidth="1.9"
+          stroke="rgba(9,9,11,0.86)"
+          strokeWidth="1.65"
           strokeLinecap="round"
           strokeLinejoin="round"
           className="absolute w-6 h-6 pointer-events-none select-none drop-shadow-[0_1px_2px_rgba(9,9,11,0.9)]"
@@ -261,24 +262,56 @@ export default function CustomCursor() {
         >
           <path
             fill="rgba(255,255,255,0.96)"
-            stroke="rgba(9,9,11,0.82)"
-            d="M7.2 9.6V5.8a1.55 1.55 0 0 1 3.1 0V9"
-          />
-          <path
-            fill="none"
-            stroke="rgba(9,9,11,0.82)"
-            d="M10.3 9V4.4a1.55 1.55 0 0 1 3.1 0V9"
-          />
-          <path
-            fill="none"
-            stroke="rgba(9,9,11,0.82)"
-            d="M13.4 9V5a1.55 1.55 0 0 1 3.1 0V9.5"
+            d="M7.8 12.4V7.5C7.8 6.6 8.5 6 9.3 6C10.1 6 10.8 6.6 10.8 7.5V11.4"
           />
           <path
             fill="rgba(255,255,255,0.96)"
-            stroke="rgba(9,9,11,0.82)"
-            d="M16.5 10V7.5a1.5 1.5 0 0 1 3 0v6.9c0 4.2-2.8 6.6-7 6.6h-2.1c-3.2 0-5.1-1.4-6.2-4.2L2.7 13a1.55 1.55 0 0 1 2.9-1.1l1.6 3.4V9.6"
+            d="M10.8 11.4V5.8C10.8 4.9 11.5 4.3 12.3 4.3C13.1 4.3 13.8 4.9 13.8 5.8V11"
           />
+          <path
+            fill="rgba(255,255,255,0.96)"
+            d="M13.8 11V6.4C13.8 5.5 14.5 4.9 15.3 4.9C16.1 4.9 16.8 5.5 16.8 6.4V11.7"
+          />
+          <path
+            fill="rgba(255,255,255,0.96)"
+            d="M16.8 11.7V8.1C16.8 7.2 17.5 6.6 18.3 6.6C19.1 6.6 19.8 7.2 19.8 8.1V14.4C19.8 18.6 17.2 21 13.1 21H10.9C8 21 6.1 19.7 4.9 17.3L3.4 14.3C3 13.5 3.3 12.7 4.1 12.3C4.8 11.9 5.6 12.2 6.1 13L7.8 15.9V12.4"
+          />
+        </svg>
+
+        {/* Closed grab hand - visible only while actively stretching the ID card */}
+        <svg
+          ref={closedHandRef}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="rgba(9,9,11,0.88)"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="absolute w-6 h-6 pointer-events-none select-none drop-shadow-[0_1px_2px_rgba(9,9,11,0.9)]"
+          style={{
+            transform: "translate3d(0, 0, 0) translate(-50%, -50%)",
+            opacity: 0,
+            transition: "opacity 0.12s ease, transform 0.12s ease",
+            willChange: "transform, opacity",
+          }}
+        >
+          <path
+            fill="rgba(255,255,255,0.96)"
+            d="M7.4 10.8V7.8C7.4 7 8.1 6.4 8.9 6.4C9.7 6.4 10.4 7 10.4 7.8V10.2"
+          />
+          <path
+            fill="rgba(255,255,255,0.96)"
+            d="M10.4 10.2V6.4C10.4 5.6 11.1 5 11.9 5C12.7 5 13.4 5.6 13.4 6.4V10.1"
+          />
+          <path
+            fill="rgba(255,255,255,0.96)"
+            d="M13.4 10.1V7C13.4 6.2 14.1 5.6 14.9 5.6C15.7 5.6 16.4 6.2 16.4 7V10.6"
+          />
+          <path
+            fill="rgba(255,255,255,0.96)"
+            d="M16.4 11V8.6C16.4 7.8 17.1 7.2 17.9 7.2C18.7 7.2 19.4 7.8 19.4 8.6V14.1C19.4 18.4 16.9 21 12.8 21H10.9C8.2 21 6.4 19.7 5.3 17.2L3.9 13.9C3.6 13.1 4 12.3 4.8 12C5.5 11.7 6.3 12 6.7 12.8L7.7 14.9L7.4 10.8"
+          />
+          <path d="M8.2 10.9H17.2" />
         </svg>
 
       </div>

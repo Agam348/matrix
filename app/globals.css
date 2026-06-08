@@ -257,6 +257,15 @@ html.lenis, html.lenis body {
   }
 }
 
+@keyframes intro-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 /* Sentinel AI Section theme variables (Scoped to Indigo/Purple Hero palette) */
 .sentinel-theme {
   --background: 0 0% 10%;

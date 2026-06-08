@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import BackgroundGrid from "./components/BackgroundGrid";
 import CustomCursor from "./components/CustomCursor";
+import IntroLoader from "./components/IntroLoader";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -60,6 +61,8 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full flex flex-col items-center bg-[#09090b] select-none text-zinc-100 overflow-x-hidden">
+      <IntroLoader />
+
       {/* Background Layer */}
       <BackgroundGrid />
 

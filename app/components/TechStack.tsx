@@ -1,209 +1,176 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { GlowCard } from "@/components/ui/spotlight-card";
 import { soundManager } from "../lib/sound";
 
-interface TechItem {
+interface SkillItem {
   name: string;
-  desc: string;
-  category: "languages" | "web" | "mobile" | "tools";
-  icon: string;
+  logo: string;
+  logoClassName?: string;
+  glowColor?: "blue" | "purple" | "green" | "red" | "orange";
 }
 
-const TECH_DATA: TechItem[] = [
-  // Programming Languages
+const SKILLS_DATA: SkillItem[] = [
   {
-    name: "Python",
-    desc: "Used for data analysis, statistical modeling, and scripting.",
-    category: "languages",
-    icon: "🐍",
+    name: "React.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    glowColor: "blue",
   },
   {
-    name: "Java",
-    desc: "Object-oriented programming, structures, and systems logic.",
-    category: "languages",
-    icon: "☕",
-  },
-  {
-    name: "JavaScript",
-    desc: "Dynamic application scripts, React builds, and interactive logic.",
-    category: "languages",
-    icon: "💛",
-  },
-  // Web Development
-  {
-    name: "HTML5",
-    desc: "Structuring clean, semantic web layouts and accessibility.",
-    category: "web",
-    icon: "🌐",
-  },
-  {
-    name: "CSS3",
-    desc: "Advanced visual styling, complex transitions, and custom variables.",
-    category: "web",
-    icon: "💎",
-  },
-  {
-    name: "React JS",
-    desc: "Component lifecycle management and responsive interfaces.",
-    category: "web",
-    icon: "⚛️",
-  },
-  {
-    name: "Next JS",
-    desc: "Server-side rendering, routing optimization, and fast loading.",
-    category: "web",
-    icon: "▲",
+    name: "Next.js",
+    logo: "/next.svg",
+    logoClassName: "brightness-0 invert",
+    glowColor: "purple",
   },
   {
     name: "Tailwind CSS",
-    desc: "Utility-first frameworks for rapid, clean styling layouts.",
-    category: "web",
-    icon: "🎨",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    glowColor: "blue",
+  },
+  {
+    name: "TypeScript",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    glowColor: "blue",
+  },
+  {
+    name: "JavaScript",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+    glowColor: "orange",
+  },
+  {
+    name: "HTML5",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+    glowColor: "orange",
+  },
+  {
+    name: "CSS3",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+    glowColor: "blue",
+  },
+  {
+    name: "Python",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+    glowColor: "green",
+  },
+  {
+    name: "Java",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+    glowColor: "red",
+  },
+  {
+    name: "Flutter",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
+    glowColor: "blue",
+  },
+  {
+    name: "Git",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    glowColor: "orange",
+  },
+  {
+    name: "GitHub",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+    logoClassName: "brightness-0 invert",
+    glowColor: "purple",
   },
   {
     name: "GSAP",
-    desc: "High-performance timeline animations and smooth visual sequencing.",
-    category: "web",
-    icon: "🟢",
-  },
-  // Mobile Development
-  {
-    name: "Flutter",
-    desc: "Cross-platform mobile applications and custom widget UI/UX.",
-    category: "mobile",
-    icon: "📱",
-  },
-  // Tools
-  {
-    name: "Git & GitHub",
-    desc: "Version tracking, code reviews, and remote repositories.",
-    category: "tools",
-    icon: "🐙",
+    logo: "https://cdn.simpleicons.org/greensock/88CE02",
+    glowColor: "green",
   },
   {
     name: "Canva",
-    desc: "Graphic asset creation, branding layouts, and deck styling.",
-    category: "tools",
-    icon: "✨",
+    logo: "/canva-logo.svg",
+    glowColor: "purple",
   },
 ];
 
 export default function TechStack() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-
-  const filteredTech =
-    activeCategory === "all"
-      ? TECH_DATA
-      : TECH_DATA.filter((t) => t.category === activeCategory);
-
-  const handleCategoryChange = (category: string) => {
-    soundManager.playBeep(600, 0.08);
-    setActiveCategory(category);
-  };
-
   return (
     <section
       id="skills"
-      className="relative w-full py-32 px-6 sm:px-12 overflow-hidden flex items-center justify-center bg-transparent z-0"
+      className="relative w-full py-28 px-6 sm:px-12 overflow-hidden flex items-center justify-center bg-transparent z-0"
     >
-      {/* 1. Static Cybernetic Grid Backdrop */}
-      <div 
-        className="absolute inset-0 w-full h-full opacity-30 pointer-events-none z-0" 
+      <div
+        className="absolute inset-0 w-full h-full opacity-35 pointer-events-none z-0"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(99, 102, 241, 0.08) 1px, transparent 1px)",
-          backgroundSize: "24px 24px"
+          backgroundImage:
+            "linear-gradient(115deg, rgba(255,255,255,0.045), transparent 24%, rgba(99,102,241,0.06) 48%, transparent 72%), radial-gradient(circle, rgba(99, 102, 241, 0.075) 1px, transparent 1px)",
+          backgroundSize: "100% 100%, 28px 28px",
         }}
       />
 
-      {/* 2. Dark glass overlay to keep text completely readable */}
-      <div className="absolute inset-0 bg-[#09090b]/90 backdrop-blur-[1px] z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#09090b]/86 backdrop-blur-[1px] z-0 pointer-events-none" />
 
-      {/* 3. Foreground content wrapper */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
-        
-        {/* Title block */}
-        <div className="w-full text-left mb-16 border-b border-zinc-900/60 pb-5">
-          <motion.div
-            initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-3 mb-1"
-          >
-            <span className="w-1 h-7 bg-gradient-to-b from-cyan-400 to-indigo-500 rounded-full shrink-0" />
-            <h2 className="font-orbitron text-3xl sm:text-4xl font-extrabold tracking-widest uppercase">
-              <span className="text-white">TECH </span><span className="text-indigo-400">STACK</span>
-            </h2>
-          </motion.div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="font-space text-xs text-zinc-500 mt-2 uppercase tracking-wider pl-4"
-          >
-            Core languages, frameworks, and engineering tools
-          </motion.p>
-        </div>
-
-        {/* Filter Tabs - Subtly Bordered */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 18, filter: "blur(4px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="w-full flex flex-wrap gap-2 mb-12 select-none"
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 sm:mb-14"
         >
-          {["all", "languages", "web", "mobile", "tools"].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleCategoryChange(cat)}
-              className={`px-4 py-1.5 border font-space text-[9px] font-bold tracking-widest rounded-sm uppercase transition-all duration-200 cursor-pointer ${
-                activeCategory === cat
-                  ? "border-indigo-500/60 bg-indigo-950/30 text-indigo-300 shadow-[0_0_12px_rgba(99,102,241,0.15)]"
-                  : "border-zinc-800/60 bg-transparent text-zinc-500 hover:border-zinc-600 hover:text-zinc-300"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          <h2 className="font-space text-5xl sm:text-6xl md:text-7xl font-black tracking-normal text-white leading-none">
+            Skills
+          </h2>
         </motion.div>
 
-        {/* Tech Grid - 100% borderless and card-free! */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8 w-full"
-        >
-          {filteredTech.map((tech) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {SKILLS_DATA.map((skill, index) => (
             <motion.div
-              layout
-              key={tech.name}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              key={skill.name}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4 }}
-              onMouseEnter={() => soundManager.playClick(900 + Math.random() * 200)}
-              className="group relative flex flex-col justify-start gap-2 py-3 pl-3 border-l border-transparent hover:border-indigo-500/40 bg-transparent hover:bg-indigo-950/10 hover:scale-[1.02] transition-all duration-300 rounded-r-sm"
+              transition={{
+                duration: 0.45,
+                ease: [0.16, 1, 0.3, 1],
+                delay: Math.min(index * 0.035, 0.25),
+              }}
+              onMouseEnter={() => soundManager.playClick(900 + index * 20)}
+              className="relative min-h-[190px] sm:min-h-[210px]"
             >
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg select-none filter grayscale group-hover:grayscale-0 transition-all duration-300">
-                  {tech.icon}
+              <GlowCard
+                customSize
+                glowColor={skill.glowColor ?? "blue"}
+                className="group h-full min-h-[190px] sm:min-h-[210px] flex flex-col items-center justify-center bg-zinc-950/10 transition-all duration-300 hover:bg-white/[0.035]"
+              >
+                <span className="absolute -top-2.5 -left-1.5 z-10 font-mono text-2xl leading-none text-white select-none">
+                  +
                 </span>
-                
-                <h3 className="font-space text-xs font-bold text-zinc-200 group-hover:text-indigo-300 transition-colors duration-300">
-                  {tech.name}
+                <span className="absolute -top-2.5 -right-1.5 z-10 font-mono text-2xl leading-none text-white select-none">
+                  +
+                </span>
+                <span className="absolute -bottom-3 -left-1.5 z-10 font-mono text-2xl leading-none text-white select-none">
+                  +
+                </span>
+                <span className="absolute -bottom-3 -right-1.5 z-10 font-mono text-2xl leading-none text-white select-none">
+                  +
+                </span>
+
+                <div className="absolute inset-0 z-0 bg-[linear-gradient(110deg,transparent_0%,rgba(255,255,255,0.07)_45%,transparent_65%)] translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
+
+                <h3 className="relative z-10 font-space text-3xl sm:text-4xl font-black text-white tracking-normal text-center leading-none drop-shadow-[0_0_12px_rgba(255,255,255,0.18)]">
+                  {skill.name}
                 </h3>
-              </div>
-              
-              <p className="font-sora text-[10px] leading-relaxed text-zinc-500 group-hover:text-zinc-400 transition-colors max-w-[260px]">
-                {tech.desc}
-              </p>
+
+                <Image
+                  src={skill.logo}
+                  alt={`${skill.name} logo`}
+                  width={44}
+                  height={44}
+                  unoptimized
+                  className={`relative z-10 mt-7 h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 ${
+                    skill.logoClassName ?? ""
+                  }`}
+                />
+              </GlowCard>
             </motion.div>
           ))}
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );
