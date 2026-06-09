@@ -266,6 +266,13 @@ html.lenis, html.lenis body {
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .mobile-no-hover {
+    transform: none !important;
+    transition-property: none !important;
+  }
+}
+
 /* Sentinel AI Section theme variables (Scoped to Indigo/Purple Hero palette) */
 .sentinel-theme {
   --background: 0 0% 10%;

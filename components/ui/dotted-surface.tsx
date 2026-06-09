@@ -19,6 +19,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
   useEffect(() => {
     if (!containerRef.current) return;
+    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
 
     const container = containerRef.current;
     const SEPARATION = 150;
@@ -51,7 +52,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
       alpha: true,
       antialias: true,
     });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(width, height);
 
     container.appendChild(renderer.domElement);

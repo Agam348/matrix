@@ -99,6 +99,14 @@ class AudioSystem {
     } catch {}
   }
 
+  playHoverClick(freq: number = 800) {
+    if (typeof window !== "undefined" && !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
+    this.playClick(freq);
+  }
+
   playBeep(freq: number = 600, duration: number = 0.1) {
     if (this.isMuted) return;
     this.initCtx();

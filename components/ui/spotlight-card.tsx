@@ -122,6 +122,8 @@ export function GlowCard({
   const { base, spread } = glowColorMap[glowColor];
 
   useEffect(() => {
+    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
+
     const syncPointer = (event: PointerEvent) => {
       const { clientX: x, clientY: y } = event;
 

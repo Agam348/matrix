@@ -32,8 +32,17 @@ export default function Home() {
     };
   }, []);
 
-  // Initialize high-performance Lenis smooth scrolling engine
+  // Initialize high-performance Lenis smooth scrolling engine on pointer devices.
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const isMobileWidth = window.matchMedia("(max-width: 768px)").matches;
+
+    if (prefersReducedMotion || isCoarsePointer || isMobileWidth) {
+      (window as unknown as { lenis: unknown }).lenis = undefined;
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium cubic easeOutExpo easing
@@ -41,7 +50,7 @@ export default function Home() {
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1.2,
     });
 
     (window as unknown as { lenis: unknown }).lenis = lenis;

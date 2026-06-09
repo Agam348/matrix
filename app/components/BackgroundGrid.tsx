@@ -8,6 +8,7 @@ export default function BackgroundGrid() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -112,7 +113,7 @@ export default function BackgroundGrid() {
       <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-zinc-500/5 blur-[150px]" />
       
       {/* Interlinked Node Web Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
+      <canvas ref={canvasRef} className="absolute inset-0 hidden w-full h-full md:block" />
     </div>
   );
 }

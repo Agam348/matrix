@@ -161,24 +161,24 @@ export default function Experience() {
 
 
   return (
-    <section id="experience" className="relative w-full bg-[#09090b] py-16">
+    <section id="experience" className="relative w-full bg-[#09090b] py-12 md:py-16 px-4 md:px-0">
       {/* Absolute subtle background lights */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none z-0" />
 
       <ContainerScroll
         titleComponent={
-          <div className="flex flex-col items-center justify-center space-y-4 mb-10 z-10 px-4">
+          <div className="flex flex-col items-center justify-center space-y-4 mb-8 md:mb-10 z-10 px-2 md:px-4">
             <div className="font-space text-[9px] font-bold tracking-[0.25em] text-indigo-400 bg-indigo-950/20 px-3 py-1.5 rounded border border-indigo-500/10 uppercase">
               Chronology Node
             </div>
-            <h2 className="font-orbitron text-3xl sm:text-5xl font-extrabold tracking-widest text-white uppercase select-none leading-none">
+            <h2 className="font-orbitron text-3xl sm:text-5xl font-extrabold tracking-widest text-white uppercase select-none leading-tight">
               MY{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 via-indigo-200 to-zinc-400">
                 EXPERIENCE
               </span>
             </h2>
-            <p className="font-sora text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest max-w-lg text-center leading-relaxed mt-2">
+            <p className="font-sora text-[10px] sm:text-xs text-zinc-500 uppercase tracking-[0.18em] sm:tracking-widest max-w-lg text-center leading-relaxed mt-2">
               Scroll down to adjust perspective & interact with my workspace history console
             </p>
           </div>
@@ -218,7 +218,7 @@ export default function Experience() {
                 <button
                   key={exp.organization}
                   onClick={() => handleTabClick(index)}
-                  onMouseEnter={() => soundManager.playClick(850)}
+                  onMouseEnter={() => soundManager.playHoverClick(850)}
                   className={`flex-1 md:flex-initial flex items-center gap-3 px-4 py-3 text-left border rounded-xl transition-all duration-300 cursor-pointer whitespace-nowrap md:whitespace-normal shrink-0 ${
                     isActive
                       ? `${activeBorderColor} text-white shadow-[0_4px_20px_-2px_rgba(0,0,0,0.4)]`
@@ -251,7 +251,7 @@ export default function Experience() {
           </div>
 
           {/* RIGHT DETAILS PANE: Full Node Info */}
-          <div className="flex-1 p-5 md:p-6 overflow-y-auto flex flex-col h-[20rem] md:h-full custom-scrollbar">
+          <div className="flex-1 p-4 md:p-6 overflow-y-auto flex flex-col h-[24rem] md:h-full custom-scrollbar">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

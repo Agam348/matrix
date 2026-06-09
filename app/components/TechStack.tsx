@@ -92,7 +92,7 @@ export default function TechStack() {
   return (
     <section
       id="skills"
-      className="relative w-full py-28 px-6 sm:px-12 overflow-hidden flex items-center justify-center bg-transparent z-0"
+      className="relative w-full py-20 md:py-28 px-6 sm:px-12 overflow-hidden flex items-center justify-center bg-transparent z-0"
     >
       <div
         className="absolute inset-0 w-full h-full opacity-35 pointer-events-none z-0"
@@ -130,13 +130,13 @@ export default function TechStack() {
                 ease: [0.16, 1, 0.3, 1],
                 delay: Math.min(index * 0.035, 0.25),
               }}
-              onMouseEnter={() => soundManager.playClick(900 + index * 20)}
-              className="relative min-h-[190px] sm:min-h-[210px]"
+              onMouseEnter={() => soundManager.playHoverClick(900 + index * 20)}
+              className="relative min-h-[155px] sm:min-h-[210px]"
             >
               <GlowCard
                 customSize
                 glowColor={skill.glowColor ?? "blue"}
-                className="group h-full min-h-[190px] sm:min-h-[210px] flex flex-col items-center justify-center bg-zinc-950/10 transition-all duration-300 hover:bg-white/[0.035]"
+                className="group h-full min-h-[155px] sm:min-h-[210px] flex flex-col items-center justify-center bg-zinc-950/10 transition-all duration-300 hover:bg-white/[0.035]"
               >
                 <span className="absolute -top-2.5 -left-1.5 z-10 font-mono text-2xl leading-none text-white select-none">
                   +
@@ -151,9 +151,9 @@ export default function TechStack() {
                   +
                 </span>
 
-                <div className="absolute inset-0 z-0 bg-[linear-gradient(110deg,transparent_0%,rgba(255,255,255,0.07)_45%,transparent_65%)] translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
+                <div className="mobile-no-hover absolute inset-0 z-0 bg-[linear-gradient(110deg,transparent_0%,rgba(255,255,255,0.07)_45%,transparent_65%)] translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-700 pointer-events-none" />
 
-                <h3 className="relative z-10 font-space text-3xl sm:text-4xl font-black text-white tracking-normal text-center leading-none drop-shadow-[0_0_12px_rgba(255,255,255,0.18)]">
+                <h3 className="relative z-10 font-space text-2xl sm:text-4xl font-black text-white tracking-normal text-center leading-none drop-shadow-[0_0_12px_rgba(255,255,255,0.18)]">
                   {skill.name}
                 </h3>
 
@@ -163,7 +163,7 @@ export default function TechStack() {
                   width={44}
                   height={44}
                   unoptimized
-                  className={`relative z-10 mt-7 h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 ${
+                  className={`mobile-no-hover relative z-10 mt-5 sm:mt-7 h-9 w-9 sm:h-10 sm:w-10 object-contain transition-transform duration-300 group-hover:scale-110 ${
                     skill.logoClassName ?? ""
                   }`}
                 />

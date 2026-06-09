@@ -156,12 +156,12 @@ export default function Hero() {
       {/* Overlay section container */}
       <section
         id="home"
-        className="w-full flex flex-col items-center justify-center pt-28 pb-16 px-6 sm:px-12 overflow-hidden select-none"
+        className="w-full flex flex-col items-center justify-center pt-24 md:pt-28 pb-10 md:pb-16 px-5 sm:px-12 overflow-hidden select-none"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full z-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center w-full z-10 max-w-6xl mx-auto">
           
           {/* Left Side: Premium Text Intro */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8">
             
             {/* Animated High-tech Status Label (No card box, purely organic!) */}
             <div className="animate-fade-in-down">
@@ -173,24 +173,24 @@ export default function Hero() {
 
             <div className="space-y-4">
               {/* Better Subtitle Hierarchy: Scholar label above name! */}
-              <p className="font-space text-xs sm:text-sm text-zinc-400 tracking-[0.15em] uppercase animate-fade-in-up animation-delay-100">
+              <p className="font-space text-[10px] sm:text-sm text-zinc-400 tracking-[0.14em] md:tracking-[0.15em] uppercase animate-fade-in-up animation-delay-100">
                 GNDU CSE Scholar & IIT Madras Data Scientist
               </p>
               
-              <h1 className="font-orbitron text-5xl sm:text-7xl font-extrabold uppercase tracking-tight text-white select-none leading-none animate-fade-in-up animation-delay-200">
+              <h1 className="font-orbitron text-[clamp(2.75rem,14vw,4.4rem)] sm:text-7xl font-extrabold uppercase tracking-normal md:tracking-tight text-white select-none leading-[0.9] md:leading-none animate-fade-in-up animation-delay-200">
                 AGAMPREET <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-250 to-zinc-400 font-extrabold">
                   SINGH
                 </span>
               </h1>
               
-              <p className="font-space text-base sm:text-lg text-zinc-200 font-extrabold tracking-wide max-w-xl animate-fade-in-up animation-delay-400 leading-relaxed">
+              <p className="font-space text-sm sm:text-lg text-zinc-200 font-extrabold tracking-wide max-w-xl animate-fade-in-up animation-delay-400 leading-relaxed">
                 Building modern digital experiences through code, design and technology.
               </p>
             </div>
 
             {/* Concise biography intro */}
-            <p className="font-sora text-xs sm:text-sm leading-relaxed text-zinc-400 max-w-md animate-fade-in-up animation-delay-600">
+            <p className="font-sora text-xs sm:text-sm leading-relaxed text-zinc-400 max-w-[19rem] sm:max-w-md animate-fade-in-up animation-delay-600">
               Crafting minimal cross-platform mobile frameworks and secure web backends. Focused on translating deep statistical models into practical developer tools.
             </p>
 
@@ -200,8 +200,8 @@ export default function Hero() {
               {/* Refinement: Replaced shadow-heavy LiquidButton with ultra-clean rounded outline button */}
               <button
                 onClick={() => handleScrollTo("projects")}
-                onMouseEnter={() => soundManager.playClick(1000)}
-                className="h-12 px-8 flex items-center justify-center gap-2 border border-zinc-700/60 hover:border-indigo-500/50 bg-zinc-950/40 hover:bg-indigo-950/10 backdrop-blur-sm text-zinc-300 hover:text-white rounded-sm font-space text-[9px] font-extrabold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.15)] cursor-pointer shrink-0"
+                onMouseEnter={() => soundManager.playHoverClick(1000)}
+                className="h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 border border-zinc-700/60 hover:border-indigo-500/50 bg-zinc-950/40 hover:bg-indigo-950/10 backdrop-blur-sm text-zinc-300 hover:text-white rounded-sm font-space text-[9px] font-extrabold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.15)] cursor-pointer shrink-0"
               >
                 <Eye className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
                 View My Work
@@ -210,7 +210,7 @@ export default function Hero() {
               {/* Refinement: Custom-engineered diagonals cut-corner Cyber-Border outline button */}
               <button
                 onClick={openTerminal}
-                onMouseEnter={() => soundManager.playClick(1000)}
+                onMouseEnter={() => soundManager.playHoverClick(1000)}
                 className="relative p-[1px] h-12 w-full sm:w-auto overflow-hidden font-space text-[9px] font-extrabold tracking-[0.2em] uppercase cursor-pointer group shrink-0"
                 style={{
                   clipPath: "polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px)"
@@ -240,10 +240,12 @@ export default function Hero() {
           </div>
 
           {/* Right Side: Hanging Draggable Cyber ID Card */}
-          <div className="lg:col-span-5 w-full h-[380px] lg:h-[450px] flex items-center justify-center relative select-none">
+          <div className="lg:col-span-5 w-full h-[390px] md:h-[380px] lg:h-[450px] flex items-start md:items-center justify-center relative select-none overflow-visible">
             {/* Subtle glow layer behind card */}
             <div className="absolute w-64 h-64 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
-            <HangingIdCard />
+            <div className="scale-[0.78] md:scale-100 origin-top md:origin-center">
+              <HangingIdCard />
+            </div>
           </div>
 
         </div>
@@ -251,7 +253,7 @@ export default function Hero() {
         {/* Downward Scroll Prompter */}
         <button
           onClick={() => handleScrollTo("about")}
-          className="absolute bottom-6 flex flex-col items-center gap-2 group cursor-pointer transition-opacity z-10"
+          className="absolute bottom-4 md:bottom-6 hidden md:flex flex-col items-center gap-2 group cursor-pointer transition-opacity z-10"
         >
           <span className="font-space text-[9px] font-bold tracking-[0.2em] text-zinc-555 group-hover:text-zinc-355 transition-colors">
             SCROLL TO EXPLORE

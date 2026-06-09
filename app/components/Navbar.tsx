@@ -110,7 +110,7 @@ export default function Navbar() {
         {/* Sound toggle */}
         <button
           onClick={handleSoundToggle}
-          onMouseEnter={() => soundManager.playClick(1000)}
+          onMouseEnter={() => soundManager.playHoverClick(1000)}
           title="Toggle Ambient Audio"
           className={`px-3 py-1.5 border font-space text-[8.5px] font-bold tracking-widest rounded-sm transition-all duration-200 cursor-pointer ${
             isMuted
@@ -124,7 +124,7 @@ export default function Navbar() {
         {/* Get In Touch CTA — frosted glass, matches hero design system */}
         <button
           onClick={() => handleLinkClick("contact")}
-          onMouseEnter={() => soundManager.playClick(1000)}
+          onMouseEnter={() => soundManager.playHoverClick(1000)}
           className="hidden sm:flex items-center gap-1.5 h-8 px-4 bg-zinc-900/60 hover:bg-indigo-950/30 backdrop-blur-sm border border-zinc-700/60 hover:border-indigo-500/60 text-zinc-300 hover:text-white font-space text-[8.5px] font-bold tracking-[0.18em] uppercase rounded-sm transition-all duration-300 hover:shadow-[0_0_14px_rgba(99,102,241,0.2)] cursor-pointer"
         >
           Get In Touch

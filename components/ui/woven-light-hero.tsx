@@ -99,6 +99,7 @@ export const WovenCanvas = () => {
 
   useEffect(() => {
     if (!mountRef.current) return;
+    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
 
     const container = mountRef.current;
 
@@ -116,14 +117,14 @@ export const WovenCanvas = () => {
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     container.appendChild(renderer.domElement);
 
     const mouse = new THREE.Vector2(0, 0);
     const clock = new THREE.Clock();
 
     // --- Woven Silk Torus Knot Particles ---
-    const particleCount = 50000;
+    const particleCount = 26000;
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -307,5 +308,9 @@ export const WovenCanvas = () => {
     };
   }, []);
 
-  return <div ref={mountRef} className="absolute inset-0 z-0 overflow-hidden" />;
+  return (
+    <div ref={mountRef} className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(99,102,241,0.16),transparent_36%),linear-gradient(135deg,rgba(6,182,212,0.08),transparent_46%,rgba(16,185,129,0.07))] md:hidden" />
+    </div>
+  );
 };

@@ -258,6 +258,7 @@ const useShaderBackground = () => {
 
   useEffect(() => {
     if (!canvasRef.current) return;
+    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
 
     const canvas = canvasRef.current;
     const dpr = Math.max(1, 0.5 * window.devicePixelRatio);
@@ -331,11 +332,12 @@ export default function AnimatedShaderHero({
   const canvasRef = useShaderBackground();
 
   return (
-    <div className={`relative w-full min-h-screen overflow-hidden bg-black ${className}`}>
+    <div className={`relative w-full min-h-screen overflow-hidden bg-[#09090b] md:bg-black ${className}`}>
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_18%,rgba(79,70,229,0.36),transparent_34%),linear-gradient(180deg,rgba(30,58,138,0.28),rgba(9,9,11,0.96)_68%)] md:hidden" />
       {/* 3D WebGL Shader Canvas Background */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full object-cover touch-none z-0"
+        className="absolute inset-0 hidden w-full h-full object-cover touch-none z-0 md:block"
         style={{ background: "black" }}
       />
       

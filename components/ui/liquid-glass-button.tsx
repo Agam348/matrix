@@ -244,7 +244,7 @@ const metalButtonVariants = (
   variant: ColorVariant = "default",
   isPressed: boolean,
   isHovered: boolean,
-  isTouchDevice: boolean,
+  canHover: boolean,
 ) => {
   const colors = colorVariants[variant];
   const transitionStyle = "all 250ms cubic-bezier(0.1, 0.4, 0.2, 1)";
@@ -260,7 +260,7 @@ const metalButtonVariants = (
         : "translateY(0) scale(1)",
       boxShadow: isPressed
         ? "0 1px 2px rgba(0, 0, 0, 0.15)"
-        : isHovered && !isTouchDevice
+        : isHovered && canHover
           ? "0 4px 12px rgba(0, 0, 0, 0.12)"
           : "0 3px 8px rgba(0, 0, 0, 0.08)",
       transition: transitionStyle,
@@ -274,7 +274,7 @@ const metalButtonVariants = (
       transition: transitionStyle,
       transformOrigin: "center center",
       filter:
-        isHovered && !isPressed && !isTouchDevice ? "brightness(1.05)" : "none",
+        isHovered && !isPressed && canHover ? "brightness(1.05)" : "none",
     },
     button: cn(
       "relative z-10 m-[1px] rounded-md inline-flex h-11 transform-gpu cursor-pointer items-center justify-center overflow-hidden rounded-md px-6 py-2 text-sm leading-none font-semibold will-change-transform outline-none",
@@ -287,7 +287,7 @@ const metalButtonVariants = (
       transition: transitionStyle,
       transformOrigin: "center center",
       filter:
-        isHovered && !isPressed && !isTouchDevice ? "brightness(1.02)" : "none",
+        isHovered && !isPressed && canHover ? "brightness(1.02)" : "none",
     },
   };
 };
@@ -311,13 +311,24 @@ export const MetalButton = React.forwardRef<
 >(({ children, className, variant = "default", ...props }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
-  const [isTouchDevice, setIsTouchDevice] = React.useState(false);
+  const [isHoverDevice, setIsHoverDevice] = React.useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(hover: hover) and (pointer: fine)").matches
+      : false
+  );
  
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
-    }, 0);
-    return () => clearTimeout(timer);
+    const hoverQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const updateHoverState = (event: MediaQueryListEvent) => {
+      setIsHoverDevice(event.matches);
+      if (!event.matches) {
+        setIsHovered(false);
+      }
+    };
+
+    hoverQuery.addEventListener("change", updateHoverState);
+    return () => hoverQuery.removeEventListener("change", updateHoverState);
   }, []);
  
   const buttonText = children || "Button";
@@ -325,7 +336,7 @@ export const MetalButton = React.forwardRef<
     variant,
     isPressed,
     isHovered,
-    isTouchDevice
+    isHoverDevice
   );
  
   const handleInternalMouseDown = () => {
@@ -339,7 +350,7 @@ export const MetalButton = React.forwardRef<
     setIsHovered(false);
   };
   const handleInternalMouseEnter = () => {
-    if (!isTouchDevice) {
+    if (isHoverDevice) {
       setIsHovered(true);
     }
   };
@@ -371,7 +382,7 @@ export const MetalButton = React.forwardRef<
       >
         <ShineEffect isPressed={isPressed} />
         {buttonText}
-        {isHovered && !isPressed && !isTouchDevice && (
+        {isHovered && !isPressed && isHoverDevice && (
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t rounded-lg from-transparent to-white/5" />
         )}
       </button>

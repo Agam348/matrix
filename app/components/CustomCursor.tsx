@@ -20,10 +20,14 @@ export default function CustomCursor() {
   const isGrabActiveRef = useRef(false);
 
   useEffect(() => {
-    const shouldUseNativeCursor =
-      window.matchMedia("(max-width: 768px)").matches ||
-      window.matchMedia("(pointer: coarse)").matches ||
-      "ontouchstart" in window;
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      document.documentElement.classList.remove("has-custom-cursor");
+      return;
+    }
+
+    const shouldUseNativeCursor = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
     let timer: NodeJS.Timeout | undefined;
     
     if (!shouldUseNativeCursor) {
@@ -178,7 +182,8 @@ export default function CustomCursor() {
     return () => cancelAnimationFrame(animId);
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  if (isMobile || !isVisible) return null;
 
   return (
     <>

@@ -67,14 +67,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-32 px-6 sm:px-12 max-w-5xl mx-auto flex flex-col justify-center items-center w-full bg-transparent overflow-hidden"
+      className="relative py-20 md:py-32 px-6 sm:px-12 max-w-5xl mx-auto flex flex-col justify-center items-center w-full bg-transparent overflow-hidden"
     >
       {/* Ambient glow blobs for depth */}
       <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-indigo-600/4 blur-[100px] pointer-events-none -z-10" />
       <div className="absolute bottom-1/4 left-0 w-60 h-60 rounded-full bg-violet-600/4 blur-[80px] pointer-events-none -z-10" />
 
       {/* Title block */}
-      <div className="w-full text-left mb-16 border-b border-zinc-800/40 pb-5">
+      <div className="w-full text-left mb-10 md:mb-16 border-b border-zinc-800/40 pb-5">
         <motion.div
           initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
@@ -98,7 +98,7 @@ export default function Contact() {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-16 w-full items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 w-full items-stretch">
         
         {/* Left Side: Borderless, Floating Contact Form */}
         <motion.div
@@ -109,7 +109,7 @@ export default function Contact() {
           className="md:col-span-7 w-full h-full relative"
         >
           <Perspective className="w-full h-full" disabled>
-            <div className="p-2 flex flex-col justify-center bg-transparent relative w-full h-full min-h-[360px]">
+            <div className="p-0 md:p-2 flex flex-col justify-center bg-transparent relative w-full h-full min-h-[360px]">
               
               {isSuccess ? (
                 <div className="flex-grow flex flex-col justify-center items-center text-center space-y-4 min-h-[300px]">
@@ -252,7 +252,7 @@ export default function Contact() {
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              onMouseEnter={() => soundManager.playClick(1000)}
+              onMouseEnter={() => soundManager.playHoverClick(1000)}
               className="group flex flex-col justify-center p-3 border border-zinc-800/50 hover:border-indigo-500/30 bg-zinc-900/10 hover:bg-indigo-950/10 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.06)]"
             >
               <div className="flex items-center gap-3">
@@ -263,7 +263,7 @@ export default function Contact() {
                   <h3 className="font-space text-[8px] font-bold text-zinc-500 group-hover:text-zinc-400 tracking-widest uppercase transition-colors">
                     {social.platform}
                   </h3>
-                  <div className="font-space text-xs font-bold text-white group-hover:text-indigo-300 transition-colors duration-300">
+                  <div className="font-space text-xs font-bold text-white group-hover:text-indigo-300 transition-colors duration-300 break-words">
                     {social.id}
                   </div>
                 </div>

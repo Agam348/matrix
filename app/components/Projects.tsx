@@ -49,6 +49,10 @@ const PROJECTS_DATA: Project[] = [
 
 export default function Projects() {
   const handleCardHover = (index: number | null) => {
+    if (typeof window !== "undefined" && !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
     if (index !== null) {
       soundManager.playClick(1000 + index * 25);
     }
@@ -103,7 +107,7 @@ export default function Projects() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
                 onMouseEnter={() => handleCardHover(index)}
                 onMouseLeave={() => handleCardHover(null)}
-                className="group relative p-6 flex flex-col justify-between min-h-[260px] border border-zinc-800/60 hover:border-indigo-500/40 bg-zinc-900/20 hover:bg-indigo-950/10 rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.08)] cursor-default"
+                className="mobile-no-hover group relative p-6 flex flex-col justify-between min-h-[260px] border border-zinc-800/60 hover:border-indigo-500/40 bg-zinc-900/20 hover:bg-indigo-950/10 rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.08)] cursor-default"
               >
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-xl pointer-events-none">

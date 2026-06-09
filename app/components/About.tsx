@@ -85,7 +85,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full flex items-end bg-[#09090b] overflow-hidden select-none"
+      className="relative min-h-0 md:min-h-screen w-full flex items-end bg-[#09090b] overflow-hidden select-none"
     >
       
 
@@ -103,7 +103,7 @@ export default function About() {
       <div className="absolute top-1/2 right-1/3 w-72 h-72 rounded-full bg-violet-600/5 blur-[90px] pointer-events-none z-[2]" />
 
       {/* Content Container (Aligned exactly with portfolio grid margins, full-screen laptop height) */}
-      <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-6 sm:px-12 pb-24 md:pb-36 pt-32 min-h-screen flex items-end justify-start">
+      <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-6 sm:px-12 pb-16 md:pb-36 pt-24 md:pt-32 min-h-0 md:min-h-screen flex items-end justify-start">
         
         {/* Content Block (Left-anchored text layout matching Sentinel AI typography clamps) */}
         <div className="w-full max-w-2xl flex flex-col items-start text-left pb-4 md:pb-12">
@@ -117,7 +117,7 @@ export default function About() {
             className="flex items-center gap-3 mb-2 md:mb-4"
           >
             <span className="w-1 h-10 bg-gradient-to-b from-indigo-400 via-violet-400 to-indigo-600 rounded-full shrink-0" />
-            <h2 className="font-space text-[clamp(2.5rem,6vw,4.5rem)] font-black uppercase tracking-tight select-none leading-none">
+            <h2 className="font-space text-[clamp(2.15rem,11vw,4.5rem)] font-black uppercase tracking-tight select-none leading-none">
               <span className="text-white">ABOUT </span><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">ME</span>
             </h2>
           </motion.div>
@@ -150,20 +150,20 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="flex flex-wrap gap-3 font-space text-[8.5px] font-bold uppercase tracking-[0.2em]"
+            className="flex w-full flex-col sm:w-auto sm:flex-row flex-wrap gap-3 font-space text-[8.5px] font-bold uppercase tracking-[0.2em]"
           >
             <button 
               onClick={openCredentials}
-              onMouseEnter={() => soundManager.playClick(1000)}
-              className="pointer-events-auto h-12 px-8 flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-400 active:scale-[0.97] transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)] text-white rounded-sm cursor-pointer select-none font-bold text-[9px] tracking-[0.2em] uppercase"
+              onMouseEnter={() => soundManager.playHoverClick(1000)}
+              className="pointer-events-auto h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-400 active:scale-[0.97] transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)] text-white rounded-sm cursor-pointer select-none font-bold text-[9px] tracking-[0.2em] uppercase"
             >
               Education
             </button>
             
             <button 
               onClick={() => handleScrollTo("contact")}
-              onMouseEnter={() => soundManager.playClick(1000)}
-              className="pointer-events-auto bg-zinc-950/40 hover:bg-zinc-900/60 backdrop-blur-sm border border-zinc-600/60 hover:border-zinc-400/80 active:scale-[0.97] transition-all text-zinc-200 hover:text-white px-6 py-3.5 md:px-8 md:py-4 rounded-sm cursor-pointer select-none font-bold"
+              onMouseEnter={() => soundManager.playHoverClick(1000)}
+              className="pointer-events-auto w-full sm:w-auto bg-zinc-950/40 hover:bg-zinc-900/60 backdrop-blur-sm border border-zinc-600/60 hover:border-zinc-400/80 active:scale-[0.97] transition-all text-zinc-200 hover:text-white px-6 py-3.5 md:px-8 md:py-4 rounded-sm cursor-pointer select-none font-bold"
             >
               Contact Me
             </button>
@@ -175,11 +175,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/60 bg-zinc-950/40 backdrop-blur-sm py-2.5 px-4 flex items-center gap-3 pointer-events-auto"
+            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/60 bg-zinc-950/40 backdrop-blur-sm py-2.5 px-4 flex items-start md:items-center gap-3 pointer-events-auto overflow-hidden"
           >
             {/* Pulse dot */}
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 animate-pulse" />
-            <p className="text-zinc-400 text-[10px] md:text-[11px] font-space font-medium tracking-[0.18em] uppercase whitespace-nowrap">
+            <p className="text-zinc-400 text-[9px] md:text-[11px] font-space font-medium tracking-[0.14em] md:tracking-[0.18em] uppercase whitespace-normal break-words">
               Finance Head&nbsp;•&nbsp;CESS GNDU&nbsp;&nbsp;/&nbsp;&nbsp;Tarn Taran, Punjab&nbsp;&nbsp;/&nbsp;&nbsp;2× Hackathon Winner
             </p>
           </motion.div>
