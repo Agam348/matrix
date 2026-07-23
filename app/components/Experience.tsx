@@ -39,108 +39,54 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
     glowColor: "rgba(129, 140, 248, 0.2)",
     roles: [
       {
-        title: "App Developer",
+        title: "Developer",
         year: "Apr 2026 — Present",
         desc: [
-          "Designing and developing cross-platform mobile UI/UX and feature frameworks using Flutter.",
-          "Collaborating on code reviews and functional testing cycles to optimize user retention."
+          "Working on the design and development of the Gurmat Darbar website",
+          "Contributing to the development of the Gurmat Darbar Android application",
+          "Collaborating with team members to improve functionality and user experience"
         ],
-        skills: ["Flutter", "Dart", "UI/UX Design", "Mobile Development"],
+        skills: ["Flutter", "Dart", "UI/UX Design", "Web Development", "Android Development"],
+      }
+    ]
+  },
+  {
+    organization: "Computer Engineering Student Society (CESS)",
+    shortName: "CESS GNDU",
+    duration: "Aug 2025 — May 2026",
+    status: "ARCHIVED",
+    themeColor: "emerald",
+    glowColor: "rgba(52, 211, 153, 0.2)",
+    roles: [
+      {
+        title: "Finance Head",
+        year: "Aug 2025 — May 2026",
+        desc: [
+          "Organized a 3-day Tech Fest and 30 hour Hackathon, managing resources for 170+ participants and 50 teams",
+          "Utilized Excel and Google Sheets for advanced expense tracking and financial modeling",
+          "Managed budgeting and financial planning for multiple student-led events"
+        ],
+        skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
       }
     ]
   },
   {
     organization: "VTAP",
     shortName: "VTAP",
-    duration: "Mar 2026 — May 2026",
+    duration: "Mar 2026 — Apr 2026",
     status: "ARCHIVED",
     themeColor: "cyan",
     glowColor: "rgba(6, 182, 212, 0.2)",
     roles: [
       {
-        title: "Intern at VTAP-Web Developer",
-        year: "Mar 2026 — May 2026",
+        title: "Web Developer",
+        year: "Mar 2026 — Apr 2026",
         desc: [
-          "Contributed to the development of Tischtap, a smart QR & NFC-based restaurant solution platform.",
-          "Built and improved responsive web interfaces for digital menus and customer interaction.",
-          "Worked on enhancing UI/UX for seamless ordering and user experience.",
-          "Collaborated with the team to deliver scalable and performance-focused web solutions."
+          "Worked on the development and design of the VTAP website",
+          "Worked on the development and optimization of client websites",
+          "Built responsive user interfaces and enhanced custom web layouts"
         ],
-        skills: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations", "UI/UX Design"],
-      }
-    ]
-  },
-  {
-    organization: "CESS (Computer Engineering Student Society, GNDU)",
-    shortName: "CESS GNDU",
-    duration: "2024 — Present",
-    status: "ACTIVE",
-    themeColor: "emerald",
-    glowColor: "rgba(52, 211, 153, 0.2)",
-    roles: [
-      {
-        title: "Finance Head",
-        year: "Aug 2025 — Present",
-        desc: [
-          "Directed budget allocation and financial reporting for a 3-day regional Tech Fest and 30+ hour Hackathon.",
-          "Optimized resources and sponsorship records using advanced Excel spreadsheets for 170+ active participants.",
-          "Supervised cost-benefit strategies across committees, ensuring budget transparency and positive ROI."
-        ],
-        skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
-      },
-      {
-        title: "Core Team Member",
-        year: "2024 — Jul 2025",
-        desc: [
-          "Coordinated event schedules, logistics, and visual promotion assets for first-year technical exhibitions.",
-          "Led art and creative design teams to design high-engagement marketing posters and banners."
-        ],
-        skills: ["Event Execution", "Teamwork", "Event Operations"],
-      }
-    ]
-  },
-  {
-    organization: "Multimedia Team, Paradox (IIT Madras)",
-    shortName: "Paradox IITM",
-    duration: "Oct 2024 — Nov 2025",
-    status: "ARCHIVED",
-    themeColor: "purple",
-    glowColor: "rgba(168, 85, 247, 0.2)",
-    roles: [
-      {
-        title: "Multimedia Team Member",
-        year: "Oct 2024 — Nov 2025",
-        desc: [
-          "Designed promotional digital banners, branding materials, and certificates using Canva.",
-          "Maintained strict design guidelines and consistency for paradox campaign rollouts."
-        ],
-        skills: ["Canva", "Graphic Design", "Visual Content", "Branding Layouts"],
-      }
-    ]
-  },
-  {
-    organization: "Saranda House (IITM BS)",
-    shortName: "Saranda House",
-    duration: "Sep 2024 — May 2025",
-    status: "ARCHIVED",
-    themeColor: "cyan",
-    glowColor: "rgba(6, 182, 212, 0.2)",
-    roles: [
-      {
-        title: "PR and Outreach Team",
-        year: "Feb 2025 — May 2025",
-        desc: [
-          "Managed outreach communications and PR pipelines to maximize regional event registration."
-        ],
-        skills: ["Public Relations", "Outreach Strategy", "Event Marketing"],
-      },
-      {
-        title: "Content Team (Graphic Designer)",
-        year: "Sep 2024 — Feb 2025",
-        desc: [
-          "Created custom graphic assets and social media branding banners for house campaigns."
-        ],
-        skills: ["Graphic Design", "Content Creation", "Visual Branding"],
+        skills: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations", "UI/UX Design", "Web Development"],
       }
     ]
   }

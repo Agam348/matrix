@@ -1,9 +1,100 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import { X, GraduationCap, Award, MapPin, Globe } from "lucide-react";
+
+interface Token {
+  text: string;
+  type: "keyword" | "string" | "key" | "punctuation" | "text" | "number";
+}
+
+const CODE_TOKENS: Token[][] = [
+  [
+    { text: "const ", type: "keyword" },
+    { text: "developer", type: "key" },
+    { text: " = ", type: "punctuation" },
+    { text: "{", type: "punctuation" }
+  ],
+  [
+    { text: "  name", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: '"Agampreet Singh"', type: "string" },
+    { text: ",", type: "punctuation" }
+  ],
+  [
+    { text: "  role", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: '"Full-Stack Developer"', type: "string" },
+    { text: ",", type: "punctuation" }
+  ],
+  [
+    { text: "  education", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: "[", type: "punctuation" },
+    { text: '"IIT Madras"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"Guru Nanak Dev University"', type: "string" },
+    { text: "],", type: "punctuation" }
+  ],
+  [
+    { text: "  skills", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: "[", type: "punctuation" },
+    { text: '"React"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"Next.js"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"Flutter"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"Python"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"Java"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"AI"', type: "string" },
+    { text: "],", type: "punctuation" }
+  ],
+  [
+    { text: "  achievements", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: "{", type: "punctuation" }
+  ],
+  [
+    { text: "    hackathons", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: '"3x Winner"', type: "string" },
+    { text: ",", type: "punctuation" }
+  ],
+  [
+    { text: "    international", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: '"Global Hackathon Winner"', type: "string" }
+  ],
+  [
+    { text: "  ", type: "text" },
+    { text: "},", type: "punctuation" }
+  ],
+  [
+    { text: "  currentFocus", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: "[", type: "punctuation" },
+    { text: '"Full-Stack"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"AI"', type: "string" },
+    { text: ", ", type: "punctuation" },
+    { text: '"Scalable Apps"', type: "string" },
+    { text: "],", type: "punctuation" }
+  ],
+  [
+    { text: "  status", type: "key" },
+    { text: ": ", type: "punctuation" },
+    { text: '"Open to Opportunities 🚀"', type: "string" }
+  ],
+  [
+    { text: "};", type: "punctuation" }
+  ]
+];
 
 type LenisControls = {
   scrollTo: (target: string) => void;
@@ -30,6 +121,98 @@ const getLenisControls = (): LenisControls | undefined => {
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Parallax rotation states
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+    const rotateY = (x - xc) / 25; // subtle tilt
+    const rotateX = -(y - yc) / 20;
+    setRotate({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+  };
+
+  // Typing animation states
+  const [typedCharCount, setTypedCharCount] = useState(0);
+
+  // Flatten the token list to compute indices for typing
+  interface FlatToken {
+    text: string;
+    type: "keyword" | "string" | "key" | "punctuation" | "text" | "number";
+    lineIdx: number;
+    tokenIdx: number;
+    start: number;
+    end: number;
+  }
+
+  const flatTokens = useMemo(() => {
+    let currentLength = 0;
+    const list: FlatToken[] = [];
+    CODE_TOKENS.forEach((line, lineIdx) => {
+      line.forEach((token, tokenIdx) => {
+        const start = currentLength;
+        const end = currentLength + token.text.length;
+        list.push({
+          ...token,
+          lineIdx,
+          tokenIdx,
+          start,
+          end,
+        });
+        currentLength = end;
+      });
+      currentLength += 1; // for newline
+    });
+    return { list, totalLength: currentLength };
+  }, []);
+
+  const codeBodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (codeBodyRef.current) {
+      codeBodyRef.current.scrollTop = codeBodyRef.current.scrollHeight;
+    }
+  }, [typedCharCount]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTypedCharCount((prev) => {
+        if (prev >= flatTokens.totalLength) {
+          clearInterval(timer);
+          return prev;
+        }
+        return prev + 2; // Type speed: 2 characters per tick
+      });
+    }, 15); // Interval tick: 15ms
+
+    return () => clearInterval(timer);
+  }, [flatTokens.totalLength]);
+
+  const getColorClass = (type: string) => {
+    switch (type) {
+      case "keyword":
+        return "text-[#A855F7]";
+      case "string":
+        return "text-[#22C55E]";
+      case "key":
+        return "text-[#60A5FA]";
+      case "number":
+        return "text-[#F59E0B]";
+      case "punctuation":
+        return "text-white";
+      default:
+        return "text-zinc-400";
+    }
+  };
 
   const handleScrollTo = (id: string) => {
     soundManager.playClick(900);
@@ -103,10 +286,10 @@ export default function About() {
       <div className="absolute top-1/2 right-1/3 w-72 h-72 rounded-full bg-violet-600/5 blur-[90px] pointer-events-none z-[2]" />
 
       {/* Content Container (Aligned exactly with portfolio grid margins, full-screen laptop height) */}
-      <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-6 sm:px-12 pb-16 md:pb-36 pt-24 md:pt-32 min-h-0 md:min-h-screen flex items-end justify-start">
+      <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-6 sm:px-12 pb-16 md:pb-36 pt-24 md:pt-32 min-h-0 md:min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
-        {/* Content Block (Left-anchored text layout matching Sentinel AI typography clamps) */}
-        <div className="w-full max-w-2xl flex flex-col items-start text-left pb-4 md:pb-12">
+        {/* Left Side: Content Block (Left-anchored text layout matching Sentinel AI typography clamps) */}
+        <div className="lg:col-span-7 w-full flex flex-col items-start text-left pb-4 md:pb-12">
           
           {/* Staggered Title via viewport triggers */}
           <motion.div 
@@ -141,7 +324,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="text-zinc-400 text-[clamp(0.75rem,1.2vw,0.95rem)] leading-relaxed font-light mb-6 md:mb-8 max-w-xl"
           >
-            Pursuing a BTech in CSE at GNDU and a BS in Data Science at IIT Madras — merging software engineering with data-driven analysis to build minimal, secure, and meaningful tools.
+            Pursuing an MTECH FYIP in CSE at GNDU and a BS in Data Science at IIT Madras — merging software engineering with data-driven analysis to build minimal, secure, and meaningful tools.
           </motion.p>
 
           {/* Interactive CTA Buttons (Staggered Animation) */}
@@ -180,11 +363,131 @@ export default function About() {
             {/* Pulse dot */}
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 animate-pulse" />
             <p className="text-zinc-400 text-[9px] md:text-[11px] font-space font-medium tracking-[0.14em] md:tracking-[0.18em] uppercase whitespace-normal break-words">
-              Finance Head&nbsp;•&nbsp;CESS GNDU&nbsp;&nbsp;/&nbsp;&nbsp;Tarn Taran, Punjab&nbsp;&nbsp;/&nbsp;&nbsp;2× Hackathon Winner
+              3x Hackathon Winner&nbsp;&nbsp;|&nbsp;&nbsp;1x International Hackathon Winner
             </p>
           </motion.div>
 
         </div>
+
+        {/* Right Side: Animated Code Snippet Card */}
+        <div className="lg:col-span-5 w-full flex justify-center lg:justify-end items-center pointer-events-auto">
+          <div className="relative w-full max-w-[480px] h-[420px]">
+            {/* Deep blue glowing backplate (12% opacity, blur-2xl) */}
+            <div className="absolute -inset-4 bg-sky-500/12 rounded-3xl blur-2xl pointer-events-none z-0" />
+
+            <motion.div
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              animate={{
+                y: [0, -6, 0],
+                borderColor: [
+                  "rgba(99, 102, 241, 0.2)",
+                  "rgba(56, 189, 248, 0.4)",
+                  "rgba(99, 102, 241, 0.2)"
+                ],
+                boxShadow: [
+                  "0 0 30px rgba(99, 102, 241, 0.08)",
+                  "0 0 40px rgba(56, 189, 248, 0.15)",
+                  "0 0 30px rgba(99, 102, 241, 0.08)"
+                ]
+              }}
+              transition={{
+                y: {
+                  duration: 5.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                borderColor: {
+                  duration: 5.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                boxShadow: {
+                  duration: 5.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                opacity: { duration: 0.6, ease: "easeOut" },
+                scale: { duration: 0.6, ease: "easeOut" }
+              }}
+              style={{
+                transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+                transformStyle: "preserve-3d",
+                transition: "transform 0.15s ease-out",
+              }}
+              className="relative z-10 w-full h-full bg-zinc-950/75 backdrop-blur-md border border-zinc-900 rounded-2xl flex flex-col overflow-hidden select-none"
+            >
+              {/* Soft ambient glow behind card */}
+              <div className="absolute -inset-px bg-gradient-to-r from-indigo-500/10 to-sky-500/10 rounded-2xl blur-md opacity-40 pointer-events-none" />
+
+              {/* macOS window title bar */}
+              <div className="relative z-10 flex items-center justify-between px-4 py-3 bg-zinc-900/40 border-b border-zinc-900/60 select-none">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#EF4444]" />
+                  <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+                  <span className="w-2 h-2 rounded-full bg-[#10B981]" />
+                </div>
+                <span className="text-[10px] font-space font-medium tracking-wider text-zinc-500">
+                  developer.ts
+                </span>
+                <div className="w-[28px]" />
+              </div>
+
+              {/* Code Body */}
+              <div ref={codeBodyRef} className="relative z-10 flex-1 p-5 overflow-y-auto font-mono text-[10px] sm:text-xs leading-relaxed text-zinc-350 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-text selection:bg-indigo-950 selection:text-indigo-300 animate-pulse-none">
+                {CODE_TOKENS.map((line, lineIdx) => {
+                  const lineStart = flatTokens.list.find(t => t.lineIdx === lineIdx)?.start ?? 0;
+                  const lineEnd = [...flatTokens.list].reverse().find(t => t.lineIdx === lineIdx)?.end ?? 0;
+                  const isActiveLine = typedCharCount > lineStart && typedCharCount <= lineEnd;
+                  const isLastLine = lineIdx === CODE_TOKENS.length - 1;
+                  const isFinishedTyping = typedCharCount >= flatTokens.totalLength - 1;
+
+                  // Only render the line if we have typed past its start
+                  if (typedCharCount <= lineStart && lineIdx > 0) return null;
+
+                  return (
+                    <div key={lineIdx} className="min-h-[1.5rem] flex items-center flex-wrap">
+                      {/* Line Number */}
+                      <span className="w-6 text-zinc-700 select-none pr-2 text-right text-[8px] sm:text-[10px]">
+                        {lineIdx + 1}
+                      </span>
+                      
+                      {/* Line Content */}
+                      <span className="flex-1 flex flex-wrap items-center">
+                        {line.map((token, tokenIdx) => {
+                          const flatToken = flatTokens.list.find(t => t.lineIdx === lineIdx && t.tokenIdx === tokenIdx);
+                          if (!flatToken) return null;
+                          if (typedCharCount <= flatToken.start) return null;
+
+                          const isTokenBeingTyped = typedCharCount > flatToken.start && typedCharCount < flatToken.end;
+                          const tokenText = isTokenBeingTyped 
+                            ? flatToken.text.slice(0, typedCharCount - flatToken.start)
+                            : flatToken.text;
+
+                          return (
+                            <span key={tokenIdx} className={getColorClass(flatToken.type)}>
+                              {tokenText}
+                            </span>
+                          );
+                        })}
+                        
+                        {/* Blinking Cursor on active line */}
+                        {(isActiveLine || (isLastLine && isFinishedTyping)) && (
+                          <span className="w-1.5 h-3.5 bg-[#60A5FA] animate-pulse ml-0.5 inline-block align-middle shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
+                        )}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </motion.div>
+          </div>
+        </div>
+
       </div>
 
       {/* FULL SCREEN ACADEMIC TIMELINE / DOSSIER GLASS CONSOLE OVERLAY */}
@@ -194,7 +497,7 @@ export default function About() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 select-none animate-fade-in"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black backdrop-blur-none p-4 sm:p-6 select-none"
           >
             {/* CRT monitor scanlines grid background */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.04),rgba(0,255,0,0.01),rgba(0,0,255,0.04))] bg-[size:100%_4px,6px_100%] pointer-events-none z-10 opacity-25" />
@@ -246,23 +549,23 @@ export default function About() {
                     <div className="relative pl-5 border-l border-zinc-900">
                       <div className="absolute left-[-4.5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-500 border-2 border-zinc-950" />
                       <h4 className="font-space text-xs font-bold text-white leading-tight">
-                        BTech in Computer Science & Engineering (CSE)
+                        MTECH FYIP Computer Science and Engineering
                       </h4>
                       <p className="font-sora text-[10px] text-zinc-500 mt-0.5">
-                        Guru Nanak Dev University (GNDU) • 2024 - 2028
+                        Guru Nanak Dev University, Amritsar • Aug 2024 - Dec 2029
                       </p>
                       <p className="font-sora text-[10px] text-zinc-400 mt-2 leading-relaxed">
-                        Focusing on high-performance data systems, discrete algorithms, computational complexity, and secure mobile hybrids.
+                        Five-Year Integrated Program focusing on high-performance data systems, discrete algorithms, computational complexity, and secure mobile hybrids.
                       </p>
                     </div>
 
                     <div className="relative pl-5 border-l border-zinc-900">
                       <div className="absolute left-[-4.5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-400 border-2 border-zinc-950" />
                       <h4 className="font-space text-xs font-bold text-white leading-tight">
-                        BS in Data Science & Applications
+                        BS in Data Science
                       </h4>
                       <p className="font-sora text-[10px] text-zinc-500 mt-0.5">
-                        Indian Institute of Technology, Madras (IITM) • 2024 - 2028
+                        IIT Madras (Indian Institute of Technology, Madras) • May 2024 - Dec 2028
                       </p>
                       <p className="font-sora text-[10px] text-zinc-400 mt-2 leading-relaxed">
                         Curriculum spanning statistical programming, computational finance forecasting, statistical modeling, database design, and algorithmic execution.
@@ -272,13 +575,13 @@ export default function About() {
                     <div className="relative pl-5 border-l border-zinc-900">
                       <div className="absolute left-[-4.5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-600 border-2 border-zinc-950" />
                       <h4 className="font-space text-xs font-bold text-white leading-tight">
-                        Aspire Leaders Program Scholar
+                        Awards & Activities
                       </h4>
                       <p className="font-sora text-[10px] text-zinc-500 mt-0.5">
-                        Aspire Institute (Harvard University Founded) • Aug - Oct 2025
+                        Hackathons & Competitions
                       </p>
                       <p className="font-sora text-[10px] text-zinc-400 mt-2 leading-relaxed">
-                        Global leadership scholarship involving rigorous cross-cultural case analyses and statistical systems alignment metrics.
+                        3x Hackathon Winner and 1x International Hackathon competitor. Passionate about solving real-world challenges through innovative software.
                       </p>
                     </div>
                   </div>

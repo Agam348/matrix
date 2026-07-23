@@ -124,7 +124,7 @@ export default function HangingIdCard() {
               AGAMPREET SINGH
             </h4>
             <p className="font-space text-[9px] font-bold text-indigo-400 tracking-widest uppercase">
-              Scholar & Developer
+              Developer
             </p>
           </div>
 
@@ -166,7 +166,7 @@ export default function HangingIdCard() {
 
             {/* Barcode number */}
             <span className="font-mono text-[7px] text-zinc-500 tracking-[0.25em]">
-              SYSNODE-3145-7492
+              DEV-AGAM-01
             </span>
             </a>
           </div>

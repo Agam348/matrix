@@ -16,9 +16,14 @@ const TERMINAL_LINES = [
   "  DIGITAL CONSOLE PROFILE // AGAMPREET SINGH",
   "==================================================",
   "ACADEMIC CREDENTIALS:",
-  "  > BTECH COMPUTER SCIENCE & ENG • GNDU (2024-2028)",
-  "  > BS DATA SCIENCE & APPLICATIONS • IIT MADRAS (2024-2028)",
-  "  > ASPIRE LEADERS SCHOLAR • HARVARD FOUNDED (2025)",
+  "  > MTECH FYIP COMPUTER SCIENCE & ENG • GNDU (2024-2029)",
+  "  > BS DATA SCIENCE • IIT MADRAS (2024-2028)",
+  "",
+  "WORK EXPERIENCE NODES:",
+  "  > DEVELOPER • GURMAT DARBAR (APR 2026 - PRESENT)",
+  "    Worked on the website & contributed to the Android app.",
+  "  > WEB DEVELOPER • VTAP (MAR 2026 - APR 2026)",
+  "    Worked on the VTAP website & client websites.",
   "",
   "SYSTEM ARCHITECTURES:",
   "  > MOBILE: FLUTTER, DART, HYBRID WIDGET DEPLOYMENT",
@@ -28,7 +33,7 @@ const TERMINAL_LINES = [
   "OPERATIONS & LEADERSHIP NODES:",
   "  > FINANCE HEAD • CESS: DIRECTED sponsorship metrics",
   "    and event budgets for 170+ regional hackathon participants.",
-  "  > HACKATHONS: 2x regional sprint developer winner.",
+  "  > HACKATHONS: 3x Hackathon Winner, 1x International Hackathon.",
   "",
   "SYSTEM PHILOSOPHY & VISION:",
   "  \"To predict the future, engineer it. Build clean,",
@@ -151,119 +156,121 @@ export default function Hero() {
   }, [isTerminalOpen, currentLineIndex, currentCharIndex]);
 
   return (
-    <AnimatedShaderHero className="relative min-h-screen w-full flex flex-col items-center justify-center bg-transparent">
-      
-      {/* Overlay section container */}
-      <section
-        id="home"
-        className="w-full flex flex-col items-center justify-center pt-24 md:pt-28 pb-10 md:pb-16 px-5 sm:px-12 overflow-hidden select-none"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center w-full z-10 max-w-6xl mx-auto">
-          
-          {/* Left Side: Premium Text Intro */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8">
+    <>
+      <AnimatedShaderHero className="relative min-h-screen w-full flex flex-col items-center justify-center bg-transparent">
+        
+        {/* Overlay section container */}
+        <section
+          id="home"
+          className="w-full flex flex-col items-center justify-center pt-24 md:pt-28 pb-10 md:pb-16 px-5 sm:px-12 overflow-hidden select-none"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center w-full z-10 max-w-6xl mx-auto">
             
-            {/* Animated High-tech Status Label (No card box, purely organic!) */}
-            <div className="animate-fade-in-down">
-              <div className="flex items-center gap-2 text-[10px] font-space tracking-[0.2em] font-bold uppercase text-indigo-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping shrink-0" />
-                <span>DOUBLE ACADEMIC PATH</span>
+            {/* Left Side: Premium Text Intro */}
+            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8">
+              
+              {/* Animated High-tech Status Label (No card box, purely organic!) */}
+              <div className="animate-fade-in-down">
+                <div className="flex items-center gap-2 text-[10px] font-space tracking-[0.2em] font-bold uppercase text-indigo-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping shrink-0" />
+                  <span>DOUBLE ACADEMIC PATH</span>
+                </div>
               </div>
-            </div>
 
-            <div className="space-y-4">
-              {/* Better Subtitle Hierarchy: Scholar label above name! */}
-              <p className="font-space text-[10px] sm:text-sm text-zinc-400 tracking-[0.14em] md:tracking-[0.15em] uppercase animate-fade-in-up animation-delay-100">
-                GNDU CSE Scholar & IIT Madras Data Scientist
+              <div className="space-y-4">
+                {/* Better Subtitle Hierarchy: Scholar label above name! */}
+                <p className="font-space text-[10px] sm:text-sm text-zinc-400 tracking-[0.14em] md:tracking-[0.15em] uppercase animate-fade-in-up animation-delay-100">
+                  IIT Madras & Guru Nanak Dev University
+                </p>
+                
+                <h1 className="font-orbitron text-[clamp(2.75rem,14vw,4.4rem)] sm:text-7xl font-extrabold uppercase tracking-normal md:tracking-tight text-white select-none leading-[0.9] md:leading-none animate-fade-in-up animation-delay-200">
+                  AGAMPREET <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-250 to-zinc-400 font-extrabold">
+                    SINGH
+                  </span>
+                </h1>
+                
+                <p className="font-space text-sm sm:text-lg text-zinc-200 font-extrabold tracking-wide max-w-xl animate-fade-in-up animation-delay-400 leading-relaxed">
+                  Building modern digital experiences through code, design and technology.
+                </p>
+              </div>
+
+              {/* Concise biography intro */}
+              <p className="font-sora text-xs sm:text-sm leading-relaxed text-zinc-400 max-w-[19rem] sm:max-w-md animate-fade-in-up animation-delay-600">
+                I build responsive web and mobile applications with React, Next.js, Flutter and Python. Passionate about AI and solving real-world challenges through user-focused software.
               </p>
-              
-              <h1 className="font-orbitron text-[clamp(2.75rem,14vw,4.4rem)] sm:text-7xl font-extrabold uppercase tracking-normal md:tracking-tight text-white select-none leading-[0.9] md:leading-none animate-fade-in-up animation-delay-200">
-                AGAMPREET <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-250 to-zinc-400 font-extrabold">
-                  SINGH
-                </span>
-              </h1>
-              
-              <p className="font-space text-sm sm:text-lg text-zinc-200 font-extrabold tracking-wide max-w-xl animate-fade-in-up animation-delay-400 leading-relaxed">
-                Building modern digital experiences through code, design and technology.
-              </p>
-            </div>
 
-            {/* Concise biography intro */}
-            <p className="font-sora text-xs sm:text-sm leading-relaxed text-zinc-400 max-w-[19rem] sm:max-w-md animate-fade-in-up animation-delay-600">
-              Crafting minimal cross-platform mobile frameworks and secure web backends. Focused on translating deep statistical models into practical developer tools.
-            </p>
-
-            {/* Action CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start w-full sm:w-auto pt-2 animate-fade-in-up animation-delay-800">
-              
-              {/* Refinement: Replaced shadow-heavy LiquidButton with ultra-clean rounded outline button */}
-              <button
-                onClick={() => handleScrollTo("projects")}
-                onMouseEnter={() => soundManager.playHoverClick(1000)}
-                className="h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 border border-zinc-700/60 hover:border-indigo-500/50 bg-zinc-950/40 hover:bg-indigo-950/10 backdrop-blur-sm text-zinc-300 hover:text-white rounded-sm font-space text-[9px] font-extrabold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.15)] cursor-pointer shrink-0"
-              >
-                <Eye className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
-                View My Work
-              </button>
-              
-              {/* Refinement: Custom-engineered diagonals cut-corner Cyber-Border outline button */}
-              <button
-                onClick={openTerminal}
-                onMouseEnter={() => soundManager.playHoverClick(1000)}
-                className="relative p-[1px] h-12 w-full sm:w-auto overflow-hidden font-space text-[9px] font-extrabold tracking-[0.2em] uppercase cursor-pointer group shrink-0"
-                style={{
-                  clipPath: "polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px)"
-                }}
-              >
-                {/* Border layer (gradient that brightens on hover) */}
-                <div 
-                  className="absolute inset-0 bg-indigo-500/40 group-hover:bg-indigo-400 transition-all duration-300"
+              {/* Action CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start w-full sm:w-auto pt-2 animate-fade-in-up animation-delay-800">
+                
+                {/* Refinement: Replaced shadow-heavy LiquidButton with ultra-clean rounded outline button */}
+                <button
+                  onClick={() => handleScrollTo("projects")}
+                  onMouseEnter={() => soundManager.playHoverClick(1000)}
+                  className="h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 border border-zinc-700/60 hover:border-indigo-500/50 bg-zinc-950/40 hover:bg-indigo-950/10 backdrop-blur-sm text-zinc-300 hover:text-white rounded-sm font-space text-[9px] font-extrabold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.15)] cursor-pointer shrink-0"
+                >
+                  <Eye className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
+                  View My Work
+                </button>
+                
+                {/* Refinement: Custom-engineered diagonals cut-corner Cyber-Border outline button */}
+                <button
+                  onClick={openTerminal}
+                  onMouseEnter={() => soundManager.playHoverClick(1000)}
+                  className="relative p-[1px] h-12 w-full sm:w-auto overflow-hidden font-space text-[9px] font-extrabold tracking-[0.2em] uppercase cursor-pointer group shrink-0"
                   style={{
                     clipPath: "polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px)"
                   }}
-                />
-                
-                {/* Content layer (relative flex centered container, explicitly mapped to 46px to match h-12 outline total) */}
-                <div 
-                  className="relative flex items-center justify-center gap-2 h-[46px] w-full px-8 bg-[#09090b]/95 group-hover:bg-indigo-950/15 transition-all duration-300"
-                  style={{
-                    clipPath: "polygon(11px 0%, 100% 0%, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0% 100%, 0% 11px)"
-                  }}
                 >
-                  <Terminal className="w-3.5 h-3.5 text-[#38bdf8] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0" />
-                  <span className="text-[#38bdf8] group-hover:text-white transition-colors duration-300 whitespace-nowrap">Access Terminal</span>
-                </div>
-              </button>
+                  {/* Border layer (gradient that brightens on hover) */}
+                  <div 
+                    className="absolute inset-0 bg-indigo-500/40 group-hover:bg-indigo-400 transition-all duration-300"
+                    style={{
+                      clipPath: "polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px)"
+                    }}
+                  />
+                  
+                  {/* Content layer (relative flex centered container, explicitly mapped to 46px to match h-12 outline total) */}
+                  <div 
+                    className="relative flex items-center justify-center gap-2 h-[46px] w-full px-8 bg-[#09090b]/95 group-hover:bg-indigo-950/15 transition-all duration-300"
+                    style={{
+                      clipPath: "polygon(11px 0%, 100% 0%, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0% 100%, 0% 11px)"
+                    }}
+                  >
+                    <Terminal className="w-3.5 h-3.5 text-[#38bdf8] group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0" />
+                    <span className="text-[#38bdf8] group-hover:text-white transition-colors duration-300 whitespace-nowrap">Access Terminal</span>
+                  </div>
+                </button>
+              </div>
+
+            </div>
+
+            {/* Right Side: Hanging Draggable Cyber ID Card */}
+            <div className="lg:col-span-5 w-full h-[390px] md:h-[380px] lg:h-[450px] flex items-start md:items-center justify-center relative select-none overflow-visible">
+              {/* Subtle glow layer behind card */}
+              <div className="absolute w-64 h-64 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
+              <div className="scale-[0.78] md:scale-100 origin-top md:origin-center">
+                <HangingIdCard />
+              </div>
             </div>
 
           </div>
 
-          {/* Right Side: Hanging Draggable Cyber ID Card */}
-          <div className="lg:col-span-5 w-full h-[390px] md:h-[380px] lg:h-[450px] flex items-start md:items-center justify-center relative select-none overflow-visible">
-            {/* Subtle glow layer behind card */}
-            <div className="absolute w-64 h-64 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
-            <div className="scale-[0.78] md:scale-100 origin-top md:origin-center">
-              <HangingIdCard />
+          {/* Downward Scroll Prompter */}
+          <button
+            onClick={() => handleScrollTo("about")}
+            className="absolute bottom-4 md:bottom-6 hidden md:flex flex-col items-center gap-2 group cursor-pointer transition-opacity z-10"
+          >
+            <span className="font-space text-[9px] font-bold tracking-[0.2em] text-zinc-555 group-hover:text-zinc-355 transition-colors">
+              SCROLL TO EXPLORE
+            </span>
+            <div className="w-5 h-8 rounded-full border border-zinc-900 group-hover:border-zinc-750 transition-colors flex justify-center p-1.5">
+              <div className="w-1 h-1 rounded-full bg-zinc-650 group-hover:bg-zinc-300 animate-bounce" />
             </div>
-          </div>
+          </button>
 
-        </div>
-
-        {/* Downward Scroll Prompter */}
-        <button
-          onClick={() => handleScrollTo("about")}
-          className="absolute bottom-4 md:bottom-6 hidden md:flex flex-col items-center gap-2 group cursor-pointer transition-opacity z-10"
-        >
-          <span className="font-space text-[9px] font-bold tracking-[0.2em] text-zinc-555 group-hover:text-zinc-355 transition-colors">
-            SCROLL TO EXPLORE
-          </span>
-          <div className="w-5 h-8 rounded-full border border-zinc-900 group-hover:border-zinc-750 transition-colors flex justify-center p-1.5">
-            <div className="w-1 h-1 rounded-full bg-zinc-650 group-hover:bg-zinc-300 animate-bounce" />
-          </div>
-        </button>
-
-      </section>
+        </section>
+      </AnimatedShaderHero>
 
       {/* FULL SCREEN RETRO-FUTURISTIC TERMINAL BOOT-UP READOUT OVERLAY */}
       <AnimatePresence>
@@ -328,7 +335,7 @@ export default function Hero() {
                   <div key={idx} className={`${
                     !line ? "" :
                     line.startsWith("==") || line.startsWith("--") ? "text-zinc-600 font-bold" :
-                    line.includes("ACADEMIC") || line.includes("SYSTEM ARCHITECTURES") || line.includes("OPERATIONS") || line.includes("SYSTEM PHILOSOPHY") ? "text-indigo-400 font-extrabold tracking-wider pt-2" :
+                    line.includes("ACADEMIC") || line.includes("WORK EXPERIENCE") || line.includes("SYSTEM ARCHITECTURES") || line.includes("OPERATIONS") || line.includes("SYSTEM PHILOSOPHY") ? "text-indigo-400 font-extrabold tracking-wider pt-2" :
                     line.includes("[OK]") || line.includes("[DECRYPTED]") ? "text-emerald-400 font-bold" :
                     "text-zinc-300"
                   }`}>
@@ -357,7 +364,6 @@ export default function Hero() {
           </motion.div>
         )}
       </AnimatePresence>
-
-    </AnimatedShaderHero>
+    </>
   );
 }

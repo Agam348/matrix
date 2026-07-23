@@ -148,9 +148,15 @@ Recommended deployment settings:
 
 No environment variables are required for the current implementation.
 
+## Verification & Code Quality Status
+
+- **Lint Status:** Verified clean ESLint runs (`npm run lint`).
+- **Production Build:** Successfully pre-rendered static HTML routes via Next.js Turbopack compiler (`npm run build`).
+
 ## Maintenance Notes
 
-- Before changing Next.js APIs or file conventions, read the local documentation in `node_modules/next/dist/docs/` as noted in `AGENTS.md`.
-- Keep browser-only code inside client components.
-- Be mindful of GitHub API rate limits in the Activity section.
-- If real contact delivery is needed, add an API route or external form service and replace the simulated timeout in `app/components/Contact.tsx`.
+- **Next.js Conventions:** Before changing Next.js APIs or file conventions, read the local documentation in `node_modules/next/dist/docs/` as noted in `AGENTS.md`.
+- **Performance Optimization:** Ambient WebGL shaders utilize `IntersectionObserver` elements to pause calculations when scrolled out of view, ensuring zero background CPU/GPU usage. Keep any new canvas elements optimized.
+- **Client Restrictions:** Keep browser-only code inside client components (e.g. pointer coordinates, Web Audio synth triggers).
+- **GitHub API Limits:** Be mindful of public API rate limits in the Activity section.
+- **Contact Dispatch:** If real contact delivery is needed, add an API route or external form service and replace the simulated timeout in `app/components/Contact.tsx`.

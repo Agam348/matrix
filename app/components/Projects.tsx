@@ -17,18 +17,18 @@ interface Project {
 
 const PROJECTS_DATA: Project[] = [
   {
-    title: "Gurmat Darbar App",
-    role: "Mobile Developer",
-    desc: "Designed and developed a cross-platform mobile application dedicated to Gurmat Darbar. Integrated custom widget layouts and responsive screens to streamline the user interface.",
-    tech: ["Flutter", "Dart", "UI/UX Design", "Mobile Development"],
-    stats: "Mobile Application",
+    title: "Gurmat Darbar",
+    role: "Developer",
+    desc: "Developed the official website and contributed to the Android mobile application. Focused on implementing clean user flows, UI/UX design, and cross-platform integrations.",
+    tech: ["Flutter", "Dart", "Next.js", "React.js", "UI/UX Design"],
+    stats: "Web & Android App",
     link: "https://www.gurmatdarbar.com/",
   },
   {
-    title: "Tischtap (VTAP Internship)",
-    role: "Web Developer Intern",
-    desc: "Contributed to building the user interface of Tischtap, a smart QR & NFC-based restaurant platform. Built responsive interfaces for digital menus and dining ordering flows.",
-    tech: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations"],
+    title: "VTAP Website & Platforms",
+    role: "Web Developer",
+    desc: "Worked on the development and optimization of the VTAP website and built responsive user interfaces for client websites.",
+    tech: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations", "Web Development"],
     stats: "Web Platform",
   },
   {

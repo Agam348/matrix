@@ -201,7 +201,7 @@ export default function CustomCursor() {
       </div>
 
       {/* 2. Custom Cursor Elements Wrapper */}
-      <div className="block pointer-events-none fixed inset-0 z-50">
+      <div className="block pointer-events-none fixed inset-0 z-[100]">
         
         {/* Soft transparent white circle for clickable and draggable targets */}
         <div
