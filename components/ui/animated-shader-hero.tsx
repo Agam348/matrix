@@ -333,7 +333,7 @@ export default function AnimatedShaderHero({
 
   return (
     <div className={`relative w-full min-h-screen overflow-hidden bg-[#09090b] md:bg-black ${className}`}>
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_18%,rgba(79,70,229,0.24),transparent_34%),linear-gradient(180deg,rgba(30,58,138,0.18),rgba(9,9,11,0.98)_68%)] md:hidden" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_18%,rgba(79,70,229,0.30),transparent_34%),linear-gradient(180deg,rgba(30,58,138,0.23),rgba(9,9,11,0.97)_68%)] md:hidden" />
       {/* 3D WebGL Shader Canvas Background */}
       <canvas
         ref={canvasRef}
@@ -341,8 +341,8 @@ export default function AnimatedShaderHero({
         style={{ background: "black" }}
       />
       
-      {/* Subtle dark overlay to dim the shader background (reducing blue overlay glare by 10-15%) */}
-      <div className="absolute inset-0 bg-[#09090b]/15 pointer-events-none z-0 hidden md:block" />
+      {/* Subtle dark overlay to dim the shader background slightly (only 6% opacity to let more glow shine through) */}
+      <div className="absolute inset-0 bg-[#09090b]/06 pointer-events-none z-0 hidden md:block" />
       
       {/* Content wrapper layered cleanly on top of the shader background */}
       <div className="relative w-full h-full z-10">
@@ -413,7 +413,7 @@ void main(void) {
 		float b=noise(i+p+bg*1.731);
 		col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
     
-		col=mix(col,vec3(bg*.03, bg*.09, bg*.22),d);
+		col=mix(col,vec3(bg*.035, bg*.105, bg*.27),d);
 	}
 	O=vec4(col,1);
 }`;
