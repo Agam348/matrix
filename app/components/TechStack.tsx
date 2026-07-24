@@ -127,6 +127,9 @@ export default function TechStack() {
       id="skills"
       className="relative w-full py-20 md:py-28 px-6 sm:px-12 overflow-hidden flex items-center justify-center bg-transparent z-0"
     >
+      {/* Subtle Blue Atmosphere Continuation (barely noticeable top-left corner glow) */}
+      <div className="absolute top-0 left-0 w-[450px] h-[450px] rounded-full bg-blue-600/3 blur-[120px] pointer-events-none z-0" />
+
       {/* Moving Ambient Blue Gradients */}
       <motion.div
         animate={{
@@ -138,7 +141,7 @@ export default function TechStack() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[130px] pointer-events-none z-0"
+        className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-blue-600/5 blur-[130px] pointer-events-none z-0"
       />
       <motion.div
         animate={{
@@ -150,7 +153,7 @@ export default function TechStack() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-indigo-600/6 blur-[110px] pointer-events-none z-0"
+        className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-indigo-600/4 blur-[110px] pointer-events-none z-0"
       />
 
       {/* Faint Cyberpunk Grid */}
@@ -166,7 +169,7 @@ export default function TechStack() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute top-1/4 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent pointer-events-none z-0"
+        className="absolute top-1/4 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent pointer-events-none z-0"
       />
       <motion.div
         animate={{
@@ -177,7 +180,7 @@ export default function TechStack() {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute bottom-1/3 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/15 to-transparent pointer-events-none z-0"
+        className="absolute bottom-1/3 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/08 to-transparent pointer-events-none z-0"
       />
 
       {/* Floating Glowing Particles */}
@@ -195,7 +198,7 @@ export default function TechStack() {
             ease: "easeInOut",
             delay: p.delay,
           }}
-          className="absolute rounded-full bg-blue-500/20 blur-[1px] pointer-events-none z-0"
+          className="absolute rounded-full bg-blue-500/12 blur-[1px] pointer-events-none z-0"
           style={{
             width: p.size,
             height: p.size,
