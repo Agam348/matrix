@@ -70,13 +70,7 @@ export default function Navbar() {
           : "bg-zinc-950/40 backdrop-blur-md border-b border-zinc-800/30"
       } px-6 sm:px-10 py-0 flex items-center justify-between h-14`}
     >
-      {/* Logo / Brand */}
-      <button
-        onClick={() => handleLinkClick("about")}
-        className="font-orbitron text-[11px] font-black tracking-[0.25em] text-white uppercase hover:text-indigo-400 transition-colors duration-300 cursor-pointer shrink-0"
-      >
-        AG<span className="text-indigo-400">.</span>
-      </button>
+      <div className="w-[34px] shrink-0" aria-hidden="true" />
 
       {/* Navigation center links */}
       <div className="hidden md:flex items-center gap-1 font-space text-[9.5px] font-bold tracking-[0.15em] uppercase">
@@ -133,3 +127,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

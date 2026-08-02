@@ -45,7 +45,7 @@ const HeroDemo: React.FC = () => {
             {/* Subtitle with Animation */}
             <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600">
               <p className="text-lg md:text-xl lg:text-2xl text-indigo-100/90 font-light leading-relaxed font-sora">
-                Supercharge productivity with AI-powered automation and integrations built for the next generation of teams — fast, seamless, and limitless.
+                Supercharge productivity with AI-powered automation and integrations built for the next generation of teams — fast, seamless and limitless.
               </p>
             </div>
             

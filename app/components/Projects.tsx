@@ -19,7 +19,7 @@ const PROJECTS_DATA: Project[] = [
   {
     title: "Gurmat Darbar",
     role: "Developer",
-    desc: "Developed the official website and contributed to the Android mobile application. Focused on implementing clean user flows, UI/UX design, and cross-platform integrations.",
+    desc: "Developed the official website and contributed to the Android mobile application. Focused on implementing clean user flows, UI/UX design and cross-platform integrations.",
     tech: ["Flutter", "Dart", "Next.js", "React.js", "UI/UX Design"],
     stats: "Web & Android App",
     link: "https://www.gurmatdarbar.com/",
@@ -34,7 +34,7 @@ const PROJECTS_DATA: Project[] = [
   {
     title: "CESS Tech Fest Platform",
     role: "Finance Head & Organizer",
-    desc: "Managed the budgeting, resource allocation, and logistical workflow for a 3-day Tech Fest and 30+ hour Hackathon. Maintained operational metrics for 170+ participants across 50 teams.",
+    desc: "Managed the budgeting, resource allocation and logistical workflow for a 3-day Tech Fest and 30+ hour Hackathon. Maintained operational metrics for 170+ participants across 50 teams.",
     tech: ["Excel", "Google Sheets", "Financial Modeling", "Leadership"],
     stats: "Event Management",
   },

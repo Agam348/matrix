@@ -324,7 +324,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="text-zinc-400 text-[clamp(0.75rem,1.2vw,0.95rem)] leading-relaxed font-light mb-6 md:mb-8 max-w-xl"
           >
-            Pursuing an MTECH FYIP in CSE at GNDU and a BS in Data Science at IIT Madras — merging software engineering with data-driven analysis to build minimal, secure, and meaningful tools.
+            Pursuing an MTECH FYIP in CSE at GNDU and a BS in Data Science at IIT Madras — merging software engineering with data-driven analysis to build minimal, secure and meaningful tools.
           </motion.p>
 
           {/* Interactive CTA Buttons (Staggered Animation) */}
@@ -555,7 +555,7 @@ export default function About() {
                         Guru Nanak Dev University, Amritsar • Aug 2024 - Dec 2029
                       </p>
                       <p className="font-sora text-[10px] text-zinc-400 mt-2 leading-relaxed">
-                        Five-Year Integrated Program focusing on high-performance data systems, discrete algorithms, computational complexity, and secure mobile hybrids.
+                        Five-Year Integrated Program focusing on high-performance data systems, discrete algorithms, computational complexity and secure mobile hybrids.
                       </p>
                     </div>
 
@@ -568,7 +568,7 @@ export default function About() {
                         IIT Madras (Indian Institute of Technology, Madras) • May 2024 - Dec 2028
                       </p>
                       <p className="font-sora text-[10px] text-zinc-400 mt-2 leading-relaxed">
-                        Curriculum spanning statistical programming, computational finance forecasting, statistical modeling, database design, and algorithmic execution.
+                        Curriculum spanning statistical programming, computational finance forecasting, statistical modeling, database design and algorithmic execution.
                       </p>
                     </div>
 
@@ -601,7 +601,7 @@ export default function About() {
                           Finance Head • CESS GNDU
                         </h4>
                         <p className="font-sora text-[10px] text-zinc-400 leading-relaxed">
-                          Directed resource allocations, sponsorship funds, and event budgets for 170+ regional hackathon sprinters and dev participants.
+                          Directed resource allocations, sponsorship funds and event budgets for 170+ regional hackathon sprinters and dev participants.
                         </p>
                       </div>
                     </div>

@@ -133,7 +133,7 @@ export const WovenCanvas = () => {
     const geometry = new THREE.BufferGeometry();
     const torusKnot = new THREE.TorusKnotGeometry(1.5, 0.5, 200, 32);
 
-    // Color theme matching the MATRIX aesthetic (cyan, sky-blue, space-indigo, and cyber-emerald)
+    // Color theme matching the MATRIX aesthetic (cyan, sky-blue, space-indigo and cyber-emerald)
     const themeColors = [
       new THREE.Color("#6366f1"), // space-indigo
       new THREE.Color("#06b6d4"), // cyber-cyan

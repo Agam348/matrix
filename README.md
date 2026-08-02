@@ -1,67 +1,41 @@
 # MATRIX - Agampreet Singh Portfolio
 
-MATRIX is a futuristic, interaction-heavy developer portfolio for Agampreet Singh. It presents academic work, projects, experience, GitHub activity, and contact routes through a single-page Next.js application with WebGL backgrounds, motion-driven UI, custom cursor behavior, and procedural audio feedback.
+MATRIX is a futuristic, highly interactive developer portfolio built for Agampreet Singh. It delivers an immersive user experience utilizing WebGL shaders, motion-driven user interfaces, custom pointer mechanics, and dynamic procedural audio feedback.
 
-The project uses the Next.js App Router with a client-rendered home page because the primary experience depends on browser APIs: canvas/WebGL, pointer tracking, Lenis smooth scrolling, Web Audio, and modal scroll locking.
+The application is structured around a single-page Next.js App Router setup. Because the core user experience relies heavily on browser APIs—including HTML5 Canvas, WebGL, custom mouse tracking, the Web Audio API, and scroll locks—almost all page sections are client-rendered, wrapped within a smooth-scrolling container powered by Lenis.
 
-## Highlights
+---
 
-- Interactive hero with a WebGL shader backdrop, draggable hanging ID card, and animated terminal profile overlay.
-- Full-screen About section with education and credential modal.
-- Filterable Tech Stack section for languages, web, mobile, and tools.
-- Projects grid covering Gurmat Darbar, Tischtap, CESS Tech Fest, and hackathon prototypes.
-- Scroll-perspective Experience console powered by Framer Motion transforms.
-- Activity dashboard that fetches public GitHub profile, repository, and event data for `Agam348`, with static fallback values.
-- Contact section with local form validation, social links, email, and phone actions.
-- Custom cursor, Lenis smooth scrolling, animated backgrounds, and optional Web Audio synthesizer feedback.
+## ⚡ Highlights & Key Features
 
-## Tech Stack
+* **Introductory Loader:** A premium full-screen entry gate featuring the custom `Phosphor30` mathematical WebGL shader. It displays a progress bar and disables scrolling during loading before sliding up smoothly out of view.
+* **Interactive Hero Grid:** Features a real-time WebGL shader backdrop (`AnimatedShaderHero`), a draggable, physics-influenced ID Card badge, and an interactive command-line terminal overlay simulating a file explorer and profile queries.
+* **Biographical Section:** A full-screen overlay featuring education details, career credentials, and modal states.
+* **Interactive Tech Stack:** A filterable category explorer mapping languages, frontend web libraries, mobile, and tooling/infrastructure with dynamic hover states.
+* **WebGL Projects Display:** Selected production and prototype works organized in a responsive layout backed by the custom WebGL canvas mesh (`WovenCanvas`).
+* **Experience Console:** A perspective 3D career timeline container utilizing Framer Motion transforms responsive to scroll inputs.
+* **GitHub Dashboard:** Client-side integration fetching live user profile stats, repositories, and recent events for `Agam348` with fail-soft mock fallback datasets.
+* **Contact Node:** Custom form inputs with validation, social handles, and triggers.
+* **Custom Cursor:** Custom dual-ring mouse pointer overlay with trailing radial glow backplates and contextual hover expansion.
+* **Procedural Synthesizer:** An optional sound manager using the Web Audio API to synthesize ambient room drone hums, button hover/click tones, glitch soundscapes, and transitions.
 
-- Framework: Next.js 16 App Router
-- UI runtime: React 19
-- Language: TypeScript
-- Styling: Tailwind CSS v4 through `@tailwindcss/postcss`
-- Animation: Framer Motion, GSAP, Lenis
-- 3D and shader rendering: Three.js, React Three Fiber, React Three Drei, custom WebGL shaders
-- Icons: Lucide React
-- Audio: Web Audio API via `app/lib/sound.ts`
-- Tooling: ESLint 9 with `eslint-config-next`
+---
 
-## Getting Started
+## 🛠️ Technical Stack
 
-### Prerequisites
+* **Framework:** Next.js 16 (App Router)
+* **UI Runtime:** React 19 & TypeScript
+* **Styling:** Tailwind CSS v4 using `@tailwindcss/postcss`
+* **Animation & Motion:** Framer Motion, GSAP (GreenSock), Lenis (Smooth Scroll)
+* **3D & Shader Rendering:** Three.js, React Three Fiber (R3F), React Three Drei, raw GLSL WebGL shaders
+* **Typography:** Orbitron, Space Grotesk, and Sora (via `next/font/google`)
+* **Vector Graphics:** Lucide React Icons
+* **Audio Synthesis:** Web Audio API via `app/lib/sound.ts`
+* **Asset Sourcing:** Remote devicons (`cdn.jsdelivr.net`) and simpleicons (`cdn.simpleicons.org`)
 
-- Node.js compatible with Next.js 16
-- npm
+---
 
-### Install
-
-```bash
-npm install
-```
-
-### Run Locally
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in a browser.
-
-### Production Build
-
-```bash
-npm run build
-npm run start
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
-## Project Structure
+## 📂 Project Structure
 
 ```text
 app/
@@ -73,90 +47,115 @@ app/
     CustomCursor.tsx          Desktop pointer replacement and hover states
     Experience.tsx            Scroll-perspective career and role console
     Hero.tsx                  Landing section, terminal overlay, ID card
+    IntroLoader.tsx           Intro transition screen with compilation shader
     Navbar.tsx                Section navigation and audio toggle
     Projects.tsx              Selected work cards
     TechStack.tsx             Filterable skills grid
     ThreeParticleScene.tsx    React Three Fiber particle globe scene
   lib/
     sound.ts                  Web Audio synth, click, beep, drone controls
+    utils.ts                  Tailwind merge utilities
   globals.css                 Tailwind import, theme tokens, scroll/cursor styles
   layout.tsx                  Root layout, fonts, metadata
   page.tsx                    Single-page assembly and Lenis setup
 
 components/
   ui/
+    /* Core UI Elements */
     animated-shader-hero.tsx        Hero WebGL shader surface
     container-scroll-animation.tsx  Perspective scroll wrapper
     dotted-surface.tsx              Footer WebGL dotted surface
     hanging-id-card.tsx             Draggable badge interaction
     perspective-highlight.tsx       Contact highlight effects
+    phosphor-30.tsx                 Generative WebGL shader backdrop for the intro loader
     woven-light-hero.tsx            Projects WebGL woven canvas
-    zoom-parallax.tsx               Reusable scroll image parallax
+    
+    /* Playgrounds, Demo Shaders & Visual Primitives */
+    animated-shader-background.tsx  Ambient shader backdrop utility
+    animated-shader-hero-demo.tsx   Interactive playground for the hero shader
+    cybernetic-grid-shader.tsx      Cyberpunk-themed grid backdrop component
+    cybernetic-grid-shader-demo.tsx Cyberpunk grid shader playground config
+    dotted-surface-demo.tsx         Playground/demo component for dotted surface
+    liquid-glass-button.tsx         Button overlay with liquid canvas hover feedback
+    spotlight-card.tsx              Interactive spotlight hover card with HSL border highlight
+    shader-lines.tsx                Generative floating wave lines canvas
+    shader-lines-demo.tsx           Playground for the floating wave lines shader
+    warp-drive-shader.tsx           Cosmic warp-speed particle flow canvas
+    warp-drive-shader-demo.tsx      Playground for the warp-speed shader
+    web-gl-shader.tsx               Generic parent class for compiling dynamic custom shaders
+    woven-light-hero-demo.tsx       Woven light grid demonstration canvas config
+    zoom-parallax.tsx               Scroll-driven zoom image parallax component
 
 public/
-  profile.jpg
-  gurmat_darbar.png
-  tischtap.png
-  cess_tech_fest.png
-  hackathon_solutions.png
+  profile.jpg                       Agampreet profile photo
+  gurmat_darbar.png                 Gurmat Darbar project mockup
+  tischtap.png                      Tischtap project mockup
+  cess_tech_fest.png                CESS Tech Fest project mockup
+  hackathon_solutions.png           Hackathon prototype mockup
 ```
 
-## Application Flow
+---
 
-`app/page.tsx` composes the full portfolio in this order:
+## 🔌 Data & Integrations
 
-1. `BackgroundGrid`
-2. `CustomCursor`
-3. `Navbar`
-4. `Hero`
-5. `About`
-6. `TechStack`
-7. `Projects`
-8. `Experience`
-9. `Activity`
-10. `Contact`
-11. Footer with `DottedSurface`
+### 1. GitHub API Sync
+The `Activity` component performs client-side asynchronous fetches to retrieve profile metadata, repositories, and historical contribution events from the public GitHub REST API:
+* Profile Data: `https://api.github.com/users/Agam348`
+* Repository Catalog: `https://api.github.com/users/Agam348/repos?per_page=100`
+* Contribution Feed: `https://api.github.com/users/Agam348/events`
 
-The page initializes Lenis once and exposes it on `window.lenis` so section components can use smooth scrolling. Modal overlays in `Hero` and `About` pause Lenis while open and restart it when closed.
+To counter public API rate limiting or network failures, the components gracefully transition to hardcoded mock fallback statistics and commit matrices without crashing the user interface.
 
-## Data And Integrations
+### 2. Procedural Web Audio Engine
+The portfolio contains no static audio assets. Instead, `app/lib/sound.ts` uses the native Web Audio API to synthesize sounds in real time:
+* **Ambient Drone:** A 55Hz (Low A) sawtooth waveform put through a low-pass filter centered at 100Hz with low gain (0.08) to establish an ambient, cybernetic background atmosphere.
+* **Click Tones:** A sine wave oscillator mapped to 800Hz fading exponentially over 50ms (gain drops to 0.001) for button and selector responses.
+* **Hover Clicks:** Localized clicks tailored for mouse-equipped pointer screens, matching hover entries.
+* **Status Beeps:** Flexible oscillator triggers adjusting frequencies (e.g. 300Hz to 950Hz) and envelope durations to indicate loading states, confirmation milestones, and alert conditions.
+* **Cyber Glitch Sound:** A high-speed sequence of square wave frequencies (200Hz ➔ 1200Hz ➔ 800Hz ➔ 2000Hz) compressed within 120ms to denote cybernetic terminal overrides and interactions.
+* **EMP Wave:** A long (1.2s) low-frequency sweep utilizing a sawtooth oscillator sliding down from 440Hz to 20Hz alongside an envelope-driven low-pass filter (800Hz to 30Hz) for dramatic modal closures.
+* **Uplink Sweep:** A rising frequency sweep (100Hz ➔ 1500Hz) spanning 800ms to emphasize contact transmissions and page loader dismissals.
 
-- GitHub activity is fetched client-side from the public GitHub API:
-  - `https://api.github.com/users/Agam348`
-  - `https://api.github.com/users/Agam348/repos?per_page=100`
-  - `https://api.github.com/users/Agam348/events`
-- If the GitHub requests fail or are rate-limited, `Activity.tsx` keeps static fallback commits and stats.
-- The contact form currently simulates submission locally with validation and a success state. It does not send email or call a backend endpoint.
-- Audio starts muted by default. Users can enable it from the navbar; the first page click can start the ambient drone only when audio is unmuted.
+*Note: In compliance with modern browser autoplay rules, audio initializes in a muted state. It can be toggled via the navbar controls, and the ambient drone will only initialize upon the first user mouse click once unmuted.*
 
-## Design Notes
+---
 
-- The visual language is dark, high-contrast, and cybernetic, using Orbitron, Space Grotesk, and Sora from `next/font/google`.
-- Most page sections are browser-only client components due to animation, audio, scroll, and canvas dependencies.
-- Tailwind v4 theme tokens and animation helpers live in `app/globals.css`.
-- The repository includes several reusable visual primitives under `components/ui`, including demo files that are not part of the main page route.
+## ⚡ Performance & Optimization Notes
 
-## Deployment
+* **Intersection Observer CPU/GPU Protection:** Dynamic WebGL canvas surfaces (`AnimatedShaderHero`, `WovenCanvas`, and `DottedSurface`) monitor their viewport status using the browser `IntersectionObserver` API. As soon as a shader moves off-screen, its active animation loop halts, bringing CPU/GPU consumption down to 0% during scroll cycles.
+* **Tailwind v4 Theme System:** Custom system variables are mapped in `@theme` inside [globals.css](file:///c:/Users/agamp/Downloads/matrix/app/globals.css) (including Orbitron, Space Grotesk, Sora, and colors like `cyan-glow`, `purple-glow`, and `cyber-green`).
+* **Motion Reduction Compliance:** Smooth scrolling initialization via Lenis automatically checks the user's OS preference (`prefers-reduced-motion: reduce`) or pointer type. If detected, smooth-scroll is skipped in favor of native scrolling behavior to maximize accessibility.
 
-This app can be deployed to Vercel or any platform that supports Next.js 16.
+---
 
-Recommended deployment settings:
+## 🚀 Getting Started
 
-- Install command: `npm install`
-- Build command: `npm run build`
-- Start command: `npm run start`
+### Prerequisites
+* **Node.js** v20+ recommended
+* **npm** (comes bundled with Node.js)
 
-No environment variables are required for the current implementation.
+### Installation
+Clone the repository and install all dependencies:
+```bash
+npm install
+```
 
-## Verification & Code Quality Status
+### Local Development
+Launch the Next.js development server running Turbopack:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- **Lint Status:** Verified clean ESLint runs (`npm run lint`).
-- **Production Build:** Successfully pre-rendered static HTML routes via Next.js Turbopack compiler (`npm run build`).
+### Production Build & Deployment
+To bundle the portfolio for production hosting (such as Vercel, Netlify, or AWS):
+```bash
+npm run build
+npm run start
+```
 
-## Maintenance Notes
-
-- **Next.js Conventions:** Before changing Next.js APIs or file conventions, read the local documentation in `node_modules/next/dist/docs/` as noted in `AGENTS.md`.
-- **Performance Optimization:** Ambient WebGL shaders utilize `IntersectionObserver` elements to pause calculations when scrolled out of view, ensuring zero background CPU/GPU usage. Keep any new canvas elements optimized.
-- **Client Restrictions:** Keep browser-only code inside client components (e.g. pointer coordinates, Web Audio synth triggers).
-- **GitHub API Limits:** Be mindful of public API rate limits in the Activity section.
-- **Contact Dispatch:** If real contact delivery is needed, add an API route or external form service and replace the simulated timeout in `app/components/Contact.tsx`.
+### Linting
+To check and format the codebase to match standard rules:
+```bash
+npm run lint
+```

@@ -21,7 +21,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "MATRIX // Agampreet Singh Portfolio",
+  title: "APS",
   description: "Futuristic digital identity and professional developer portfolio of Agampreet Singh.",
 };
 
