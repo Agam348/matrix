@@ -313,68 +313,6 @@ html.lenis, html.lenis body {
   }
 }
 
-/* Planetary Orbital Revolution & Counter-Rotation Animations */
-@keyframes orbit-rev-cw {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit-rev-ccw {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes orbit-counter-cw {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes orbit-counter-ccw {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.orbit-layer-1 {
-  animation: orbit-rev-cw 40s linear infinite;
-  transform-origin: center center;
-}
-.orbit-node-1 {
-  animation: orbit-counter-cw 40s linear infinite;
-  transform-origin: center center;
-}
-
-.orbit-layer-2 {
-  animation: orbit-rev-ccw 65s linear infinite;
-  transform-origin: center center;
-}
-.orbit-node-2 {
-  animation: orbit-counter-ccw 65s linear infinite;
-  transform-origin: center center;
-}
-
-.orbit-layer-3 {
-  animation: orbit-rev-cw 95s linear infinite;
-  transform-origin: center center;
-}
-.orbit-node-3 {
-  animation: orbit-counter-cw 95s linear infinite;
-  transform-origin: center center;
-}
+/* Clean Tech Stack Styles */
 
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { soundManager } from "../lib/sound";
@@ -29,7 +29,7 @@ interface RadarNode {
 }
 
 const RADAR_NODES: RadarNode[] = [
-  // INNER ORBIT (R = 135px) - Primary Core Frameworks & Languages
+  // INNER ORBIT (R = 120px) - Primary Core Frameworks & Languages
   {
     id: "react",
     name: "React.js",
@@ -38,7 +38,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
     brandColor: "#00d8ff",
     accentGlow: "rgba(0, 216, 255, 0.35)",
-    radius: 135,
+    radius: 120,
     angleDeg: 0,
     note: "Reactive component hierarchy and concurrent state management",
     tags: ["Hooks", "Virtual DOM", "SPA"],
@@ -51,7 +51,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "/next.svg",
     brandColor: "#ffffff",
     accentGlow: "rgba(255, 255, 255, 0.3)",
-    radius: 135,
+    radius: 120,
     angleDeg: 60,
     note: "Full-stack server-side rendering, routing & production bundling",
     tags: ["Server Actions", "SSR", "App Router"],
@@ -65,7 +65,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
     brandColor: "#3178c6",
     accentGlow: "rgba(49, 120, 198, 0.35)",
-    radius: 135,
+    radius: 120,
     angleDeg: 120,
     note: "Static type safety, interfaces, generics & robust scalable architecture",
     tags: ["Type Safety", "Generics", "Interfaces"],
@@ -78,7 +78,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
     brandColor: "#54c5f8",
     accentGlow: "rgba(84, 197, 248, 0.35)",
-    radius: 135,
+    radius: 120,
     angleDeg: 180,
     note: "Custom widget tree rendering and native hybrid compilation",
     tags: ["Mobile UI", "Material", "Android/iOS"],
@@ -91,7 +91,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
     brandColor: "#387eb8",
     accentGlow: "rgba(56, 126, 184, 0.35)",
-    radius: 135,
+    radius: 120,
     angleDeg: 240,
     note: "Empirical statistical modeling, data analysis & ML pipelines",
     tags: ["Data Modeling", "Pandas", "Scripting"],
@@ -104,13 +104,13 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
     brandColor: "#4169e1",
     accentGlow: "rgba(65, 105, 225, 0.35)",
-    radius: 135,
+    radius: 120,
     angleDeg: 300,
     note: "ACID transactions, relational schemas, indexing & query tuning",
     tags: ["ACID", "Relational", "Indexing"],
   },
 
-  // MIDDLE ORBIT (R = 210px) - Languages, Mobile Engines & Databases
+  // MIDDLE ORBIT (R = 185px) - Languages, Mobile Engines & Databases
   {
     id: "tailwind",
     name: "Tailwind CSS",
@@ -119,7 +119,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
     brandColor: "#38bdf8",
     accentGlow: "rgba(56, 189, 248, 0.35)",
-    radius: 210,
+    radius: 185,
     angleDeg: 0,
     note: "Modern utility styling, @theme design tokens and fluid layouts",
     tags: ["PostCSS", "Responsive", "Tokens"],
@@ -132,7 +132,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
     brandColor: "#f7df1e",
     accentGlow: "rgba(247, 223, 30, 0.35)",
-    radius: 210,
+    radius: 185,
     angleDeg: 60,
     note: "Asynchronous Web APIs, event loop execution & DOM controllers",
     tags: ["Promises", "Async/Await", "Web APIs"],
@@ -145,7 +145,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.simpleicons.org/prisma/white",
     brandColor: "#ffffff",
     accentGlow: "rgba(255, 255, 255, 0.25)",
-    radius: 210,
+    radius: 185,
     angleDeg: 120,
     note: "Type-safe database client, schema modeling & automated migrations",
     tags: ["ORM", "Type-Safe DB", "Migrations"],
@@ -158,7 +158,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.simpleicons.org/sqlite/33B3E3",
     brandColor: "#33b3e3",
     accentGlow: "rgba(51, 179, 227, 0.35)",
-    radius: 210,
+    radius: 185,
     angleDeg: 180,
     note: "Relational schema design, normalization & query optimization",
     tags: ["Relational", "Joins", "Indexing"],
@@ -171,7 +171,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
     brandColor: "#e76f00",
     accentGlow: "rgba(231, 111, 0, 0.35)",
-    radius: 210,
+    radius: 185,
     angleDeg: 240,
     note: "Object-oriented architectures, robust design patterns, data structures & algorithms",
     tags: ["Algorithms", "Data Structures", "JVM"],
@@ -184,13 +184,13 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.simpleicons.org/flask/white",
     brandColor: "#ffffff",
     accentGlow: "rgba(255, 255, 255, 0.25)",
-    radius: 210,
+    radius: 185,
     angleDeg: 300,
     note: "Lightweight Python REST endpoints, routing & microservice backends",
     tags: ["REST", "Routing", "Python"],
   },
 
-  // OUTER ORBIT (R = 285px) - Tools, AI & Cloud Platforms
+  // OUTER ORBIT (R = 250px) - Tools, AI & Cloud Platforms
   {
     id: "antigravity",
     name: "Antigravity",
@@ -199,7 +199,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "/antigravity.png",
     brandColor: "#38bdf8",
     accentGlow: "rgba(56, 189, 248, 0.4)",
-    radius: 285,
+    radius: 250,
     angleDeg: 0,
     note: "Advanced agentic coding environment, autonomous problem solving & AI pairing",
     tags: ["Agentic AI", "DeepMind", "Automation"],
@@ -212,7 +212,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "/codex-logo.png",
     brandColor: "#818cf8",
     accentGlow: "rgba(129, 140, 248, 0.35)",
-    radius: 285,
+    radius: 250,
     angleDeg: 60,
     note: "Agentic AI development, prompt architecture & automated code generation",
     tags: ["Agentic AI", "Automation", "LLMs"],
@@ -225,7 +225,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
     brandColor: "#f05032",
     accentGlow: "rgba(240, 80, 50, 0.35)",
-    radius: 285,
+    radius: 250,
     angleDeg: 120,
     note: "Atomic commits, branching strategies & rebase workflows",
     tags: ["Branching", "History", "VCS"],
@@ -238,7 +238,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg",
     brandColor: "#ffca28",
     accentGlow: "rgba(255, 202, 40, 0.35)",
-    radius: 285,
+    radius: 250,
     angleDeg: 180,
     note: "Real-time NoSQL databases, user authentication & cloud storage",
     tags: ["Firestore", "Auth", "Hosting"],
@@ -251,7 +251,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.simpleicons.org/vercel/white",
     brandColor: "#ffffff",
     accentGlow: "rgba(255, 255, 255, 0.3)",
-    radius: 285,
+    radius: 250,
     angleDeg: 240,
     note: "Continuous deployment pipelines, edge network routing & serverless functions",
     tags: ["Edge Runtime", "CI/CD", "Serverless"],
@@ -264,7 +264,7 @@ const RADAR_NODES: RadarNode[] = [
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
     brandColor: "#1572b6",
     accentGlow: "rgba(21, 114, 182, 0.35)",
-    radius: 285,
+    radius: 250,
     angleDeg: 300,
     note: "CSS3 animations, Flexbox/Grid layouts & responsive media queries",
     tags: ["CSS3", "Keyframes", "Flex/Grid"],
@@ -276,6 +276,7 @@ export default function TechStack() {
   const [hoveredNode, setHoveredNode] = useState<RadarNode | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [isOrbitPaused, setIsOrbitPaused] = useState<boolean>(false);
+  const [orbitTime, setOrbitTime] = useState<number>(0);
 
   const activeNode = hoveredNode || selectedNode;
 
@@ -283,53 +284,71 @@ export default function TechStack() {
     ? RADAR_NODES
     : RADAR_NODES.filter((n) => n.category === activeCategory);
 
-  const orbit1Nodes = RADAR_NODES.filter((n) => n.radius === 135);
-  const orbit2Nodes = RADAR_NODES.filter((n) => n.radius === 210);
-  const orbit3Nodes = RADAR_NODES.filter((n) => n.radius === 285);
+  const orbit1Nodes = RADAR_NODES.filter((n) => n.radius === 120);
+  const orbit2Nodes = RADAR_NODES.filter((n) => n.radius === 185);
+  const orbit3Nodes = RADAR_NODES.filter((n) => n.radius === 250);
+
+  // High-performance 60fps orbital clock loop
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastTimestamp = performance.now();
+
+    const updateOrbit = (now: number) => {
+      const deltaSec = (now - lastTimestamp) / 1000;
+      lastTimestamp = now;
+
+      if (!isOrbitPaused && !hoveredNode) {
+        setOrbitTime((prev) => prev + deltaSec);
+      }
+
+      animationFrameId = requestAnimationFrame(updateOrbit);
+    };
+
+    animationFrameId = requestAnimationFrame(updateOrbit);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isOrbitPaused, hoveredNode]);
 
   const handleNodeClick = (node: RadarNode) => {
     setSelectedNode(node);
     soundManager.playClick(1000);
   };
 
-  const renderOrbitGroup = (
-    nodes: RadarNode[],
-    layerClass: string,
-    nodeClass: string
-  ) => {
+  const renderOrbitGroup = (nodes: RadarNode[]) => {
     return (
-      <div
-        className={`absolute top-1/2 left-1/2 w-0 h-0 pointer-events-none z-30 ${layerClass}`}
-        style={{
-          animationPlayState: isOrbitPaused || hoveredNode ? "paused" : "running",
-        }}
-      >
+      <>
         {nodes.map((node, idx) => {
           const isSelected = activeNode.id === node.id;
           const isFilteredOut = activeCategory !== "All" && node.category !== activeCategory;
 
-          const rad = (node.angleDeg * Math.PI) / 180;
-          const xOffset = Math.round(Math.cos(rad) * node.radius);
-          const yOffset = Math.round(Math.sin(rad) * node.radius);
+          // Planetary speeds: Orbit 1 (45s CW), Orbit 2 (65s CCW), Orbit 3 (90s CW)
+          const speedDegPerSec =
+            node.radius === 120
+              ? 360 / 45
+              : node.radius === 185
+              ? -(360 / 65)
+              : 360 / 90;
+
+          const currentAngleDeg = node.angleDeg + speedDegPerSec * orbitTime;
+          const rad = (currentAngleDeg * Math.PI) / 180;
+          const xOffset = Number((Math.cos(rad) * node.radius).toFixed(2));
+          const yOffset = Number((Math.sin(rad) * node.radius).toFixed(2));
 
           return (
             <div
               key={node.id}
-              className={`absolute transition-all duration-500 ease-out ${
-                isFilteredOut ? "opacity-0 scale-0 pointer-events-none invisible" : "opacity-100 scale-100 pointer-events-auto z-20"
-              }`}
+              suppressHydrationWarning
+              className="absolute top-1/2 left-1/2 pointer-events-none z-30"
               style={{
-                top: `${yOffset}px`,
-                left: `${xOffset}px`,
-                transform: "translate(-50%, -50%)",
+                transform: `translate(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px))`,
               }}
             >
-              {/* Counter-rotation to keep logo upright while revolving on orbit */}
+              {/* Planet icon card - ALWAYS 100% straight and upright */}
               <div
-                className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center ${nodeClass}`}
-                style={{
-                  animationPlayState: isOrbitPaused || hoveredNode ? "paused" : "running",
-                }}
+                className={`transition-all duration-500 ease-out ${
+                  isFilteredOut
+                    ? "opacity-0 scale-0 pointer-events-none invisible"
+                    : "opacity-100 scale-100 pointer-events-auto z-20"
+                }`}
               >
                 <button
                   disabled={isFilteredOut}
@@ -372,7 +391,7 @@ export default function TechStack() {
             </div>
           );
         })}
-      </div>
+      </>
     );
   };
 
@@ -479,7 +498,7 @@ export default function TechStack() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* LEFT: 2D/3D ORBITAL RADAR CONSTELLATION (Desktop/Tablet) */}
-          <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[520px] sm:h-[580px] lg:h-[620px] bg-zinc-950/50 border border-zinc-900/80 rounded-3xl p-4 overflow-hidden backdrop-blur-xl shadow-2xl">
+          <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[560px] sm:h-[600px] lg:h-[640px] bg-zinc-950/50 border border-zinc-900/80 rounded-3xl p-4 overflow-hidden backdrop-blur-xl shadow-2xl">
             
             {/* Ambient Radial Spotlight inside Radar */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.08),transparent_65%)] pointer-events-none" />
@@ -489,16 +508,16 @@ export default function TechStack() {
             <div className="absolute inset-y-0 left-1/2 w-px bg-zinc-900/80 pointer-events-none" />
 
             {/* Rotating Radar Scanner Beam */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full pointer-events-none animate-spin [animation-duration:16s]">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[510px] h-[510px] rounded-full pointer-events-none animate-spin [animation-duration:16s]">
               <div className="w-1/2 h-1/2 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-tl-full origin-bottom-right transform rotate-45" />
             </div>
 
             {/* Concentric Orbital Rings - Clean Minimalist Paths */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[270px] h-[270px] rounded-full border border-indigo-500/25 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] rounded-full border border-indigo-500/25 pointer-events-none" />
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full border border-zinc-800/80 border-dashed pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[370px] h-[370px] rounded-full border border-zinc-800/80 border-dashed pointer-events-none" />
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[570px] h-[570px] rounded-full border border-zinc-900 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-zinc-900 pointer-events-none" />
 
             {/* Center Core Node */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-zinc-950 border-2 border-indigo-500/60 shadow-[0_0_30px_rgba(99,102,241,0.4)]">
@@ -513,9 +532,9 @@ export default function TechStack() {
             </div>
 
             {/* DYNAMIC PLANETARY REVOLVING ORBIT LAYERS */}
-            {renderOrbitGroup(orbit1Nodes, "orbit-layer-1", "orbit-node-1")}
-            {renderOrbitGroup(orbit2Nodes, "orbit-layer-2", "orbit-node-2")}
-            {renderOrbitGroup(orbit3Nodes, "orbit-layer-3", "orbit-node-3")}
+            {renderOrbitGroup(orbit1Nodes)}
+            {renderOrbitGroup(orbit2Nodes)}
+            {renderOrbitGroup(orbit3Nodes)}
 
           </div>
 
