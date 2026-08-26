@@ -31,20 +31,6 @@ const PROJECTS_DATA: Project[] = [
     tech: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations", "Web Development"],
     stats: "Web Platform",
   },
-  {
-    title: "CESS Tech Fest Platform",
-    role: "Finance Head & Organizer",
-    desc: "Managed the budgeting, resource allocation and logistical workflow for a 3-day Tech Fest and 30+ hour Hackathon. Maintained operational metrics for 170+ participants across 50 teams.",
-    tech: ["Excel", "Google Sheets", "Financial Modeling", "Leadership"],
-    stats: "Event Management",
-  },
-  {
-    title: "Hackathon Solutions",
-    role: "Full Stack Developer",
-    desc: "Built collaborative web and data prototypes during intensive 36-hour coding sprints. Focused on responsive layouts and localized API integrations. Winner of 2 local hackathons.",
-    tech: ["Python", "JavaScript", "React JS", "Git / GitHub"],
-    stats: "Award-Winning Prototypes",
-  },
 ];
 
 export default function Projects() {

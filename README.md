@@ -69,10 +69,10 @@ The portfolio is structured as a high-performance single-page Next.js App Router
 - **Concentric Orbital System:** 3 planetary orbital rings (Orbit 1: R=120px core frameworks; Orbit 2: R=185px languages & databases; Orbit 3: R=250px tools, AI & cloud platforms).
 - **60fps Orbital Clock:** Independent orbital rotation speeds and directions (Orbit 1: 45s CW, Orbit 2: 65s CCW, Orbit 3: 90s CW).
 - **Interactive Telemetry HUD:** Clickable nodes with hover lock, category filters (*All*, *Web*, *Backend*, *Mobile*, *Tools*), revolution pause/resume controls, and a detailed telemetry data pane showing azimuth angle, orbit level, architectural notes, capability tags, and brand colors.
-- **18 Tracked Technologies:** React.js, Next.js, TypeScript, Flutter, Python, PostgreSQL, Tailwind CSS, JavaScript, Prisma, SQL, Java, Flask, Antigravity, Codex, Git, Firebase, Vercel, and CSS3.
+- **17 Tracked Technologies:** React.js, Next.js, TypeScript, Flutter, Python, PostgreSQL, Tailwind CSS, JavaScript, Prisma, SQL, Java, Flask, Antigravity, Codex, Git, Vercel, and CSS3.
 
 ### 5. 🕸️ WebGL Torus Knot Projects Showcase (`Projects.tsx` & `WovenCanvas`)
-- Production and prototype catalog (Gurmat Darbar, VTAP Platform, CESS Tech Fest, Hackathon Solutions) with role definitions, live links, and tech badges.
+- Production and prototype catalog (Gurmat Darbar, VTAP Platform) with role definitions, live links, and tech badges.
 - Backed by `WovenCanvas`: a Three.js WebGL canvas rendering a **26,000-particle Torus Knot** mesh with cursor repulsion physics, elastic spring returns, and additive blending glows.
 
 ### 6. 🎛️ 3D Perspective Experience Console (`Experience.tsx`)
@@ -262,7 +262,7 @@ graph TD
     subgraph Orbital Rings
         O1[Orbit 1: R=120px - Core Frameworks: React, Next.js, TS, Flutter, Python, Postgres]
         O2[Orbit 2: R=185px - Languages & DBs: Tailwind, JS, Prisma, SQL, Java, Flask]
-        O3[Orbit 3: R=250px - Tools & Cloud: Antigravity, Codex, Git, Firebase, Vercel, CSS3]
+        O3[Orbit 3: R=250px - Tools & Cloud: Antigravity, Codex, Git, Vercel, CSS3]
     end
     Clock[60fps Orbital Clock Loop] -->|45s CW| O1
     Clock -->|65s CCW| O2

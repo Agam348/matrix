@@ -70,7 +70,15 @@ export default function Navbar() {
           : "bg-zinc-950/40 backdrop-blur-md border-b border-zinc-800/30"
       } px-6 sm:px-10 py-0 flex items-center justify-between h-14`}
     >
-      <div className="w-[34px] shrink-0" aria-hidden="true" />
+      {/* Brand logo */}
+      <button
+        onClick={() => handleLinkClick("home")}
+        onMouseEnter={() => soundManager.playHoverClick(900)}
+        className="flex items-center gap-2 font-orbitron text-xs font-bold tracking-widest text-white hover:text-indigo-400 transition-colors cursor-pointer"
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
+        <span>APS</span>
+      </button>
 
       {/* Navigation center links */}
       <div className="hidden md:flex items-center gap-1 font-space text-[9.5px] font-bold tracking-[0.15em] uppercase">
