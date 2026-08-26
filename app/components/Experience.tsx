@@ -127,7 +127,7 @@ export default function Experience() {
 
 
   return (
-    <section id="experience" className="relative w-full bg-[#09090b] py-12 md:py-16 px-4 md:px-0">
+    <section id="experience" className="relative w-full bg-[#09090b] pt-8 md:pt-12 pb-12 md:pb-16 px-4 md:px-0">
       {/* Absolute subtle background lights */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none z-0" />

@@ -91,8 +91,8 @@ export default function Home() {
         {/* Full-Screen Immersive Biography Landing */}
         <About />
 
-        {/* Dynamic sections assembly with expanded premium organic vertical spacing */}
-        <div className="w-full max-w-7xl mx-auto z-10 space-y-32 sm:space-y-40">
+        {/* Dynamic sections assembly with optimized vertical rhythm */}
+        <div className="w-full max-w-7xl mx-auto z-10 space-y-20 sm:space-y-28">
           {/* Tech Stack */}
           <TechStack />
 

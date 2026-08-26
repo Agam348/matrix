@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import { Perspective, Highlight } from "@/components/ui/perspective-highlight";
+import { WovenCanvas } from "@/components/ui/woven-light-hero";
 import { Mail, Phone, Send, Check } from "lucide-react";
 
 interface FormState {
@@ -67,38 +68,46 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-20 md:py-32 px-6 sm:px-12 max-w-5xl mx-auto flex flex-col justify-center items-center w-full bg-transparent overflow-hidden"
+      className="relative w-full py-16 md:py-24 px-6 sm:px-12 rounded-3xl border border-zinc-900/60 bg-zinc-950/20 flex flex-col justify-center items-center overflow-hidden z-0 shadow-2xl"
     >
+      {/* 1. Full-screen WebGL Woven Silk 26,000 Particle Torus Knot Backdrop */}
+      <WovenCanvas />
+
+      {/* 2. Dark glass overlay */}
+      <div className="absolute inset-0 bg-[#09090b]/80 backdrop-blur-[0.5px] z-0 pointer-events-none" />
+
       {/* Ambient glow blobs for depth */}
-      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-indigo-600/4 blur-[100px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 left-0 w-60 h-60 rounded-full bg-violet-600/4 blur-[80px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-indigo-600/5 blur-[100px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 left-0 w-60 h-60 rounded-full bg-violet-600/5 blur-[80px] pointer-events-none z-0" />
 
-      {/* Title block */}
-      <div className="w-full text-left mb-10 md:mb-16 border-b border-zinc-800/40 pb-5">
-        <motion.div
-          initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-1"
-        >
-          <span className="w-1 h-6 bg-gradient-to-b from-indigo-400 to-pink-500 rounded-full shrink-0" />
-          <h2 className="font-orbitron text-3xl sm:text-4xl font-extrabold tracking-widest uppercase">
-            <span className="text-white">CON</span><span className="text-indigo-400">TACT</span>
-          </h2>
-        </motion.div>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-space text-xs text-zinc-500 mt-2 uppercase tracking-wider pl-4"
-        >
-          Get in touch for opportunities or collaboration
-        </motion.p>
-      </div>
+      {/* 3. Foreground content wrapper */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
+        {/* Title block */}
+        <div className="w-full text-left mb-10 md:mb-16 border-b border-zinc-800/40 pb-5">
+          <motion.div
+            initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3 mb-1"
+          >
+            <span className="w-1 h-6 bg-gradient-to-b from-indigo-400 to-pink-500 rounded-full shrink-0" />
+            <h2 className="font-orbitron text-3xl sm:text-4xl font-extrabold tracking-widest uppercase">
+              <span className="text-white">CON</span><span className="text-indigo-400">TACT</span>
+            </h2>
+          </motion.div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="font-space text-xs text-zinc-500 mt-2 uppercase tracking-wider pl-4"
+          >
+            Get in touch for opportunities or collaboration
+          </motion.p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 w-full items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 w-full items-stretch">
         
         {/* Left Side: Borderless, Floating Contact Form */}
         <motion.div
@@ -274,6 +283,8 @@ export default function Contact() {
             </a>
           ))}
         </motion.div>
+
+        </div>
 
       </div>
 
