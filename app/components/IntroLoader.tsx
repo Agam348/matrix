@@ -12,6 +12,13 @@ export default function IntroLoader() {
   const [isBurning, setIsBurning] = useState(false);
 
   useEffect(() => {
+    // If mobile, do not run heavy intro loader
+    if (window.innerWidth < 1024) {
+      const curtain = document.getElementById("intro-preloader-curtain");
+      if (curtain) curtain.remove();
+      return;
+    }
+
     // Lock page scrolling during intro fire reveal
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
