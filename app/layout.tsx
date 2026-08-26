@@ -36,6 +36,17 @@ export default function RootLayout({
       className={`${orbitron.variable} ${spaceGrotesk.variable} ${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#09090b] text-[#f4f4f5] antialiased">
+        {/* Instant zero-flash HTML curtain to prevent any pre-hydration hero bleed */}
+        <div
+          id="intro-preloader-curtain"
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "#000000",
+            zIndex: 99,
+            pointerEvents: "none",
+          }}
+        />
         {children}
       </body>
     </html>

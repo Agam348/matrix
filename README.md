@@ -53,7 +53,7 @@ The portfolio is structured as a high-performance single-page Next.js App Router
 ### 1. 🚪 Introductory Gate (`IntroLoader.tsx` & `Phosphor30.tsx`)
 - Full-screen entry sequence featuring an 80-iteration ray-marched `Phosphor30` WebGL2 fractal shader on desktop, paired with a lightweight radial gradient on mobile.
 - Features a synchronized 3.6-second progress line indicator.
-- Locks page scroll during asset initialization and exits with a smooth cubic-bezier curtain reveal (`translate-y-full` in 1150ms).
+- Locks page scroll during asset initialization and exits with a dedicated **WebGL2 GLSL Paper Burn Shader** (`paper-burn-intro.tsx`) computing real-time fractal combustion from the center $(0.5, 0.5)$ outward, complete with white-hot flame cores, glowing amber embers, charred ash contours, and flying spark particles.
 
 ### 2. 🌌 Nebula Hero Canvas & Hanging ID Card (`Hero.tsx` & `HangingIdCard.tsx`)
 - **AnimatedShaderHero Canvas:** A custom WebGL2 canvas executing a multi-octave Fractional Brownian Motion (FBM) shader with mouse-reactive coordinates and nebula luminescence.

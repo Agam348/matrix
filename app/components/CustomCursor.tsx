@@ -45,6 +45,11 @@ export default function CustomCursor() {
 
     const updateCursorState = (target: HTMLElement) => {
       if (!target) return;
+
+      if (document.body.getAttribute("data-intro-active") === "true") {
+        cursorStateRef.current = "default";
+        return;
+      }
       
       const computedStyle = window.getComputedStyle(target);
       const cursorStyle = computedStyle.cursor;
@@ -75,6 +80,9 @@ export default function CustomCursor() {
     };
 
     const handleMouseDown = (e: MouseEvent) => {
+      if (document.body.getAttribute("data-intro-active") === "true") {
+        return;
+      }
       const target = e.target as HTMLElement;
       if (!target) return;
       const computedStyle = window.getComputedStyle(target);

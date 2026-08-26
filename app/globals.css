@@ -266,6 +266,83 @@ html.lenis, html.lenis body {
   }
 }
 
+/* Center Paper Burn Dissolve Animations */
+@keyframes burn-dissolve {
+  0% {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0%, transparent 0%, rgba(0, 0, 0, 0.2) 0.5%, rgba(0, 0, 0, 0.8) 1.5%, black 2.5%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 0%, transparent 0%, rgba(0, 0, 0, 0.2) 0.5%, rgba(0, 0, 0, 0.8) 1.5%, black 2.5%);
+    opacity: 1;
+    filter: brightness(1) contrast(1);
+  }
+  15% {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 8%, transparent 10%, rgba(0, 0, 0, 0.3) 13%, rgba(0, 0, 0, 0.85) 17%, black 22%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 8%, transparent 10%, rgba(0, 0, 0, 0.3) 13%, rgba(0, 0, 0, 0.85) 17%, black 22%);
+    opacity: 1;
+    filter: brightness(1.1) contrast(1.05);
+  }
+  40% {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 28%, transparent 33%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.9) 44%, black 50%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 28%, transparent 33%, rgba(0, 0, 0, 0.4) 38%, rgba(0, 0, 0, 0.9) 44%, black 50%);
+    opacity: 0.98;
+    filter: brightness(1.15) contrast(1.1);
+  }
+  70% {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 60%, transparent 68%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.95) 82%, black 88%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 60%, transparent 68%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.95) 82%, black 88%);
+    opacity: 0.9;
+  }
+  90% {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 88%, transparent 95%, rgba(0, 0, 0, 0.6) 98%, black 100%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 88%, transparent 95%, rgba(0, 0, 0, 0.6) 98%, black 100%);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 120%, transparent 120%, black 120%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 120%, transparent 120%, black 120%);
+    opacity: 0;
+    filter: brightness(1.2) contrast(1.1);
+  }
+}
+
+@keyframes burn-ember-ring {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.05) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.95;
+  }
+  95% {
+    opacity: 0.4;
+  }
+  100% {
+    width: 220vmax;
+    height: 220vmax;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+}
+
+@keyframes burn-ambient-flash {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @media (hover: none), (pointer: coarse) {
   .mobile-no-hover {
     transform: none !important;
