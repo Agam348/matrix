@@ -10,9 +10,7 @@ import { DottedSurface } from "@/components/ui/dotted-surface";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import TechStack from "./components/TechStack";
-import Projects from "./components/Projects";
 import Experience from "./components/Experience";
-import Activity from "./components/Activity";
 import Contact from "./components/Contact";
 import { soundManager } from "./lib/sound";
 import Lenis from "lenis";
@@ -98,14 +96,8 @@ export default function Home() {
           {/* Tech Stack */}
           <TechStack />
 
-          {/* Projects with high-end screenshot mockups */}
-          <Projects />
-
           {/* Experience Path */}
           <Experience />
-
-          {/* Contribution Matrix with live GitHub API events sync */}
-          <Activity />
 
           {/* Communication Nodes */}
           <Contact />

@@ -71,30 +71,20 @@ The portfolio is structured as a high-performance single-page Next.js App Router
 - **Interactive Telemetry HUD:** Clickable nodes with hover lock, category filters (*All*, *Web*, *Backend*, *Mobile*, *Tools*), revolution pause/resume controls and a detailed telemetry data pane showing azimuth angle, orbit level, architectural notes, capability tags and brand colors.
 - **18 Tracked Technologies:** React.js, Next.js, TypeScript, Flutter, Python, PostgreSQL, Tailwind CSS, JavaScript, Prisma, SQL, Java, Flask, Antigravity, Codex, Git, Docker, Vercel and CSS3.
 
-### 5. 🕸️ WebGL Torus Knot Projects Showcase (`Projects.tsx` & `WovenCanvas`)
-- Production and prototype catalog (Gurmat Darbar, VTAP Platform) with role definitions, live links and tech badges.
-- Backed by `WovenCanvas`: a Three.js WebGL canvas rendering a **26,000-particle Torus Knot** mesh with cursor repulsion physics, elastic spring returns and additive blending glows.
-
-### 6. 🎛️ 3D Perspective Experience Console (`Experience.tsx`)
+### 5. 🎛️ 3D Perspective Experience Console (`Experience.tsx`)
 - Scroll-driven 3D tilt perspective wrapper powered by Framer Motion (`ContainerScroll`).
-- Features a terminal-style system database console (`SYS_DATABASE`) with tabbed organizational nodes (Gurmat Darbar, CESS GNDU, VTAP), active status indicators (`ONGOING` / `RETRIEVED`), detailed accomplishment bullet points and skill tags.
+- Features a terminal-style system database console (`SYS_DATABASE`) with tabbed organizational nodes (TAlpha, Gurmat Darbar, VTAP, CESS GNDU), active status indicators (`ONGOING` / `RETRIEVED`), detailed accomplishment bullet points and skill tags.
 
-### 7. 📊 Live GitHub Activity Sync & Contribution Matrix (`Activity.tsx`)
-- Client-side integration fetching live user statistics (public repositories, stargazers count, total commits, pull requests) and recent activity logs directly from the public GitHub REST API (`api.github.com/users/Agam348`).
-- Interactive 7×34 contribution matrix grid with clickable cells and sound feedback.
-- Fail-soft fallback data models to ensure zero visual disruption in the event of API rate limits.
-- Language distribution progress visualizer.
-
-### 8. 📡 Perspective Contact Node & Social Dossier (`Contact.tsx`)
+### 6. 📡 Perspective Contact Node & Social Dossier (`Contact.tsx`)
 - Floating 3D perspective contact form with custom validation, real-time input highlights (`perspective-highlight.tsx`) and animated transmission success states.
 - Cybernetic social links dossier mapping LinkedIn, Instagram, GitHub, direct Email and Cellular channels with custom hover sound triggers.
 
-### 9. 🌐 Reactive 3D Particle Globe (`ThreeParticleScene.tsx`)
+### 7. 🌐 Reactive 3D Particle Globe (`ThreeParticleScene.tsx`)
 - Interactive React Three Fiber (R3F) sphere populated by 1,800 delicate points and latitude/longitude rings.
 - Automatically computes spherical trigonometry to place a pulsing beacon at Agampreet's origin: **Tarn Taran, Punjab, India** (31.4519° N, 74.9218° E).
 - Rotates and scales dynamically in response to scroll progress and cursor motion.
 
-### 10. 🎯 Hardware-Accelerated Custom Pointer (`CustomCursor.tsx`)
+### 8. 🎯 Hardware-Accelerated Custom Pointer (`CustomCursor.tsx`)
 - Bypasses React state overhead by utilizing direct DOM manipulation inside `requestAnimationFrame` for 60/120fps responsiveness.
 - Multi-state pointer system:
   - **Center Ball:** Direct point indicator.

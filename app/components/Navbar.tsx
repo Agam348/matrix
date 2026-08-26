@@ -6,9 +6,7 @@ import { soundManager } from "../lib/sound";
 const NAV_LINKS = [
   { id: "about",      label: "About"      },
   { id: "skills",     label: "Skills"      },
-  { id: "projects",   label: "Projects"    },
   { id: "experience", label: "Experience"  },
-  { id: "activity",   label: "Activity"    },
   { id: "contact",    label: "Contact"     },
 ];
 

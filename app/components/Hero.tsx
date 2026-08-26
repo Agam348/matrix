@@ -20,10 +20,12 @@ const TERMINAL_LINES = [
   "  > BS DATA SCIENCE • IIT MADRAS (2024-2028)",
   "",
   "WORK EXPERIENCE NODES:",
+  "  > JUNIOR DEVELOPER • TALPHA (AUG 2025 - PRESENT)",
+  "    Mutual fund research, quantitative screening & capital markets gateway.",
   "  > DEVELOPER • GURMAT DARBAR (APR 2026 - PRESENT)",
-  "    Worked on the website & contributed to the Android app.",
+  "    Worked on the design and development of the official website.",
   "  > WEB DEVELOPER • VTAP (MAR 2026 - APR 2026)",
-  "    Worked on the VTAP website & client websites.",
+  "    Built responsive websites for German tech company using HTML, CSS & JS.",
   "",
   "SYSTEM ARCHITECTURES:",
   "  > MOBILE: FLUTTER, DART, HYBRID WIDGET DEPLOYMENT",
@@ -203,12 +205,12 @@ export default function Hero() {
               {/* Action CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start w-full sm:w-auto pt-2 animate-fade-in-up animation-delay-800">
                 <button
-                  onClick={() => handleScrollTo("projects")}
+                  onClick={() => handleScrollTo("experience")}
                   onMouseEnter={() => soundManager.playHoverClick(1000)}
                   className="h-11 sm:h-12 w-full sm:w-auto px-7 flex items-center justify-center gap-2 border border-zinc-700/70 hover:border-indigo-500/50 bg-zinc-950/60 hover:bg-indigo-950/20 backdrop-blur-sm text-zinc-300 hover:text-white rounded-lg font-space text-[9px] sm:text-[9.5px] font-extrabold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.2)] cursor-pointer shrink-0 active:scale-[0.98]"
                 >
                   <Eye className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
-                  View My Work
+                  View Experience
                 </button>
                 
                 <button

@@ -31,6 +31,26 @@ interface TimelineEvent {
 
 const EXPERIENCES_DATA: TimelineEvent[] = [
   {
+    organization: "TAlpha",
+    shortName: "TAlpha",
+    duration: "Aug 2025 — Present",
+    status: "ACTIVE",
+    themeColor: "violet",
+    glowColor: "rgba(168, 85, 247, 0.2)",
+    roles: [
+      {
+        title: "Junior Developer",
+        year: "Aug 2025 — Present",
+        desc: [
+          "Working as Junior Developer at TAlpha, an institutional-grade mutual fund research and portfolio intelligence startup",
+          "Engineering database schemas and type-safe queries using Prisma and PostgreSQL for capital market datasets (AMFI / NSE / BSE)",
+          "Deploying containerized services with Docker and building responsive financial dashboards with Tailwind CSS and Next.js"
+        ],
+        skills: ["Prisma", "Docker", "Tailwind CSS", "PostgreSQL", "Next.js", "TypeScript"],
+      }
+    ]
+  },
+  {
     organization: "Gurmat Darbar",
     shortName: "Gurmat Darbar",
     duration: "Apr 2026 — Present",
@@ -43,30 +63,10 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         year: "Apr 2026 — Present",
         desc: [
           "Working on the design and development of the Gurmat Darbar website",
-          "Contributing to the development of the Gurmat Darbar Android application",
+          "Developing responsive frontend user interfaces and clean digital experiences",
           "Collaborating with team members to improve functionality and user experience"
         ],
-        skills: ["Flutter", "Dart", "UI/UX Design", "Web Development", "Android Development"],
-      }
-    ]
-  },
-  {
-    organization: "Computer Engineering Student Society (CESS)",
-    shortName: "CESS GNDU",
-    duration: "Aug 2025 — May 2026",
-    status: "ARCHIVED",
-    themeColor: "emerald",
-    glowColor: "rgba(52, 211, 153, 0.2)",
-    roles: [
-      {
-        title: "Finance Head",
-        year: "Aug 2025 — May 2026",
-        desc: [
-          "Organized a 3-day Tech Fest and 30 hour Hackathon, managing resources for 170+ participants and 50 teams",
-          "Utilized Excel and Google Sheets for advanced expense tracking and financial modeling",
-          "Managed budgeting and financial planning for multiple student-led events"
-        ],
-        skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
+        skills: ["Next.js", "React.js", "Tailwind CSS", "UI/UX Design", "Web Development"],
       }
     ]
   },
@@ -82,11 +82,31 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Web Developer",
         year: "Mar 2026 — Apr 2026",
         desc: [
-          "Worked on the development and design of the VTAP website",
-          "Worked on the development and optimization of client websites",
-          "Built responsive user interfaces and enhanced custom web layouts"
+          "Worked as Web Developer for Germany-based tech company VTAP, structuring responsive web pages using HTML5 and CSS3",
+          "Implemented interactive client-side functionality and dynamic DOM manipulation with JavaScript",
+          "Optimized cross-browser compatibility and mobile responsiveness for client websites"
         ],
-        skills: ["Next.js", "React.js", "Tailwind CSS", "NFC Integrations", "UI/UX Design", "Web Development"],
+        skills: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Web Development"],
+      }
+    ]
+  },
+  {
+    organization: "Computer Engineering Student Society (CESS)",
+    shortName: "CESS GNDU",
+    duration: "Aug 2025 — Aug 2026",
+    status: "ARCHIVED",
+    themeColor: "emerald",
+    glowColor: "rgba(52, 211, 153, 0.2)",
+    roles: [
+      {
+        title: "Finance Head",
+        year: "Aug 2025 — Aug 2026",
+        desc: [
+          "Organized a 3-day Tech Fest and 30 hour Hackathon, managing resources for 170+ participants and 50 teams",
+          "Utilized Excel and Google Sheets for advanced expense tracking and financial modeling",
+          "Managed budgeting and financial planning for multiple student-led events"
+        ],
+        skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
       }
     ]
   }
