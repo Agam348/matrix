@@ -13,7 +13,7 @@
 
 <p align="center">
   <strong>A futuristic, cyberpunk-minimalist digital identity and interactive developer portfolio.</strong><br />
-  Engineered with real-time WebGL2 GLSL shaders, Three.js 3D particle physics, procedural Web Audio synthesis, planetary orbital radar systems, hardware-accelerated pointer mechanics, and smooth inertial scrolling.
+  Engineered with real-time WebGL2 GLSL shaders, Three.js 3D particle physics, procedural Web Audio synthesis, planetary orbital radar systems, hardware-accelerated pointer mechanics and smooth inertial scrolling.
 </p>
 
 </div>
@@ -44,7 +44,7 @@
 - **MTech FYIP Computer Science & Engineering** at Guru Nanak Dev University (GNDU Amritsar, 2024–2029)
 - **BS in Data Science** at the Indian Institute of Technology Madras (IIT Madras, 2024–2028)
 
-The portfolio is structured as a high-performance single-page Next.js App Router application built from the ground up for high visual fidelity, 60/120fps interactions, and cybernetic minimalism. Rather than relying on static images or heavy pre-rendered video backgrounds, MATRIX synthesizes dynamic visuals, ambient lighting, particle webs, and soundscapes entirely in real-time through **WebGL2 GLSL fragment shaders**, **Three.js particle meshes**, and the native browser **Web Audio API**.
+The portfolio is structured as a high-performance single-page Next.js App Router application built from the ground up for high visual fidelity, 60/120fps interactions and cybernetic minimalism. Rather than relying on static images or heavy pre-rendered video backgrounds, MATRIX synthesizes dynamic visuals, ambient lighting, particle webs and soundscapes entirely in real-time through **WebGL2 GLSL fragment shaders**, **Three.js particle meshes** and the native browser **Web Audio API**.
 
 ---
 
@@ -53,31 +53,31 @@ The portfolio is structured as a high-performance single-page Next.js App Router
 ### 1. 🚪 Introductory Gate (`IntroLoader.tsx` & `Phosphor30.tsx`)
 - Full-screen entry sequence featuring an 80-iteration ray-marched `Phosphor30` WebGL2 fractal shader on desktop, paired with a lightweight radial gradient on mobile.
 - Features a synchronized 3.6-second progress line indicator.
-- Locks page scroll during asset initialization and exits with a dedicated **WebGL2 GLSL Paper Burn Shader** (`paper-burn-intro.tsx`) computing real-time fractal combustion from the center $(0.5, 0.5)$ outward, complete with white-hot flame cores, glowing amber embers, charred ash contours, and flying spark particles.
+- Locks page scroll during asset initialization and exits with a dedicated **WebGL2 GLSL Paper Burn Shader** (`paper-burn-intro.tsx`) computing real-time fractal combustion from the center $(0.5, 0.5)$ outward, complete with white-hot flame cores, glowing amber embers, charred ash contours and flying spark particles.
 
 ### 2. 🌌 Nebula Hero Canvas & Hanging ID Card (`Hero.tsx` & `HangingIdCard.tsx`)
 - **AnimatedShaderHero Canvas:** A custom WebGL2 canvas executing a multi-octave Fractional Brownian Motion (FBM) shader with mouse-reactive coordinates and nebula luminescence.
-- **Hanging Draggable ID Card:** A physics-influenced ID badge tethered by an interactive SVG lanyard. Uses quadratic bezier curve mathematics (`Q cpX cpY endX endY`) and Framer Motion spring physics (`stiffness: 180, damping: 14`) to simulate realistic rope tension, gravity sag, and momentum upon release. Features an interactive barcode link to LinkedIn.
-- **Retro-Futuristic Terminal Emulator:** An interactive command-line console overlay simulating secure system handshake protocols, displaying decoded academic records, work milestones, and engineering philosophy with authentic mechanical sound ticks and restart capabilities.
+- **Hanging Draggable ID Card:** A physics-influenced ID badge tethered by an interactive SVG lanyard. Uses quadratic bezier curve mathematics (`Q cpX cpY endX endY`) and Framer Motion spring physics (`stiffness: 180, damping: 14`) to simulate realistic rope tension, gravity sag and momentum upon release. Features an interactive barcode link to LinkedIn.
+- **Retro-Futuristic Terminal Emulator:** An interactive command-line console overlay simulating secure system handshake protocols, displaying decoded academic records, work milestones and engineering philosophy with authentic mechanical sound ticks and restart capabilities.
 
 ### 3. 💻 Interactive 3D Code Window & Dossier Modal (`About.tsx`)
 - **3D Parallax Tilt Card:** A macOS-styled `developer.ts` code editor window with real-time character-by-character syntax-highlighted typing simulation and mouse-following 3D rotation transforms (`rotateX` / `rotateY`).
-- **Academic Dossier Console:** A modal overlay providing deep dives into Agampreet's dual-degree coursework (GNDU MTech & IIT Madras BS), hackathon accomplishments (3x Winner, 1x International), and leadership tenure (Finance Head at CESS).
+- **Academic Dossier Console:** A modal overlay providing deep dives into Agampreet's dual-degree coursework (GNDU MTech & IIT Madras BS), hackathon accomplishments (3x Winner, 1x International) and leadership tenure (Finance Head at CESS).
 - **Trust Ticker Bar:** A structural trust bar emphasizing competitive programming milestones.
 
 ### 4. 🛰️ 2D/3D Orbital Radar Constellation (`TechStack.tsx` — `MATRIX_RADAR_V4`)
 - **Concentric Orbital System:** 3 planetary orbital rings (Orbit 1: R=120px core frameworks; Orbit 2: R=185px languages & databases; Orbit 3: R=250px tools, AI & cloud platforms).
 - **60fps Orbital Clock:** Independent orbital rotation speeds and directions (Orbit 1: 45s CW, Orbit 2: 65s CCW, Orbit 3: 90s CW).
-- **Interactive Telemetry HUD:** Clickable nodes with hover lock, category filters (*All*, *Web*, *Backend*, *Mobile*, *Tools*), revolution pause/resume controls, and a detailed telemetry data pane showing azimuth angle, orbit level, architectural notes, capability tags, and brand colors.
-- **17 Tracked Technologies:** React.js, Next.js, TypeScript, Flutter, Python, PostgreSQL, Tailwind CSS, JavaScript, Prisma, SQL, Java, Flask, Antigravity, Codex, Git, Vercel, and CSS3.
+- **Interactive Telemetry HUD:** Clickable nodes with hover lock, category filters (*All*, *Web*, *Backend*, *Mobile*, *Tools*), revolution pause/resume controls and a detailed telemetry data pane showing azimuth angle, orbit level, architectural notes, capability tags and brand colors.
+- **18 Tracked Technologies:** React.js, Next.js, TypeScript, Flutter, Python, PostgreSQL, Tailwind CSS, JavaScript, Prisma, SQL, Java, Flask, Antigravity, Codex, Git, Docker, Vercel and CSS3.
 
 ### 5. 🕸️ WebGL Torus Knot Projects Showcase (`Projects.tsx` & `WovenCanvas`)
-- Production and prototype catalog (Gurmat Darbar, VTAP Platform) with role definitions, live links, and tech badges.
-- Backed by `WovenCanvas`: a Three.js WebGL canvas rendering a **26,000-particle Torus Knot** mesh with cursor repulsion physics, elastic spring returns, and additive blending glows.
+- Production and prototype catalog (Gurmat Darbar, VTAP Platform) with role definitions, live links and tech badges.
+- Backed by `WovenCanvas`: a Three.js WebGL canvas rendering a **26,000-particle Torus Knot** mesh with cursor repulsion physics, elastic spring returns and additive blending glows.
 
 ### 6. 🎛️ 3D Perspective Experience Console (`Experience.tsx`)
 - Scroll-driven 3D tilt perspective wrapper powered by Framer Motion (`ContainerScroll`).
-- Features a terminal-style system database console (`SYS_DATABASE`) with tabbed organizational nodes (Gurmat Darbar, CESS GNDU, VTAP), active status indicators (`ONGOING` / `RETRIEVED`), detailed accomplishment bullet points, and skill tags.
+- Features a terminal-style system database console (`SYS_DATABASE`) with tabbed organizational nodes (Gurmat Darbar, CESS GNDU, VTAP), active status indicators (`ONGOING` / `RETRIEVED`), detailed accomplishment bullet points and skill tags.
 
 ### 7. 📊 Live GitHub Activity Sync & Contribution Matrix (`Activity.tsx`)
 - Client-side integration fetching live user statistics (public repositories, stargazers count, total commits, pull requests) and recent activity logs directly from the public GitHub REST API (`api.github.com/users/Agam348`).
@@ -86,8 +86,8 @@ The portfolio is structured as a high-performance single-page Next.js App Router
 - Language distribution progress visualizer.
 
 ### 8. 📡 Perspective Contact Node & Social Dossier (`Contact.tsx`)
-- Floating 3D perspective contact form with custom validation, real-time input highlights (`perspective-highlight.tsx`), and animated transmission success states.
-- Cybernetic social links dossier mapping LinkedIn, Instagram, GitHub, direct Email, and Cellular channels with custom hover sound triggers.
+- Floating 3D perspective contact form with custom validation, real-time input highlights (`perspective-highlight.tsx`) and animated transmission success states.
+- Cybernetic social links dossier mapping LinkedIn, Instagram, GitHub, direct Email and Cellular channels with custom hover sound triggers.
 
 ### 9. 🌐 Reactive 3D Particle Globe (`ThreeParticleScene.tsx`)
 - Interactive React Three Fiber (R3F) sphere populated by 1,800 delicate points and latitude/longitude rings.
@@ -110,17 +110,17 @@ The portfolio is structured as a high-performance single-page Next.js App Router
 | Layer | Technology | Version | Purpose |
 | :--- | :--- | :--- | :--- |
 | **Framework** | [Next.js](https://nextjs.org/) (App Router) | `16.2.6` | React framework, SSR/SSG orchestration, asset optimization |
-| **Core Runtime** | [React](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/) | `19.2.4` / `5.x` | Modern reactive UI, typed schemas, and component architecture |
+| **Core Runtime** | [React](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/) | `19.2.4` / `5.x` | Modern reactive UI, typed schemas and component architecture |
 | **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) | `^4.0.0` | Next-gen styling via `@tailwindcss/postcss` & `@theme` system |
 | **Smooth Scrolling**| [Lenis](https://github.com/darkroomengineering/lenis) | `^1.3.23` | Inertial momentum smooth scrolling with cubic ease-out curves |
 | **Motion & Physics**| [Framer Motion](https://www.framer.com/motion/) | `^12.40.0` | Layout animations, 3D card transforms, spring physics |
 | **Animation Utils** | [GSAP](https://greensock.com/) | `^3.15.0` | High-performance animation timelines |
 | **3D & Canvas** | [Three.js](https://threejs.org/) | `^0.184.0` | 3D scene graphs, particle geometries, materials, camera math |
 | **React 3D** | [React Three Fiber](https://r3f.docs.pmnd.rs/) / [Drei](https://github.com/pmndrs/drei) | `^9.6.1` / `^10.7.7` | Declarative Three.js components and helpers |
-| **GLSL Shaders** | WebGL2 Raw Shaders | Native | Mathematical raymarching, FBM noise, and procedural canvases |
+| **GLSL Shaders** | WebGL2 Raw Shaders | Native | Mathematical raymarching, FBM noise and procedural canvases |
 | **Audio Engine** | Web Audio API | Native | Procedural sound synthesizer (zero static audio asset overhead) |
 | **Icons** | [Lucide React](https://lucide.dev/) | `^1.16.0` | Clean, modern cybernetic iconography |
-| **Typography** | `next/font/google` | Built-in | Orbitron, Space Grotesk, and Sora web fonts |
+| **Typography** | `next/font/google` | Built-in | Orbitron, Space Grotesk and Sora web fonts |
 
 ---
 
@@ -246,7 +246,7 @@ Features a linear color gradient interpolating from sky-blue (`#38bdf8`) to cybe
 ### 5. Reactive 3D Globe with Coordinate Beacon (`ThreeParticleScene.tsx`)
 Interactive React Three Fiber globe containing 1,800 points and latitude/longitude rings. Spherical trigonometry computes the exact position for Tarn Taran, Punjab:
 $$x = R \cdot \cos(\text{lat}) \cdot \cos(\text{lon}), \quad y = R \cdot \sin(\text{lat}), \quad z = R \cdot \cos(\text{lat}) \cdot \sin(\text{lon})$$
-Where $\text{lat} = 31.4519^\circ$, $\text{lon} = 74.9218^\circ$, and $R = 2.3$.
+Where $\text{lat} = 31.4519^\circ$, $\text{lon} = 74.9218^\circ$ and $R = 2.3$.
 
 ### 6. 0% CPU/GPU Idle Protection via IntersectionObserver
 All active WebGL and Three.js canvases (`AnimatedShaderHero`, `WovenCanvas`, `DottedSurface`) register viewport listeners via the browser's `IntersectionObserver` API. When a canvas scrolls off-screen, its `requestAnimationFrame` render loop halts immediately, reducing GPU and CPU utilization to **0%** during page reading.
@@ -262,7 +262,7 @@ graph TD
     subgraph Orbital Rings
         O1[Orbit 1: R=120px - Core Frameworks: React, Next.js, TS, Flutter, Python, Postgres]
         O2[Orbit 2: R=185px - Languages & DBs: Tailwind, JS, Prisma, SQL, Java, Flask]
-        O3[Orbit 3: R=250px - Tools & Cloud: Antigravity, Codex, Git, Vercel, CSS3]
+        O3[Orbit 3: R=250px - Tools & Cloud: Antigravity, Codex, Git, Docker, Vercel, CSS3]
     end
     Clock[60fps Orbital Clock Loop] -->|45s CW| O1
     Clock -->|65s CCW| O2
@@ -300,7 +300,7 @@ graph LR
 - **Uplink Sweep (`playUplink`):** An ascending sine wave sweep ($100\text{Hz} \rightarrow 1500\text{Hz}$) over $800\text{ms}$ indicating data submission.
 
 > [!NOTE]
-> In compliance with browser autoplay security policies, audio initializes in a muted state. It can be toggled via the navbar controls, and the ambient room hum initializes automatically upon the user's first click.
+> In compliance with browser autoplay security policies, audio initializes in a muted state. It can be toggled via the navbar controls and the ambient room hum initializes automatically upon the user's first click.
 
 ---
 
@@ -308,7 +308,7 @@ graph LR
 
 ### Typography Pairing
 Loaded with optimal sub-setting via `next/font/google`:
-- **Display & Headings:** `Orbitron` — Geometric, high-tech sans-serif for titles, numbers, and badges.
+- **Display & Headings:** `Orbitron` — Geometric, high-tech sans-serif for titles, numbers and badges.
 - **Subheadings & Code:** `Space Grotesk` — Monospaced feel with organic proportions for technical labels and navigation.
 - **Body & Dossier:** `Sora` — Clean, human-centric geometric font engineered for high legibility at micro sizes.
 
@@ -330,7 +330,7 @@ The global palette and typography tokens are configured in `app/globals.css`:
 
 ## ⚡ Performance & Accessibility Engineering
 
-1. **Lenis Inertial Smooth Scrolling:** Configured with a premium cubic ease-out curve (`easeOutExpo`: $1 - 2^{-10t}$). Automatically detects `(prefers-reduced-motion: reduce)`, `(pointer: coarse)`, and mobile viewports to cleanly fall back to native device scrolling.
+1. **Lenis Inertial Smooth Scrolling:** Configured with a premium cubic ease-out curve (`easeOutExpo`: $1 - 2^{-10t}$). Automatically detects `(prefers-reduced-motion: reduce)`, `(pointer: coarse)` and mobile viewports to cleanly fall back to native device scrolling.
 2. **Direct DOM Pointer Calculations:** `CustomCursor.tsx` updates pointer coordinates and halo scales using direct DOM mutations via `ref.current.style.transform = translate3d(...)` inside `requestAnimationFrame`, eliminating React state re-render overhead.
 3. **Responsive Mobile Fallbacks:** High-overhead WebGL canvases automatically switch to lightweight CSS radial gradients when running on mobile devices or touch screens.
 4. **WebGL Lifecycle Management:** Comprehensive resource disposal handlers (`geometry.dispose()`, `material.dispose()`, `gl.deleteProgram()`, `cancelAnimationFrame()`) prevent memory leaks during page navigation or component unmounting.
@@ -376,7 +376,7 @@ npm run start
 ## ⚙️ Customization Guide
 
 ### Updating Personal Information
-- **Hero & Identity:** Modify text, subtitles, and terminal readouts in [`app/components/Hero.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/Hero.tsx).
+- **Hero & Identity:** Modify text, subtitles and terminal readouts in [`app/components/Hero.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/Hero.tsx).
 - **ID Badge Photo & Barcode:** Replace [`public/profile.jpg`](file:///c:/Users/agamp/Downloads/matrix/public/profile.jpg) and edit details in [`components/ui/hanging-id-card.tsx`](file:///c:/Users/agamp/Downloads/matrix/components/ui/hanging-id-card.tsx).
 - **Biography & Education:** Update the `CODE_TOKENS` and modal timeline entries in [`app/components/About.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/About.tsx).
 - **Orbital Tech Stack Nodes:** Edit the `RADAR_NODES` array in [`app/components/TechStack.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/TechStack.tsx).

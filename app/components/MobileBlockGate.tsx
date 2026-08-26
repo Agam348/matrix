@@ -54,7 +54,7 @@ export default function MobileBlockGate() {
         </h1>
 
         <p className="text-zinc-400 text-sm font-space leading-relaxed mb-8">
-          This digital portfolio is engineered with real-time 3D WebGL shaders, interactive spatial physics, and custom sound synthesis designed exclusively for larger screens.
+          This digital portfolio is engineered with real-time 3D WebGL shaders, interactive spatial physics and custom sound synthesis designed exclusively for larger screens.
         </p>
 
         {/* Action: Copy Link Button */}
