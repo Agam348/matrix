@@ -5,13 +5,19 @@ import { motion } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import { Perspective, Highlight } from "@/components/ui/perspective-highlight";
 import { WovenCanvas } from "@/components/ui/woven-light-hero";
-import { Mail, Phone, Send, Check } from "lucide-react";
+import { Mail, Phone, ExternalLink, Check } from "lucide-react";
 
 interface FormState {
   name: string;
   email: string;
   message: string;
 }
+
+const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+  </svg>
+);
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -40,6 +46,7 @@ export default function Contact() {
   const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [lastWhatsappUrl, setLastWhatsappUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -49,20 +56,32 @@ export default function Contact() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       soundManager.playBeep(330, 0.2);
-      setErrorMessage("Please fill out all fields before submitting.");
+      setErrorMessage("Please fill out all fields before sending.");
       return;
     }
 
+    setErrorMessage("");
     setIsSubmitting(true);
     soundManager.playBeep(600, 0.1);
+
+    // Build the formatted WhatsApp message
+    const formattedText = `👋 Hi Agampreet, I'm reaching out from your portfolio!\n\n👤 Name: ${form.name.trim()}\n📧 Email: ${form.email.trim()}\n\n💬 Message: ${form.message.trim()}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=918360103038&text=${encodeURIComponent(formattedText)}`;
     
+    setLastWhatsappUrl(whatsappUrl);
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
       soundManager.playBeep(880, 0.2);
-    }, 1500);
+
+      // Open WhatsApp chat in a new tab
+      if (typeof window !== "undefined") {
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      }
+    }, 800);
   };
 
   return (
@@ -91,7 +110,7 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center gap-3 mb-1"
           >
-            <span className="w-1 h-6 bg-gradient-to-b from-indigo-400 to-pink-500 rounded-full shrink-0" />
+            <span className="w-1 h-6 bg-gradient-to-b from-indigo-400 to-emerald-400 rounded-full shrink-0" />
             <h2 className="font-orbitron text-3xl sm:text-4xl font-extrabold tracking-widest uppercase">
               <span className="text-white">CON</span><span className="text-indigo-400">TACT</span>
             </h2>
@@ -103,13 +122,13 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="font-space text-xs text-zinc-500 mt-2 uppercase tracking-wider pl-4"
           >
-            Get in touch for opportunities or collaboration
+            Get in touch directly via WhatsApp or social channels
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 w-full items-stretch">
         
-        {/* Left Side: Borderless, Floating Contact Form */}
+        {/* Left Side: Direct WhatsApp Contact Form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,27 +141,40 @@ export default function Contact() {
               
               {isSuccess ? (
                 <div className="flex-grow flex flex-col justify-center items-center text-center space-y-4 min-h-[300px]">
-                  <div className="w-12 h-12 rounded-full bg-indigo-950/30 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
-                    <Check className="w-5 h-5" />
+                  <div className="w-14 h-14 rounded-full bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-[0_0_25px_rgba(16,185,129,0.3)]">
+                    <Check className="w-7 h-7" />
                   </div>
                   
                   <div className="space-y-2">
                     <h3 className="font-space text-sm font-bold text-white block">
-                      <Highlight color="green">Message Sent Successfully</Highlight>
+                      <Highlight color="green">WhatsApp Chat Ready</Highlight>
                     </h3>
-                    <p className="font-sora text-xs text-zinc-450 max-w-xs mx-auto leading-relaxed">
-                      Thank you for reaching out. I will get back to you shortly.
+                    <p className="font-sora text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+                      WhatsApp has been launched with your formatted message. If the tab didn&apos;t open automatically, click the button below:
                     </p>
                   </div>
+
+                  {lastWhatsappUrl && (
+                    <a
+                      href={lastWhatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-md font-space text-[10px] font-bold tracking-widest cursor-pointer uppercase select-none transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+                    >
+                      <WhatsappIcon className="w-4 h-4" />
+                      Open WhatsApp Directly
+                    </a>
+                  )}
                   
                   <button
                     onClick={() => {
                       setForm({ name: "", email: "", message: "" });
                       setIsSuccess(false);
                       setErrorMessage("");
+                      setLastWhatsappUrl("");
                       soundManager.playBeep(600, 0.1);
                     }}
-                    className="mt-4 px-4 py-2 border border-zinc-900 hover:border-zinc-700 bg-zinc-950/40 text-zinc-400 hover:text-white rounded-md font-space text-[9px] font-bold tracking-widest cursor-pointer uppercase select-none transition-all duration-300"
+                    className="mt-2 px-4 py-2 border border-zinc-800 hover:border-zinc-700 bg-zinc-950/40 text-zinc-400 hover:text-white rounded-md font-space text-[9px] font-bold tracking-widest cursor-pointer uppercase select-none transition-all duration-300"
                   >
                     Send Another Message
                   </button>
@@ -192,7 +224,7 @@ export default function Contact() {
                   </div>
 
                   {errorMessage && (
-                    <div className="font-sora text-[10px] text-red-400 bg-red-950/10 px-3 py-1.5 rounded border border-red-950/20">
+                    <div className="font-sora text-[10px] text-red-400 bg-red-950/20 px-3 py-1.5 rounded border border-red-900/30">
                       {errorMessage}
                     </div>
                   )}
@@ -200,10 +232,10 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-space text-[10px] font-bold tracking-widest rounded-sm transition-all duration-300 cursor-pointer uppercase disabled:opacity-50 flex items-center justify-center gap-1.5 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)]"
+                    className="w-full py-3.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 hover:from-emerald-500 hover:to-teal-500 text-white font-space text-[10px] font-bold tracking-widest rounded-sm transition-all duration-300 cursor-pointer uppercase disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.55)]"
                   >
-                    <Send className="w-3 h-3 shrink-0" />
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    <WhatsappIcon className="w-4 h-4 shrink-0" />
+                    {isSubmitting ? "Opening WhatsApp..." : "Send via WhatsApp"}
                   </button>
                 </form>
               )}
@@ -217,9 +249,17 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          className="md:col-span-5 flex flex-col justify-between gap-6"
+          className="md:col-span-5 flex flex-col justify-between gap-4"
         >
           {[
+            {
+              platform: "WhatsApp",
+              id: "+91 83601 03038",
+              link: "https://api.whatsapp.com/send?phone=918360103038&text=Hi%20Agampreet%2C%20I%20came%20across%20your%20portfolio!",
+              desc: "Direct instant encrypted WhatsApp chat.",
+              icon: <WhatsappIcon className="w-4 h-4 text-emerald-400" />,
+              highlight: true,
+            },
             {
               platform: "LinkedIn",
               id: "in/Agam17",
@@ -262,16 +302,23 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundManager.playHoverClick(1000)}
-              className="group flex flex-col justify-center p-3 border border-zinc-800/50 hover:border-indigo-500/30 bg-zinc-900/10 hover:bg-indigo-950/10 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.06)]"
+              className={`group flex flex-col justify-center p-3 border rounded-lg transition-all duration-300 ${
+                social.highlight
+                  ? "border-emerald-500/40 hover:border-emerald-400/60 bg-emerald-950/20 hover:bg-emerald-900/30 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]"
+                  : "border-zinc-800/50 hover:border-indigo-500/30 bg-zinc-900/10 hover:bg-indigo-950/10 hover:shadow-[0_0_20px_rgba(99,102,241,0.06)]"
+              }`}
             >
               <div className="flex items-center gap-3">
-                <div className="p-1.5 rounded-sm bg-zinc-900 border border-zinc-800 group-hover:border-indigo-900/60 shrink-0 transition-colors duration-300">
+                <div className="p-1.5 rounded-sm bg-zinc-900 border border-zinc-800 group-hover:border-zinc-700 shrink-0 transition-colors duration-300">
                   {social.icon}
                 </div>
-                <div className="space-y-0.5">
-                  <h3 className="font-space text-[8px] font-bold text-zinc-500 group-hover:text-zinc-400 tracking-widest uppercase transition-colors">
-                    {social.platform}
-                  </h3>
+                <div className="space-y-0.5 flex-grow">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-space text-[8px] font-bold text-zinc-500 group-hover:text-zinc-400 tracking-widest uppercase transition-colors">
+                      {social.platform}
+                    </h3>
+                    <ExternalLink className="w-2.5 h-2.5 text-zinc-600 group-hover:text-zinc-400 transition-colors" />
+                  </div>
                   <div className="font-space text-xs font-bold text-white group-hover:text-indigo-300 transition-colors duration-300 break-words">
                     {social.id}
                   </div>
