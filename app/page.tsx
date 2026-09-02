@@ -10,6 +10,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import TechStack from "./components/TechStack";
 import Experience from "./components/Experience";
+import AskMeAnything from "./components/AskMeAnything";
 import Contact from "./components/Contact";
 import IntroLoader from "./components/IntroLoader";
 import { soundManager } from "./lib/sound";
@@ -99,6 +100,9 @@ export default function Home() {
 
           {/* Experience Path */}
           <Experience />
+
+          {/* Ask Me Anything (Anonymous Terminal & Public Answers) */}
+          <AskMeAnything />
 
           {/* Communication Nodes */}
           <Contact />

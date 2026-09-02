@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { soundManager } from "../lib/sound";
-import { X, GraduationCap, Award, MapPin, Globe } from "lucide-react";
+import { X, GraduationCap, Award, MapPin, Globe, ExternalLink } from "lucide-react";
 
 interface Token {
   text: string;
@@ -354,12 +354,32 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/80 bg-zinc-950/60 backdrop-blur-sm py-3 px-4 flex items-center gap-3 pointer-events-auto overflow-hidden rounded-xl"
+            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/80 bg-zinc-950/60 backdrop-blur-sm py-3 px-4 flex items-center gap-3 pointer-events-auto overflow-visible rounded-xl relative"
           >
             {/* Pulse dot */}
             <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0 animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
             <p className="text-zinc-200 text-xs sm:text-[13px] font-space font-semibold tracking-[0.12em] uppercase whitespace-normal break-words">
-              3x Hackathon Winner&nbsp;&nbsp;|&nbsp;&nbsp;1x International Hackathon Winner
+              3x Hackathon Winner&nbsp;&nbsp;|&nbsp;&nbsp;
+              <span className="relative group/hackathon inline-block">
+                {/* Custom Tooltip Pop-up */}
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-zinc-900 border border-zinc-700 rounded-md text-[9px] font-space font-semibold text-zinc-200 tracking-wider whitespace-nowrap opacity-0 group-hover/hackathon:opacity-100 pointer-events-none transition-opacity duration-200 z-50 shadow-xl">
+                  View Story
+                  {/* Tooltip arrow */}
+                  <span className="absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-2.5 h-1.5 overflow-hidden">
+                    <span className="w-2 h-2 bg-zinc-900 border-r border-b border-zinc-700 rotate-45 mx-auto -mt-1 block" />
+                  </span>
+                </span>
+
+                <a
+                  href="https://www.linkedin.com/posts/agam17_asianhackathon2026-vinuniversity-vinfuture-ugcPost-7480935852286664704-2LuH/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE-tAM8BWzdUcLN6LZo9hChSd-kkirMeBSs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => soundManager.playHoverClick(1000)}
+                  className="text-zinc-200 hover:text-white transition-colors cursor-pointer"
+                >
+                  1x International Hackathon Winner
+                </a>
+              </span>
             </p>
           </motion.div>
 
@@ -552,7 +572,7 @@ export default function About() {
                         Hackathons & Competitions
                       </p>
                       <p className="font-sora text-[10px] text-zinc-400 mt-2 leading-relaxed">
-                        3x Hackathon Winner and 1x International Hackathon competitor. Passionate about solving real-world challenges through innovative software.
+                        3x Hackathon Winner and 1x International Hackathon Winner. Passionate about solving real-world challenges through innovative software.
                       </p>
                     </div>
                   </div>

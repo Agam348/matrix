@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { id: "about",      label: "About"      },
   { id: "skills",     label: "Skills"      },
   { id: "experience", label: "Experience"  },
+  { id: "ama",        label: "Terminal"    },
   { id: "contact",    label: "Contact"     },
 ];
 

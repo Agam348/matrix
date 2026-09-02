@@ -93,7 +93,7 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
   {
     organization: "CESS",
     shortName: "CESS",
-    website: "https://spectra.cess-gndu.com/",
+    website: "https://www.instagram.com/cess.gndu/",
     websiteLabel: "View Details",
     status: "ARCHIVED",
     themeColor: "emerald",
@@ -108,6 +108,27 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
           "Managed event budgeting and sponsorship operations for tech fests"
         ],
         skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
+      }
+    ]
+  },
+  {
+    organization: "Hackathons",
+    shortName: "Hackathons",
+    website: "https://www.linkedin.com/posts/agam17_asianhackathon2026-vinuniversity-vinfuture-ugcPost-7480935852286664704-2LuH/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE-tAM8BWzdUcLN6LZo9hChSd-kkirMeBSs",
+    websiteLabel: "View Story",
+    status: "ACTIVE",
+    themeColor: "amber",
+    glowColor: "rgba(245, 158, 11, 0.2)",
+    roles: [
+      {
+        title: "Competitive Developer",
+        year: "2024 — Present",
+        desc: [
+          "Consolation Prize Winner — Asian Hackathon for Green Future 2026",
+          "2x Regional & University Hackathon Winner in competitive rapid-build tracks",
+          "Participated in 10+ Hackathons"
+        ],
+        skills: ["Rapid Prototyping", "Full-Stack", "AI/ML", "Problem Solving"],
       }
     ]
   }
@@ -154,15 +175,17 @@ export default function Experience() {
               
               // Dynamic themes
               const activeBorderColor = 
+                exp.themeColor === "amber" ? "border-amber-500/30 bg-amber-950/20" :
                 exp.themeColor === "indigo" ? "border-indigo-500/30 bg-indigo-950/20" :
                 exp.themeColor === "emerald" ? "border-emerald-500/30 bg-emerald-950/20" :
-                exp.themeColor === "purple" ? "border-purple-500/30 bg-purple-950/20" :
+                exp.themeColor === "purple" || exp.themeColor === "violet" ? "border-purple-500/30 bg-purple-950/20" :
                 "border-cyan-500/30 bg-cyan-950/20";
 
               const activeIndicator = 
+                exp.themeColor === "amber" ? "bg-amber-400" :
                 exp.themeColor === "indigo" ? "bg-indigo-400" :
                 exp.themeColor === "emerald" ? "bg-emerald-400" :
-                exp.themeColor === "purple" ? "bg-purple-400" :
+                exp.themeColor === "purple" || exp.themeColor === "violet" ? "bg-purple-400" :
                 "bg-cyan-400";
 
               return (
@@ -260,9 +283,10 @@ export default function Experience() {
                       <div className="flex items-center justify-between flex-wrap gap-2">
                         <div className="flex items-center gap-2.5">
                           <div className={`p-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 shrink-0 ${
+                            activeExp.themeColor === "amber" ? "text-amber-400" :
                             activeExp.themeColor === "indigo" ? "text-indigo-400" :
                             activeExp.themeColor === "emerald" ? "text-emerald-400" :
-                            activeExp.themeColor === "purple" ? "text-purple-400" :
+                            activeExp.themeColor === "purple" || activeExp.themeColor === "violet" ? "text-purple-400" :
                             "text-cyan-400"
                           }`}>
                             <Briefcase className="w-4 h-4" />
@@ -284,9 +308,10 @@ export default function Experience() {
                             className="flex items-start gap-2.5 text-zinc-200 font-sora text-xs sm:text-sm leading-relaxed group"
                           >
                             <span className={`font-mono text-[9px] mt-1 shrink-0 select-none ${
+                              activeExp.themeColor === "amber" ? "text-amber-400" :
                               activeExp.themeColor === "indigo" ? "text-indigo-400" :
                               activeExp.themeColor === "emerald" ? "text-emerald-400" :
-                              activeExp.themeColor === "purple" ? "text-purple-400" :
+                              activeExp.themeColor === "purple" || activeExp.themeColor === "violet" ? "text-purple-400" :
                               "text-cyan-400"
                             }`}>
                               [#]
@@ -302,9 +327,10 @@ export default function Experience() {
                       <div className="flex flex-wrap gap-2 pt-2">
                         {role.skills.map((skill) => {
                           const tagColor = 
+                            activeExp.themeColor === "amber" ? "border-amber-500/30 bg-amber-950/20 text-amber-300 hover:border-amber-400 hover:text-white" :
                             activeExp.themeColor === "indigo" ? "border-indigo-500/30 bg-indigo-950/20 text-indigo-300 hover:border-indigo-400 hover:text-white" :
                             activeExp.themeColor === "emerald" ? "border-emerald-500/30 bg-emerald-950/20 text-emerald-300 hover:border-emerald-400 hover:text-white" :
-                            activeExp.themeColor === "purple" ? "border-purple-500/30 bg-purple-950/20 text-purple-300 hover:border-purple-400 hover:text-white" :
+                            activeExp.themeColor === "purple" || activeExp.themeColor === "violet" ? "border-purple-500/30 bg-purple-950/20 text-purple-300 hover:border-purple-400 hover:text-white" :
                             "border-cyan-500/30 bg-cyan-950/20 text-cyan-300 hover:border-cyan-400 hover:text-white";
 
                           return (
