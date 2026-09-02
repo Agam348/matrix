@@ -42,9 +42,9 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Junior Developer",
         year: "Aug 2026 — Present",
         desc: [
-          "Working as Junior Developer at TAlpha, an institutional-grade mutual fund research and portfolio intelligence startup",
-          "Engineering database schemas and type-safe queries using Prisma and PostgreSQL for capital market datasets (AMFI / NSE / BSE)",
-          "Deploying containerized services with Docker and building responsive financial dashboards with Tailwind CSS and Next.js"
+          "Building mutual fund research & intelligence dashboards with Next.js",
+          "Designing type-safe PostgreSQL schemas & queries with Prisma",
+          "Deploying containerized backend microservices using Docker"
         ],
         skills: ["Prisma", "Docker", "Tailwind CSS", "PostgreSQL", "Next.js", "TypeScript"],
       }
@@ -62,9 +62,9 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Developer",
         year: "Apr 2026 — Present",
         desc: [
-          "Working on the design and development of the Gurmat Darbar website",
-          "Developing responsive frontend user interfaces and clean digital experiences",
-          "Collaborating with team members to improve functionality and user experience"
+          "Architecting modern responsive web interfaces with Next.js & React",
+          "Designing clean digital experiences and custom Tailwind CSS UI",
+          "Improving frontend performance, component modularity and UX"
         ],
         skills: ["Next.js", "React.js", "Tailwind CSS", "UI/UX Design", "Web Development"],
       }
@@ -82,9 +82,9 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Web Developer",
         year: "Mar 2026 — Apr 2026",
         desc: [
-          "Worked as Web Developer for Germany-based tech company VTAP, structuring responsive web pages using HTML5 and CSS3",
-          "Implemented interactive client-side functionality and dynamic DOM manipulation with JavaScript",
-          "Optimized cross-browser compatibility and mobile responsiveness for client websites"
+          "Developed responsive web interfaces using HTML5, CSS3, and JavaScript",
+          "Implemented interactive DOM logic and client-side web components",
+          "Optimized cross-browser performance and mobile compatibility"
         ],
         skills: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Web Development"],
       }
@@ -102,9 +102,9 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
         title: "Finance Head",
         year: "Aug 2025 — Aug 2026",
         desc: [
-          "Organized a 3-day Tech Fest and 30 hour Hackathon, managing resources for 170+ participants and 50 teams",
-          "Utilized Excel and Google Sheets for advanced expense tracking and financial modeling",
-          "Managed budgeting and financial planning for multiple student-led events"
+          "Directed budget allocation & logistics for 170+ hackathon participants",
+          "Engineered financial models and expense tracking in Excel & Sheets",
+          "Managed event budgeting and sponsorship operations for tech fests"
         ],
         skills: ["Team Leadership", "Budget Optimization", "Event Management", "Excel & Sheets"],
       }

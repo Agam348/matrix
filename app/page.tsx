@@ -11,6 +11,7 @@ import About from "./components/About";
 import TechStack from "./components/TechStack";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
+import IntroLoader from "./components/IntroLoader";
 import { soundManager } from "./lib/sound";
 import Lenis from "lenis";
 
@@ -68,6 +69,9 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full flex flex-col items-center bg-[#09090b] select-none text-zinc-100 overflow-x-hidden">
+      {/* 0. Minimalist Stylish 0-100% Intro Loader with upward lift */}
+      <IntroLoader />
+
       {/* 1. Mobile Experience Gate (Visible strictly on mobile / tablet screens < 1024px) */}
       <MobileBlockGate />
 
