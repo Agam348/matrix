@@ -1,420 +1,190 @@
-# MATRIX // Agampreet Singh Developer Portfolio
-
 <div align="center">
 
-![Next.js](https://img.shields.io/badge/Next.js%2016-black?style=for-the-badge&logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript%205-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
-![WebGL2](https://img.shields.io/badge/WebGL2-990000?style=for-the-badge&logo=webgl&logoColor=white)
-![Web Audio API](https://img.shields.io/badge/Web_Audio_API-4A154B?style=for-the-badge&logo=audacity&logoColor=white)
+# ⚡ MATRIX // Agampreet Singh
+
+### *Cyberpunk-Minimalist Engineering Portfolio & Interactive Digital Identity*
+
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-matrix--agam.vercel.app-00d9ff?style=for-the-badge&logo=vercel&logoColor=black)](https://github.com/Agam348/matrix)
+[![GitHub Stars](https://img.shields.io/github/stars/Agam348/matrix?style=for-the-badge&color=ffd700)](https://github.com/Agam348/matrix)
+[![License: MIT](https://img.shields.io/badge/License-MIT-34d399?style=for-the-badge)](LICENSE)
+
+<br />
+
+![Next.js](https://img.shields.io/badge/Next.js%2016-black?style=flat-square&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React%2019-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript%205-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)
+![WebGL2](https://img.shields.io/badge/WebGL2-990000?style=flat-square&logo=webgl&logoColor=white)
+![Web Audio API](https://img.shields.io/badge/Web_Audio_API-4A154B?style=flat-square&logo=audacity&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)
 
 <p align="center">
-  <strong>A futuristic, cyberpunk-minimalist digital identity and interactive developer portfolio.</strong><br />
-  Engineered with real-time WebGL2 GLSL shaders, Three.js 3D particle physics, procedural Web Audio synthesis, planetary orbital radar systems, hardware-accelerated pointer mechanics and smooth inertial scrolling.
+  A state-of-the-art developer portfolio featuring real-time <strong>WebGL2 GLSL shaders</strong>, <strong>Three.js 3D particle physics</strong>, <strong>procedural Web Audio synthesis</strong>, a <strong>planetary orbital radar constellation</strong>, and an <strong>anonymous Q&A terminal</strong>.
 </p>
+
+[Explore Highlights](#-key-highlights) • [Feature Tour](#-feature-tour) • [Architecture](#-architecture--tech-stack) • [Quick Start](#-quick-start) • [Connect](#-connect)
 
 </div>
 
 ---
 
-## 📑 Table of Contents
+## 🏆 Key Highlights
 
-- [Overview](#-overview)
-- [System Highlights & Key Features](#-system-highlights--key-features)
-- [Technical Stack & Architecture](#-technical-stack--architecture)
-- [Complete Project Directory & File Analysis](#-complete-project-directory--file-analysis)
-- [Deep Dive: WebGL Shaders & 3D Particle Graphics](#-deep-dive-webgl-shaders--3d-particle-graphics)
-- [Deep Dive: 2D/3D Orbital Radar Constellation](#-deep-dive-2d3d-orbital-radar-constellation)
-- [Deep Dive: Procedural Web Audio Engine](#-deep-dive-procedural-web-audio-engine)
-- [Deep Dive: Typography & Modern Design System](#-deep-dive-typography--modern-design-system)
-- [Deep Dive: Direct WhatsApp Communication Gateway](#-deep-dive-direct-whatsapp-communication-gateway)
-- [Performance & Accessibility Engineering](#-performance--accessibility-engineering)
-- [Getting Started & Local Development](#-getting-started--local-development)
-- [Customization Guide](#-customization-guide)
-- [Author & Connect](#-author--connect)
-- [License](#-license)
+- 🎓 **Dual Degree Scholar:**
+  - **MTech FYIP Computer Science & Engineering** — Guru Nanak Dev University (GNDU Amritsar)
+  - **BS in Data Science** — Indian Institute of Technology Madras (IIT Madras)
+- 🏅 **Competitive Hackathon Track Record:**
+  - **Consolation Prize Winner ($1,000 USD)** — *Asian Hackathon for Green Future 2026*, VinUniversity Hanoi, Vietnam
+  - **2x Regional & University Hackathon Winner** in rapid MVP sprints
+  - **Participated in 10+ Hackathons**
+- 💼 **Industry & Leadership Experience:**
+  - **TAlpha** — Junior Developer Intern (Capital market research, AMFI/NSE datasets, PostgreSQL, Next.js)
+  - **Gurmat Darbar** — Production Web Developer (Full-stack architecture, Next.js, Tailwind CSS)
+  - **VTAP** — Web Developer (Germany-based technology firm, responsive web systems)
+  - **CESS GNDU** — Finance Head (Budget optimization for 170+ regional hackathon participants)
 
 ---
 
-## 🌌 Overview
+## 🧭 Narrative Flow
 
-**MATRIX** is the personal portfolio and digital identity of **Agampreet Singh**, pursuing a dual academic path:
-- **MTech FYIP Computer Science & Engineering** at Guru Nanak Dev University (GNDU Amritsar, 2024–2029)
-- **BS in Data Science** at the Indian Institute of Technology Madras (IIT Madras, 2024–2028)
-
-The portfolio is structured as a high-performance single-page Next.js App Router application built from the ground up for high visual fidelity, 60/120fps interactions and cybernetic minimalism. Rather than relying on static images or heavy pre-rendered video backgrounds, MATRIX synthesizes dynamic visuals, ambient lighting, particle webs and soundscapes entirely in real-time through **WebGL2 GLSL fragment shaders**, **Three.js particle meshes** and the native browser **Web Audio API**.
-
----
-
-## ⚡ System Highlights & Key Features
-
-### 1. 🌌 Nebula Hero Canvas & Hanging ID Card (`Hero.tsx` & `HangingIdCard.tsx`)
-- **AnimatedShaderHero Canvas:** A custom WebGL2 canvas executing a multi-octave Fractional Brownian Motion (FBM) shader with mouse-reactive coordinates and nebula luminescence.
-- **Hanging Draggable ID Card:** A physics-influenced ID badge tethered by an interactive SVG lanyard. Uses quadratic bezier curve mathematics (`Q cpX cpY endX endY`) and Framer Motion spring physics (`stiffness: 180, damping: 14`) to simulate realistic rope tension, gravity sag and momentum upon release. Features an interactive barcode link to LinkedIn.
-- **Retro-Futuristic Terminal Emulator:** An interactive command-line console overlay simulating secure system handshake protocols, displaying decoded academic records, work milestones and engineering philosophy with authentic mechanical sound ticks and restart capabilities.
-
-### 3. 💻 Interactive 3D Code Window & Dossier Modal (`About.tsx`)
-- **3D Parallax Tilt Card:** A macOS-styled `developer.ts` code editor window with real-time character-by-character syntax-highlighted typing simulation and mouse-following 3D rotation transforms (`rotateX` / `rotateY`).
-- **Academic Dossier Console:** A modal overlay providing deep dives into Agampreet's dual-degree coursework (GNDU MTech & IIT Madras BS), hackathon accomplishments (3x Winner, 1x International) and leadership tenure (Finance Head at CESS).
-- **Trust Ticker Bar:** A structural trust bar emphasizing competitive programming milestones.
-
-### 4. 🛰️ 2D/3D Orbital Radar Constellation (`TechStack.tsx` — `MATRIX_RADAR_V4`)
-- **Concentric Orbital System:** 3 calibrated planetary orbital rings (Orbit 1: $R=90\text{px}$ core frameworks; Orbit 2: $R=145\text{px}$ languages & databases; Orbit 3: $R=200\text{px}$ tools, AI & cloud platforms).
-- **Laptop-Screen Optimized Viewport:** Compacted radar container and Telemetry HUD panel heights ($460\text{px} – 470\text{px}$) so all 18 tech nodes, filters, rotation controls and telemetry data fit effortlessly on laptop screens without overflowing.
-- **60fps Orbital Clock:** Independent orbital rotation speeds and directions (Orbit 1: 45s CW, Orbit 2: 65s CCW, Orbit 3: 90s CW).
-- **Interactive Telemetry HUD:** Clickable nodes with hover lock, category filters (*All*, *Web*, *Backend*, *Mobile*, *Tools*), revolution pause/resume controls and a detailed telemetry data pane showing azimuth angle, orbit level, architectural notes, capability tags and brand colors.
-- **18 Tracked Technologies:** React.js, Next.js, TypeScript, Flutter, Python, PostgreSQL, Tailwind CSS, JavaScript, Prisma, SQL, Java, Flask, Antigravity, Codex, Git, Docker, Vercel and CSS3.
-
-### 5. 🎛️ 3D Perspective Experience Console (`Experience.tsx`)
-- Scroll-driven 3D tilt perspective wrapper powered by Framer Motion (`ContainerScroll`).
-- Features a terminal-style system database console (`SYS_DATABASE`) with tabbed organizational nodes:
-  1. **TAlpha** (*Junior Developer Intern*, Aug 2026 — Present): Mutual fund research, quantitative screening, capital market datasets (AMFI / NSE / BSE), PostgreSQL, Prisma, Docker, Tailwind CSS, Next.js, TypeScript.
-  2. **Gurmat Darbar** (*Developer*, Apr 2026 — Present): Website design and frontend engineering with Next.js, React.js, Tailwind CSS, UI/UX Design.
-  3. **VTAP** (*Web Developer*, Mar 2026 — Apr 2026): Germany-based tech company; responsive web structure with HTML5, CSS3, JavaScript.
-  4. **CESS GNDU** (*Finance Head*, Aug 2025 — Aug 2026): Directed sponsorship metrics and event budgets for 170+ regional hackathon participants.
-
-### 6. 💬 Direct WhatsApp Communication Gateway (`Contact.tsx`)
-- **Direct WhatsApp Click-to-Chat Integration:** 100% free, serverless communication connecting the contact form directly to WhatsApp (`+91 83601 03038`).
-- **Structured Message Formatter:** Automatically formats inquiries into a clean, ready-to-send template addressed to Agampreet:
-  ```text
-  👋 Hi Agampreet, I'm reaching out from your portfolio!
-
-  👤 Name: [Visitor's Name]
-  📧 Email: [Visitor's Email]
-
-  💬 Message: [Visitor's Message]
-  ```
-- **3D Woven Particle Background:** Powered by `WovenCanvas` (26,000-particle 3D WebGL Torus Knot with interactive cursor physics).
-- **Cybernetic Social Dossier:** Direct communication channels for WhatsApp, LinkedIn, Instagram, GitHub, Email, and Cellular phone.
-
-### 7. 🎯 Hardware-Accelerated Custom Pointer (`CustomCursor.tsx`)
-- Bypasses React state overhead by utilizing direct DOM manipulation inside `requestAnimationFrame` for 60/120fps responsiveness.
-- Multi-state pointer system:
-  - **Center Ball:** Direct point indicator.
-  - **Trailing Follow-Glow:** Smooth lag interpolation backplate.
-  - **Circular Halo:** Expands smoothly when hovering interactive targets.
-  - **Custom Arrow:** Appears on clickable anchors and buttons.
-  - **Open / Closed Grab Hands:** Dynamically toggles when interacting with draggable elements (such as the ID card).
-
----
-
-## 🛠️ Technical Stack & Architecture
-
-| Layer | Technology | Version | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Framework** | [Next.js](https://nextjs.org/) (App Router) | `16.2.6` | React framework, Turbopack, SSR/SSG orchestration, asset optimization |
-| **Core Runtime** | [React](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/) | `19.2.4` / `5.x` | Modern reactive UI, typed schemas and component architecture |
-| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) | `^4.0.0` | Next-gen styling via `@tailwindcss/postcss` & `@theme` system |
-| **Smooth Scrolling**| [Lenis](https://github.com/darkroomengineering/lenis) | `^1.3.23` | Inertial momentum smooth scrolling with cubic ease-out curves |
-| **Motion & Physics**| [Framer Motion](https://www.framer.com/motion/) | `^12.40.0` | Layout animations, 3D card transforms, spring physics |
-| **Animation Utils** | [GSAP](https://greensock.com/) | `^3.15.0` | High-performance animation timelines |
-| **3D & Canvas** | [Three.js](https://threejs.org/) | `^0.184.0` | 3D scene graphs, particle geometries, materials, camera math |
-| **React 3D** | [React Three Fiber](https://r3f.docs.pmnd.rs/) / [Drei](https://github.com/pmndrs/drei) | `^9.6.1` / `^10.7.7` | Declarative Three.js components and helpers |
-| **GLSL Shaders** | WebGL2 Raw Shaders | Native | Mathematical raymarching, FBM noise and procedural canvases |
-| **Audio Engine** | Web Audio API | Native | Procedural sound synthesizer (zero static audio asset overhead) |
-| **Icons** | [Lucide React](https://lucide.dev/) | `^1.16.0` | Clean, modern cybernetic iconography |
-| **Typography** | `next/font/google` | Built-in | Oxanium, Syne, Space Grotesk, Plus Jakarta Sans, JetBrains Mono |
-
----
-
-## 📂 Complete Project Directory
+The portfolio is structured as a calibrated, interactive narrative:
 
 ```text
-matrix/
-├── app/
-│   ├── components/
-│   │   ├── About.tsx                 # Biography, 3D tilt code window (developer.ts), & academic dossier modal
-│   │   ├── Activity.tsx              # GitHub stats, live commit feed, & contribution matrix
-│   │   ├── BackgroundGrid.tsx        # Dynamic 2D particle node web & ambient spotlights
-│   │   ├── Contact.tsx               # Direct WhatsApp-integrated form, 3D WovenCanvas backdrop, & social dossier
-│   │   ├── CustomCursor.tsx          # 60/120fps direct-DOM pointer & grab hand mechanics
-│   │   ├── Experience.tsx            # 3D perspective career chronology console (ContainerScroll)
-│   │   ├── Hero.tsx                  # Landing hero, FBM nebula shader, draggable ID card, & terminal emulator
-│   │   ├── IntroLoader.tsx           # Full-screen entry gate with Phosphor30 WebGL shader
-│   │   ├── MobileBlockGate.tsx       # Viewport boundary gate restricting mobile screens < 1024px
-│   │   ├── Navbar.tsx                # Glass navigation header, scrollspy, & procedural audio toggle
-│   │   ├── Projects.tsx              # Standalone projects catalog module
-│   │   ├── TechStack.tsx             # 2D/3D orbital radar constellation (MATRIX_RADAR_V4) & Telemetry HUD
-│   │   └── ThreeParticleScene.tsx    # 3D interactive particle globe with Punjab coordinate beacon
-│   ├── lib/
-│   │   └── sound.ts                  # Web Audio API procedural synthesizer (clicks, beeps, drone, glitch, EMP)
-│   ├── globals.css                   # Tailwind v4 @theme, font variables, keyframes, cursor resets
-│   ├── icon.png                      # Application favicon
-│   ├── layout.tsx                    # Root HTML layout, font loaders (Oxanium, Syne, Jakarta, JetBrains), metadata
-│   └── page.tsx                      # Single-page assembly, Lenis smooth scroll, & sound engine hooks
-│
-├── components/
-│   └── ui/
-│       ├── animated-shader-background.tsx  # Reusable ambient WebGL shader backdrop
-│       ├── animated-shader-hero-demo.tsx   # Interactive playground for the hero shader
-│       ├── animated-shader-hero.tsx        # Hero section WebGL FBM cloud nebula shader canvas
-│       ├── container-scroll-animation.tsx  # Framer Motion 3D perspective tilt scroll wrapper
-│       ├── cybernetic-grid-shader-demo.tsx # Cyberpunk grid shader playground
-│       ├── cybernetic-grid-shader.tsx      # Cyberpunk-themed raymarched grid canvas
-│       ├── dotted-surface-demo.tsx         # Dotted surface playground component
-│       ├── dotted-surface.tsx              # Footer Three.js undulating 3D particle plane (40x60)
-│       ├── hanging-id-card.tsx             # Draggable badge with dynamic bezier lanyard physics
-│       ├── liquid-glass-button.tsx         # Liquid refractive distortion canvas button
-│       ├── paper-burn-intro.tsx            # WebGL2 GLSL paper burn combustion effect
-│       ├── perspective-highlight.tsx       # 3D perspective mouse tilt wrapper with distance falloff
-│       ├── phosphor-30.tsx                 # Generative raymarched fractal shader for intro loader
-│       ├── shader-lines-demo.tsx           # Floating wave lines playground
-│       ├── shader-lines.tsx                # Floating sine wave lines canvas
-│       ├── spotlight-card.tsx              # Spotlight hover card with HSL border highlight
-│       ├── unified-intro-burn.tsx          # Composite entry loader with burn transition
-│       ├── warp-drive-shader-demo.tsx      # Warp-speed shader playground
-│       ├── warp-drive-shader.tsx           # Cosmic warp-speed starfield canvas
-│       ├── web-gl-shader.tsx               # Generic base class for compiling GLSL fragment shaders
-│       ├── woven-light-hero-demo.tsx       # Woven light grid demonstration canvas
-│       ├── woven-light-hero.tsx            # Three.js 26,000-particle Torus Knot with cursor physics
-│       └── zoom-parallax.tsx               # Scroll-driven zoom image parallax component
-│
-├── lib/
-│   └── utils.ts                      # clsx + tailwind-merge helper (cn utility)
-│
-├── public/
-│   ├── antigravity.png               # Antigravity IDE logo
-│   ├── antigravity.svg               # Antigravity vector logo
-│   ├── canva-logo.svg                # Canva vector logo
-│   ├── cess_tech_fest.png            # CESS Tech Fest project asset
-│   ├── codex-logo.png                # OpenAI Codex skill icon
-│   ├── file.svg                      # File icon asset
-│   ├── globe.svg                     # Globe vector icon
-│   ├── gurmat_darbar.png             # Gurmat Darbar project asset
-│   ├── hackathon_solutions.png       # Hackathon prototype asset
-│   ├── next.svg                      # Next.js vector logo
-│   ├── nextjs-icon.png               # Next.js icon asset
-│   ├── profile.jpg                   # Agampreet Singh profile photograph
-│   ├── sql-logo.png                  # SQL database skill icon
-│   ├── tischtap.png                  # Tischtap project asset
-│   ├── vercel.svg                    # Vercel vector logo
-│   └── window.svg                    # Window vector icon
-│
-├── .gitignore                        # Git exclusion rules
-├── AGENTS.md                         # Project development rules & Next.js conventions
-├── CLAUDE.md                         # Claude instructions reference
-├── eslint.config.mjs                 # ESLint flat config extending next/core-web-vitals
-├── next.config.ts                    # Next.js config (remote image domains for devicons)
-├── package.json                      # Dependencies and npm script definitions
-├── postcss.config.mjs                # PostCSS configuration for Tailwind CSS v4
-├── tsconfig.json                     # TypeScript compiler configuration with @/* alias
-└── README.md                         # Comprehensive project documentation
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│  01 // HERO  │ ──> │ 02 // ABOUT  │ ──> │03 // RADAR   │
+│ Landing, ID  │     │ Biography,   │     │ Planetary    │
+│ Card & FBM   │     │ 3D Code Tilt │     │ Tech Stack   │
+└──────────────┘     └──────────────┘     └──────────────┘
+                                                 │
+                                                 ▼
+┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│ 06// CONTACT │ <── │ 05//TERMINAL │ <── │04//EXPERIENCE│
+│ WhatsApp 1:1 │     │ Anonymous    │     │ Career &     │
+│ & 3D Torus   │     │ Q&A + Public │     │ Hackathons   │
+└──────────────┘     └──────────────┘     └──────────────┘
 ```
 
 ---
 
-## 🔬 Deep Dive: WebGL Shaders & 3D Particle Graphics
+## ✨ Feature Tour
 
-```mermaid
-graph TD
-    A[Window Viewport] --> B[IntersectionObserver]
-    B -->|In Viewport| C[requestAnimationFrame Loop]
-    B -->|Off-screen| D[Halt Render Loop: 0% CPU/GPU]
-    C --> E[WebGL2 Fragment Shaders]
-    C --> F[Three.js Particle Systems]
-    E --> G[Phosphor30 Raymarching]
-    E --> H[Hero FBM Nebula]
-    F --> I[WovenCanvas Torus Knot: 26,000 Particles]
-    F --> J[DottedSurface Plane: 2,400 Particles]
-```
+### 1. 🌌 Nebula Hero & Hanging Draggable ID Card
+- **Multi-Octave FBM Shader:** A custom WebGL2 canvas rendering mouse-reactive Fractional Brownian Motion nebula clouds.
+- **Physics Lanyard ID Card:** Draggable employee card with quadratic bezier rope physics (`Q cpX cpY endX endY`) and spring tension dynamics. Includes a barcode quick-link to LinkedIn with a dark glass tooltip.
+- **Interactive Command Console:** Retro terminal simulating secure cryptographic handshakes with tactile mechanical keyboard sounds.
 
-### 1. Mathematical Ray-Marched Fractals (`phosphor-30.tsx`)
-Rendered in raw WebGL2 during the introductory sequence, this fragment shader calculates 80 iterations of complex trigonometric space folding:
-$$\vec{p}_{z} += 5.0, \quad \vec{a} = \vec{a} \cdot (\vec{a} \cdot \vec{p}) - (\vec{a} \times \vec{p})$$
-The color accumulator uses hyperbolic tangent normalization (`tanh(o / 5e3)`) to achieve soft phosphor-like mathematical luminescence.
+### 2. 💻 3D Parallax Code Window & Dossier
+- **3D Tilt Code Editor:** macOS-styled `developer.ts` editor featuring character-by-character syntax typing and smooth mouse parallax rotation.
+- **Academic Dossier Modal:** Comprehensive modal showcasing dual-degree curriculum across algorithms, statistical modeling, and distributed systems.
+- **Trust Ticker Bar:** High-impact status ticker featuring an interactive story link for the international hackathon win.
 
-### 2. Multi-Octave FBM Cloud Nebula (`animated-shader-hero.tsx`)
-A custom fragment shader utilizing Fractional Brownian Motion (FBM) layered across 5 octaves of value noise. Coordinates adapt dynamically to pointer events:
-$$f(p) = \sum_{i=0}^{4} a_i \cdot \text{noise}(p \cdot 2^i \cdot \mathbf{M})$$
-Where $\mathbf{M}$ is a $2 \times 2$ transformation matrix $\begin{pmatrix} 1.0 & -0.5 \\ 0.2 & 1.2 \end{pmatrix}$ creating an ethereal, organic cosmic cloud.
+### 3. 🛰️ Planetary Orbital Radar Constellation (`MATRIX_RADAR_V4`)
+- **3 Concentric Orbit Rings:** Core frameworks ($R=90\text{px}$), languages & databases ($R=145\text{px}$), and tools & AI ($R=200\text{px}$) rotating with independent orbital periods.
+- **Telemetry HUD Inspector:** Real-time azimuth calculation, hover revolution lock, category filtering (*All*, *Web*, *Backend*, *Mobile*, *Tools*), and architectural capability telemetry.
+- **Laptop-Screen Calibrated:** Optimized vertical footprint ($460\text{px} – 470\text{px}$) ensuring complete visibility across laptop screens without clipping.
 
-### 3. Particle Physics Torus Knot (`woven-light-hero.tsx`)
-Contains **26,000 active particles** mapped along a Torus Knot geometry ($R=1.5, r=0.5$). Every frame, arithmetic distance calculations compute cursor repulsion forces without garbage collector pressure:
-$$\vec{F}_{\text{repel}} = \frac{\vec{p} - \vec{p}_{\text{mouse}}}{\|\vec{p} - \vec{p}_{\text{mouse}}\|} \cdot (1.5 - d) \cdot 0.01$$
-Particles return to their home coordinates via spring restorative vectors with a $0.95$ velocity damping factor. Rendered seamlessly behind the **Contact** section.
+### 4. 🎛️ 3D Perspective Experience & Hackathons Console
+- **Scroll-Driven 3D Tilt:** Powered by Framer Motion perspective containers.
+- **Detailed Career Database:** Tabbed organizational dossiers for TAlpha, Gurmat Darbar, VTAP, CESS GNDU, and a dedicated **Hackathons** console featuring verified competition milestones.
 
-### 4. Undulating Dotted Surface (`dotted-surface.tsx`)
-A $40 \times 60$ Three.js particle grid (2,400 points) utilizing dynamic sine wave height displacement:
-$$y(x, z, t) = \sin((x + t) \cdot 0.3) \cdot 50 + \sin((z + t) \cdot 0.5) \cdot 50$$
-Features a linear color gradient interpolating from sky-blue (`#38bdf8`) to cyber-indigo (`#6366f1`) across the depth axis with ambient fog blending (`#09090b`).
+### 5. 📟 Ask Me Anything & Public Terminal
+- **Anonymous Transmission Terminal:** Retro-cyberpunk monospace input terminal. Visitors can transmit anonymous questions without accounts or tracking.
+- **Encrypted Receipt Response:** Instant feedback displaying a terminal delivery receipt (`> MESSAGE RECEIVED > IDENTITY: HIDDEN > STATUS: DELIVERED`).
+- **Public Answers Terminal:** Curated public log answering common inquiries about academics, hackathon preparation, and full-stack architecture.
+- **Lenis Smooth Coexistence:** Engineered with `data-lenis-prevent` and `overscroll-contain` for fluid, non-conflicting inner scrolling.
 
-### 5. 0% CPU/GPU Idle Protection via IntersectionObserver
-All active WebGL and Three.js canvases register viewport listeners via the browser's `IntersectionObserver` API. When a canvas scrolls off-screen, its `requestAnimationFrame` render loop halts immediately, reducing GPU and CPU utilization to **0%** during reading.
+### 6. 💬 Direct WhatsApp Communication Gateway
+- **Zero-Friction 1:1 Messaging:** Direct form integration using WhatsApp’s universal Click-to-Chat API (`+91 83601 03038`). Automatically formats incoming inquiries into a clean, ready-to-send template.
+- **26,000 Particle Torus Knot Backdrop:** 3D Three.js particle system featuring cursor repulsion physics and spring restorative damping.
+- **Social Dossier:** Direct nodes for LinkedIn, GitHub, Instagram, Email, and Phone.
+
+### 7. 🔊 Procedural Web Audio Synthesizer
+- **Zero Audio Assets:** 100% procedurally synthesized audio using the native **Web Audio API** (`OscillatorNode`, `GainNode`, `BiquadFilterNode`).
+- Features ambient room drones ($55\text{Hz}$ Low A), dynamic UI clicks, status chirps, error beeps, and high-tech glitch bursts.
 
 ---
 
-## 🛰️ Deep Dive: 2D/3D Orbital Radar Constellation
+## 🛠️ Architecture & Tech Stack
 
-The skills section (`TechStack.tsx`) replaces generic marquee loops with an interactive planetary orbital radar engine (`MATRIX_RADAR_V4`):
-
-```mermaid
-graph TD
-    subgraph Orbital Rings
-        O1[Orbit 1: R=90px - Core Frameworks: React, Next.js, TS, Flutter, Python, Postgres]
-        O2[Orbit 2: R=145px - Languages & DBs: Tailwind, JS, Prisma, SQL, Java, Flask]
-        O3[Orbit 3: R=200px - Tools & Cloud: Antigravity, Codex, Git, Docker, Vercel, CSS3]
-    end
-    Clock[60fps Orbital Clock Loop] -->|45s CW| O1
-    Clock -->|65s CCW| O2
-    Clock -->|90s CW| O3
-    User[User Interaction] -->|Category Filter| Rings[Active Nodes Filter]
-    User -->|Hover Node| Lock[Orbit Lock & Azimuth Inspection]
-    User -->|Click Node| HUD[Telemetry HUD & Capabilities Inspector]
-```
-
-### Orbital Math & Planetary Physics:
-- Every node calculates its real-time 2D coordinates using trigonometric polar-to-cartesian projection:
-$$x(t) = R \cdot \cos\left(\frac{\pi}{180} \cdot (\theta_0 + \omega \cdot t)\right), \quad y(t) = R \cdot \sin\left(\frac{\pi}{180} \cdot (\theta_0 + \omega \cdot t)\right)$$
-- Planet cards maintain a constant upright transformation matrix (`translate3d`), preventing upside-down text or icon flipping during orbital revolution.
-- Revolutions automatically lock upon node hover to allow seamless inspection of telemetry metadata.
-- **Calibrated Dimensions:** Orbit radii $(90\text{px}, 145\text{px}, 200\text{px})$ and overall panel height ($460\text{px} – 470\text{px}$) guarantee that the complete constellation and HUD data panel fit on laptop screens without clipping or overflow.
-
----
-
-## 🔊 Deep Dive: Procedural Web Audio Engine
-
-MATRIX operates **with zero static audio files**. Instead, `app/lib/sound.ts` instantiates a singleton `AudioSystem` class utilizing the browser's native **Web Audio API** (`AudioContext`, `OscillatorNode`, `GainNode`, `BiquadFilterNode`) to synthesize dynamic audio in real time:
-
-```mermaid
-graph LR
-    Osc[Oscillator Node] --> Filter[Biquad Filter Node]
-    Filter --> Gain[Gain Node / Envelope]
-    Gain --> Dest[AudioContext.destination]
-```
-
-### Synthesizer Methods & Sound Profiles:
-- **Ambient Drone (`startDrone` / `stopDrone`):** A $55\text{Hz}$ (Low A) sawtooth oscillator filtered through a $100\text{Hz}$ low-pass filter with a low gain ($0.08$) to establish an ambient cybernetic room hum.
-- **Click Feedback (`playClick`):** A sine wave oscillator at a parameterized frequency ($800\text{Hz} - 1200\text{Hz}$) with an exponential decay envelope ($0.04 \rightarrow 0.001$ over $50\text{ms}$).
-- **Status Confirmation (`playBeep`):** Sine oscillator configurable for confirmation chirps ($600\text{Hz} - 950\text{Hz}$) or error alerts ($330\text{Hz}$).
-- **Cyber Glitch (`playGlitch`):** High-speed 4-step square wave sequence ($200\text{Hz} \rightarrow 1200\text{Hz} \rightarrow 800\text{Hz} \rightarrow 2000\text{Hz}$) compressed into a $120\text{ms}$ burst.
-- **EMP Dispersion Wave (`playEmp`):** A $1.2\text{s}$ low-frequency sawtooth sweep descending from $440\text{Hz} \rightarrow 20\text{Hz}$ coupled with a dynamic low-pass filter sweep ($800\text{Hz} \rightarrow 30\text{Hz}$).
-- **Uplink Sweep (`playUplink`):** An ascending sine wave sweep ($100\text{Hz} \rightarrow 1500\text{Hz}$) over $800\text{ms}$ indicating data submission.
-
-> [!NOTE]
-> In compliance with browser autoplay security policies, audio initializes in a muted state. It can be toggled via the navbar controls and the ambient room hum initializes automatically upon the user's first click.
-
----
-
-## 🎨 Deep Dive: Typography & Modern Design System
-
-### 5-Tier Cyberpunk Typography System
-Loaded with zero-layout-shift sub-setting via `next/font/google`:
-
-| Tier | Font Family | Style & Metric | Where Used |
-| :--- | :--- | :--- | :--- |
-| **Cyber Headings** | **`Oxanium`** | Angular, geometric, sci-fi cuts | Section Titles (`TECH STACK`, `EXPERIENCE`, `CONTACT`), ID Card Name |
-| **Display Font** | **`Syne`** | Ultra-modern avant-garde typeface | High-impact statements & hero accents |
-| **Interface & Badges** | **`Space Grotesk`** | Mechanical tech-industrial grotesque | Category filter tabs, HUD headers, navigation, dates |
-| **Modern Body Copy** | **`Plus Jakarta Sans`** | Crisp, balanced geometric sans-serif | Experience bullets, biography paragraphs, descriptions |
-| **Terminal & Code** | **`JetBrains Mono`** | Elite developer monospace with distinct glyphs | Terminal emulator, code blocks, git hashes, sensor coordinates |
-
-### Tailwind CSS v4 Theme System
-Configured in `app/globals.css`:
-```css
-@theme {
-  --font-orbitron: var(--font-oxanium), sans-serif;
-  --font-display: var(--font-oxanium), sans-serif;
-  --font-syne: var(--font-syne), sans-serif;
-  --font-oxanium: var(--font-oxanium), sans-serif;
-  --font-space: var(--font-space-grotesk), sans-serif;
-  --font-sora: var(--font-jakarta), sans-serif;
-  --font-body: var(--font-jakarta), sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
-  
-  --color-cyan-glow: #38bdf8;   /* Soft sky blue */
-  --color-purple-glow: #818cf8; /* Soft space indigo */
-  --color-cyber-green: #34d399; /* Soft cyber emerald */
-}
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                      NEXT.JS 16 APP ROUTER                  │
+├──────────────────────────────┬──────────────────────────────┤
+│          FRONTEND            │       SERVER & SYSTEM        │
+│ • React 19                   │ • Next.js Server Handlers    │
+│ • TypeScript 5               │ • Turbopack Engine           │
+│ • Tailwind CSS v4 (@theme)   │ • Anonymous Message Relay    │
+│ • Lenis Inertial Scrolling   │ • Zero-Layout-Shift Fonts    │
+├──────────────────────────────┼──────────────────────────────┤
+│       GRAPHICS & AUDIO       │          MOTION              │
+│ • Raw WebGL2 GLSL Shaders    │ • Framer Motion 12           │
+│ • Three.js 0.184 + R3F       │ • GSAP Timeline Utils        │
+│ • Native Web Audio API       │ • Direct DOM Custom Pointer  │
+└──────────────────────────────┴──────────────────────────────┘
 ```
 
 ---
 
-## 💬 Deep Dive: Direct WhatsApp Communication Gateway
-
-The **Contact** section ([`app/components/Contact.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/Contact.tsx)) features a 100% free, zero-overhead direct communication pipeline to WhatsApp (`+91 83601 03038`):
-
-1. **Client-Side Form Validation:** Validates that Name, Email, and Message are filled.
-2. **Dynamic URL Construction:** Encodes the inputs into WhatsApp's Click-to-Chat API:
-   ```ts
-   const formattedText = `👋 Hi Agampreet, I'm reaching out from your portfolio!\n\n👤 Name: ${form.name.trim()}\n📧 Email: ${form.email.trim()}\n\n💬 Message: ${form.message.trim()}`;
-   const whatsappUrl = `https://api.whatsapp.com/send?phone=918360103038&text=${encodeURIComponent(formattedText)}`;
-   ```
-3. **Instant Launch & Fallback:** Opens the WhatsApp conversation in a new tab (desktop WhatsApp Web or mobile app) and provides a direct fallback button if popup blockers interfere.
-
----
-
-## ⚡ Performance & Accessibility Engineering
-
-1. **Lenis Inertial Smooth Scrolling:** Configured with a premium cubic ease-out curve (`easeOutExpo`: $1 - 2^{-10t}$). Automatically detects `(prefers-reduced-motion: reduce)`, `(pointer: coarse)` and mobile viewports to cleanly fall back to native device scrolling.
-2. **Direct DOM Pointer Calculations:** `CustomCursor.tsx` updates pointer coordinates and halo scales using direct DOM mutations via `ref.current.style.transform = translate3d(...)` inside `requestAnimationFrame`, eliminating React state re-render overhead.
-3. **Mobile Screen Policy:** Screen widths $< 1024\text{px}$ are greeted with `MobileBlockGate.tsx`, maintaining high-fidelity desktop and laptop visual presentation.
-4. **WebGL Lifecycle Management:** Comprehensive resource disposal handlers (`geometry.dispose()`, `material.dispose()`, `gl.deleteProgram()`, `cancelAnimationFrame()`) prevent memory leaks during page navigation or component unmounting.
-
----
-
-## 🚀 Getting Started & Local Development
+## 🚀 Quick Start
 
 ### Prerequisites
-- **Node.js**: `v20.0.0` or higher
-- **npm**: `v10.0.0` or higher (or `pnpm` / `yarn` / `bun`)
+- [Node.js](https://nodejs.org/) `v20.0.0` or higher
+- `npm`, `pnpm`, or `bun`
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Agam348/matrix.git
-cd matrix
-```
+### Installation
 
-### 2. Install Dependencies
-```bash
-npm install
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Agam348/matrix.git
+   cd matrix
+   ```
 
-### 3. Launch Development Server
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application with Turbopack hot module reloading.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### 4. Run Code Linter
-```bash
-npm run lint
-```
+3. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view the application with Turbopack hot module reloading.
 
-### 5. Production Build & Preview
-```bash
-npm run build
-npm run start
-```
+4. **Build for production:**
+   ```bash
+   npm run build
+   npm run start
+   ```
 
 ---
 
-## ⚙️ Customization Guide
+## 🎨 Typography & Design System
 
-### Updating Personal Information
-- **Hero & Identity:** Modify text, subtitles and terminal readouts in [`app/components/Hero.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/Hero.tsx).
-- **ID Badge Photo & Barcode:** Replace [`public/profile.jpg`](file:///c:/Users/agamp/Downloads/matrix/public/profile.jpg) and edit details in [`components/ui/hanging-id-card.tsx`](file:///c:/Users/agamp/Downloads/matrix/components/ui/hanging-id-card.tsx).
-- **Biography & Education:** Update the `CODE_TOKENS` and modal timeline entries in [`app/components/About.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/About.tsx).
-- **Orbital Tech Stack Nodes:** Edit the `RADAR_NODES` array in [`app/components/TechStack.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/TechStack.tsx).
-- **Work History:** Modify the `EXPERIENCES_DATA` array inside [`app/components/Experience.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/Experience.tsx).
-- **WhatsApp & Social Handles:** Update contact numbers and social links in [`app/components/Contact.tsx`](file:///c:/Users/agamp/Downloads/matrix/app/components/Contact.tsx).
+The visual design system combines a custom 5-tier typography hierarchy loaded via `next/font/google`:
+
+| Tier | Typeface | Character & Application |
+| :--- | :--- | :--- |
+| **Cyber Headings** | **`Oxanium`** | Angular, futuristic cuts used on primary section titles |
+| **Display Accents** | **`Syne`** | Avant-garde modern display typeface for statements |
+| **Interface / HUD** | **`Space Grotesk`** | Mechanical tech-grotesque for radar labels, tabs, and dates |
+| **Clean Body** | **`Plus Jakarta Sans`** | High-legibility geometric sans-serif for reading copy |
+| **Terminal / Code** | **`JetBrains Mono`** | Monospace glyphs for code windows and the AMA terminal |
 
 ---
 
-## 👤 Author & Connect
+## 👤 Connect with Agampreet
 
-**Agampreet Singh**
-- 🎓 **Education:** MTech FYIP Computer Science & Engineering (GNDU Amritsar) & BS in Data Science (IIT Madras)
 - 🌐 **Portfolio:** [matrix-agam.vercel.app](https://github.com/Agam348/matrix)
+- 💼 **LinkedIn:** [/in/Agam17](https://www.linkedin.com/in/Agam17)
 - 💻 **GitHub:** [@Agam348](https://github.com/Agam348)
-- 💼 **LinkedIn:** [in/Agam17](https://www.linkedin.com/in/Agam17)
-- 📸 **Instagram:** [@agampreetsingh382](https://www.instagram.com/agampreetsingh382/)
-- 📧 **Email:** [agampreetsingh382@gmail.com](mailto:agampreetsingh382@gmail.com)
+- 📸 **Instagram:** [@agampreetsingh_17](https://www.instagram.com/agampreetsingh_17/)
+- 📟 **Ask Anonymously:** [ngl.link/agamspark1](https://ngl.link/agamspark1)
+- 📧 **Email:** [agampreetsingh173@gmail.com](mailto:agampreetsingh173@gmail.com)
+- 💬 **WhatsApp:** [+91 83601 03038](https://api.whatsapp.com/send?phone=918360103038)
 
 ---
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This repository is open-source and available under the [MIT License](LICENSE).
