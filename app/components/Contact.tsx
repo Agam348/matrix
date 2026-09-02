@@ -93,11 +93,7 @@ export default function Contact() {
       <WovenCanvas />
 
       {/* 2. Dark glass overlay */}
-      <div className="absolute inset-0 bg-[#09090b]/80 backdrop-blur-[0.5px] z-0 pointer-events-none" />
-
-      {/* Ambient glow blobs for depth */}
-      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-indigo-600/5 blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 left-0 w-60 h-60 rounded-full bg-violet-600/5 blur-[80px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[#09090b]/85 backdrop-blur-[0.5px] z-0 pointer-events-none" />
 
       {/* 3. Foreground content wrapper */}
       <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
@@ -136,7 +132,10 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="md:col-span-7 w-full h-full relative"
         >
-          <Perspective className="w-full h-full" disabled>
+          {/* Subtle feathered dark gradient behind form column for perfect text contrast (no visible box edges) */}
+          <div className="absolute -inset-6 sm:-inset-10 bg-gradient-to-r from-[#09090b]/95 via-[#09090b]/80 to-transparent rounded-3xl pointer-events-none z-0 blur-md" />
+
+          <Perspective className="w-full h-full relative z-10" disabled>
             <div className="p-0 md:p-2 flex flex-col justify-center bg-transparent relative w-full h-full min-h-[360px]">
               
               {isSuccess ? (
@@ -180,9 +179,9 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-6 flex-grow flex flex-col justify-center">
-                  <div className="space-y-1">
-                    <label className="font-space text-[9px] font-bold text-zinc-550 uppercase tracking-widest block">
+                <form onSubmit={handleFormSubmit} className="space-y-5 flex-grow flex flex-col justify-center">
+                  <div className="space-y-1.5">
+                    <label className="font-space text-[9px] font-bold uppercase tracking-widest block">
                       <Highlight color="green">Your Name</Highlight>
                     </label>
                     <input
@@ -190,13 +189,13 @@ export default function Contact() {
                       name="name"
                       value={form.name}
                       onChange={handleInputChange}
-                      placeholder="John Doe"
-                      className="w-full px-1 py-3 bg-transparent border-b border-zinc-900 rounded-none text-white text-xs font-sora focus:outline-none focus:border-indigo-500 placeholder-zinc-700 transition-colors"
+                      placeholder="Agampreet Singh"
+                      className="w-full px-3.5 py-2.5 bg-zinc-900/40 focus:bg-zinc-900/90 border border-zinc-800 focus:border-[#00d9ff] focus:ring-1 focus:ring-[#00d9ff]/30 focus:shadow-[0_0_14px_rgba(0,217,255,0.18)] rounded-lg text-zinc-100 text-xs font-sora focus:outline-none placeholder-zinc-400 transition-all duration-200"
                     />
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="font-space text-[9px] font-bold text-zinc-550 uppercase tracking-widest block">
+                  <div className="space-y-1.5">
+                    <label className="font-space text-[9px] font-bold uppercase tracking-widest block">
                       <Highlight color="purple">Your Email</Highlight>
                     </label>
                     <input
@@ -204,13 +203,13 @@ export default function Contact() {
                       name="email"
                       value={form.email}
                       onChange={handleInputChange}
-                      placeholder="johndoe@example.com"
-                      className="w-full px-1 py-3 bg-transparent border-b border-zinc-900 rounded-none text-white text-xs font-sora focus:outline-none focus:border-indigo-500 placeholder-zinc-700 transition-colors"
+                      placeholder="agampreetsingh382@gmail.com"
+                      className="w-full px-3.5 py-2.5 bg-zinc-900/40 focus:bg-zinc-900/90 border border-zinc-800 focus:border-[#00d9ff] focus:ring-1 focus:ring-[#00d9ff]/30 focus:shadow-[0_0_14px_rgba(0,217,255,0.18)] rounded-lg text-zinc-100 text-xs font-sora focus:outline-none placeholder-zinc-400 transition-all duration-200"
                     />
                   </div>
 
-                  <div className="space-y-1">
-                    <label className="font-space text-[9px] font-bold text-zinc-550 uppercase tracking-widest block">
+                  <div className="space-y-1.5">
+                    <label className="font-space text-[9px] font-bold uppercase tracking-widest block">
                       <Highlight color="red">Your Message</Highlight>
                     </label>
                     <textarea
@@ -219,7 +218,7 @@ export default function Contact() {
                       onChange={handleInputChange}
                       placeholder="Write your message here..."
                       rows={4}
-                      className="w-full px-1 py-3 bg-transparent border-b border-zinc-900 rounded-none text-white text-xs font-sora focus:outline-none focus:border-indigo-500 placeholder-zinc-700 transition-colors resize-none"
+                      className="w-full px-3.5 py-2.5 bg-zinc-900/40 focus:bg-zinc-900/90 border border-zinc-800 focus:border-[#00d9ff] focus:ring-1 focus:ring-[#00d9ff]/30 focus:shadow-[0_0_14px_rgba(0,217,255,0.18)] rounded-lg text-zinc-100 text-xs font-sora focus:outline-none placeholder-zinc-400 transition-all duration-200 resize-none"
                     />
                   </div>
 
@@ -256,43 +255,48 @@ export default function Contact() {
           {[
             {
               platform: "LinkedIn",
-              id: "in/Agam17",
+              id: "linkedin.com/in/Agam17",
               link: "https://www.linkedin.com/in/Agam17",
-              desc: "Professional networking and connections.",
+              desc: "Professional profile and connections.",
               icon: <LinkedinIcon className="w-4 h-4 text-blue-400" />,
               tagColor: "text-blue-400",
-            },
-            {
-              platform: "Instagram",
-              id: "@agampreetsingh382",
-              link: "https://www.instagram.com/agampreetsingh382/",
-              desc: "Direct social photographic media channel.",
-              icon: <InstagramIcon className="w-4 h-4 text-pink-400" />,
-              tagColor: "text-pink-400",
+              isPrimary: true,
             },
             {
               platform: "GitHub",
               id: "github.com/Agam348",
               link: "https://github.com/Agam348",
-              desc: "Source code repositories and history log.",
+              desc: "Projects, code and development work.",
               icon: <GithubIcon className="w-4 h-4 text-zinc-300" />,
               tagColor: "text-zinc-400",
+              isPrimary: true,
             },
             {
               platform: "Email",
               id: "agampreetsingh382@gmail.com",
               link: "https://mail.google.com/mail/?view=cm&fs=1&to=agampreetsingh382@gmail.com",
-              desc: "Direct corporate electronic messaging.",
+              desc: "Direct email contact.",
               icon: <Mail className="w-4 h-4 text-indigo-400" />,
               tagColor: "text-indigo-400",
+              isPrimary: true,
             },
             {
-              platform: "Cellular",
+              platform: "Instagram",
+              id: "@agampreetsingh382",
+              link: "https://www.instagram.com/agampreetsingh382/",
+              desc: "Personal and creative updates.",
+              icon: <InstagramIcon className="w-4 h-4 text-pink-400" />,
+              tagColor: "text-pink-400",
+              isPrimary: true,
+            },
+            {
+              platform: "Phone",
               id: "+91 83601 03038",
               link: "tel:+918360103038",
-              desc: "Direct cellular voice communications.",
+              desc: "Direct phone contact.",
               icon: <Phone className="w-4 h-4 text-emerald-400" />,
               tagColor: "text-emerald-400",
+              isPrimary: true,
             },
           ].map((social) => (
             <a

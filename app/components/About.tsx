@@ -281,10 +281,6 @@ export default function About() {
       {/* Dark Ambient Layer to maintain contrast and legibility */}
       <div className="absolute inset-0 bg-black/40 z-[1] pointer-events-none" />
 
-      {/* Accent glow blobs for visual richness */}
-      <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-indigo-600/6 blur-[120px] pointer-events-none z-[2]" />
-      <div className="absolute top-1/2 right-1/3 w-72 h-72 rounded-full bg-violet-600/5 blur-[90px] pointer-events-none z-[2]" />
-
       {/* Content Container (Aligned exactly with portfolio grid margins, full-screen laptop height) */}
       <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-6 sm:px-12 pb-16 md:pb-36 pt-24 md:pt-32 min-h-0 md:min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
@@ -313,7 +309,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
             className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-200 to-zinc-300 text-[clamp(1rem,2vw,1.4rem)] font-semibold mb-3 md:mb-6 leading-snug"
           >
-            Bridging Systems Engineering & Analytical Intelligence.
+            Where software engineering meets analytical intelligence.
           </motion.p>
 
           {/* Staggered Description Biography */}
@@ -324,7 +320,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             className="text-zinc-300 text-sm sm:text-base leading-relaxed font-normal mb-6 md:mb-8 max-w-xl"
           >
-            Pursuing an MTECH FYIP in CSE at GNDU and a BS in Data Science at IIT Madras — merging software engineering with data-driven analysis to build minimal, secure and meaningful tools.
+            I&apos;m pursuing a BS in Data Science at IIT Madras and an M.Tech FYIP in CSE at GNDU. I combine software engineering with data-driven thinking to build minimal, secure, and meaningful digital tools.
           </motion.p>
 
           {/* Interactive CTA Buttons (Staggered Animation) */}
@@ -372,9 +368,6 @@ export default function About() {
         {/* Right Side: Animated Code Snippet Card */}
         <div className="lg:col-span-5 w-full flex justify-center lg:justify-end items-center pointer-events-auto">
           <div className="relative w-full max-w-[480px] h-[420px]">
-            {/* Deep blue glowing backplate (12% opacity, blur-2xl) */}
-            <div className="absolute -inset-4 bg-sky-500/12 rounded-3xl blur-2xl pointer-events-none z-0" />
-
             <motion.div
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
@@ -383,29 +376,9 @@ export default function About() {
               viewport={{ once: true, margin: "-80px" }}
               animate={{
                 y: [0, -6, 0],
-                borderColor: [
-                  "rgba(99, 102, 241, 0.2)",
-                  "rgba(56, 189, 248, 0.4)",
-                  "rgba(99, 102, 241, 0.2)"
-                ],
-                boxShadow: [
-                  "0 0 30px rgba(99, 102, 241, 0.08)",
-                  "0 0 40px rgba(56, 189, 248, 0.15)",
-                  "0 0 30px rgba(99, 102, 241, 0.08)"
-                ]
               }}
               transition={{
                 y: {
-                  duration: 5.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-                borderColor: {
-                  duration: 5.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-                boxShadow: {
                   duration: 5.5,
                   repeat: Infinity,
                   ease: "easeInOut",
@@ -418,10 +391,8 @@ export default function About() {
                 transformStyle: "preserve-3d",
                 transition: "transform 0.15s ease-out",
               }}
-              className="relative z-10 w-full h-full bg-zinc-950/75 backdrop-blur-md border border-zinc-900 rounded-2xl flex flex-col overflow-hidden select-none"
+              className="relative z-10 w-full h-full bg-zinc-950/85 backdrop-blur-md border border-zinc-800/80 rounded-2xl flex flex-col overflow-hidden select-none shadow-2xl"
             >
-              {/* Soft ambient glow behind card */}
-              <div className="absolute -inset-px bg-gradient-to-r from-indigo-500/10 to-sky-500/10 rounded-2xl blur-md opacity-40 pointer-events-none" />
 
               {/* macOS window title bar */}
               <div className="relative z-10 flex items-center justify-between px-4 py-3 bg-zinc-900/40 border-b border-zinc-900/60 select-none">
@@ -437,7 +408,7 @@ export default function About() {
               </div>
 
               {/* Code Body */}
-              <div ref={codeBodyRef} className="relative z-10 flex-1 p-5 overflow-y-auto font-mono text-[10px] sm:text-xs leading-relaxed text-zinc-350 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-text selection:bg-indigo-950 selection:text-indigo-300 animate-pulse-none">
+              <div ref={codeBodyRef} className="relative z-10 flex-1 p-5 overflow-y-auto font-mono text-[10px] sm:text-xs leading-relaxed text-zinc-350 whitespace-pre [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-text selection:bg-indigo-950 selection:text-indigo-300 animate-pulse-none">
                 {CODE_TOKENS.map((line, lineIdx) => {
                   const lineStart = flatTokens.list.find(t => t.lineIdx === lineIdx)?.start ?? 0;
                   const lineEnd = [...flatTokens.list].reverse().find(t => t.lineIdx === lineIdx)?.end ?? 0;
@@ -449,14 +420,14 @@ export default function About() {
                   if (typedCharCount <= lineStart && lineIdx > 0) return null;
 
                   return (
-                    <div key={lineIdx} className="min-h-[1.5rem] flex items-center flex-wrap">
+                    <div key={lineIdx} className="min-h-[1.5rem] flex items-center whitespace-pre">
                       {/* Line Number */}
-                      <span className="w-6 text-zinc-700 select-none pr-2 text-right text-[8px] sm:text-[10px]">
+                      <span className="w-6 text-zinc-700 select-none pr-2 text-right text-[8px] sm:text-[10px] shrink-0">
                         {lineIdx + 1}
                       </span>
                       
                       {/* Line Content */}
-                      <span className="flex-1 flex flex-wrap items-center">
+                      <span className="flex-1 flex items-center whitespace-pre">
                         {line.map((token, tokenIdx) => {
                           const flatToken = flatTokens.list.find(t => t.lineIdx === lineIdx && t.tokenIdx === tokenIdx);
                           if (!flatToken) return null;
@@ -468,7 +439,7 @@ export default function About() {
                             : flatToken.text;
 
                           return (
-                            <span key={tokenIdx} className={getColorClass(flatToken.type)}>
+                            <span key={tokenIdx} className={`${getColorClass(flatToken.type)} whitespace-pre`}>
                               {tokenText}
                             </span>
                           );
@@ -476,7 +447,7 @@ export default function About() {
                         
                         {/* Blinking Cursor on active line */}
                         {(isActiveLine || (isLastLine && isFinishedTyping)) && (
-                          <span className="w-1.5 h-3.5 bg-[#60A5FA] animate-pulse ml-0.5 inline-block align-middle shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
+                          <span className="w-1.5 h-3.5 bg-[#60A5FA] animate-pulse ml-0.5 inline-block align-middle shadow-[0_0_8px_rgba(96,165,250,0.8)] shrink-0" />
                         )}
                       </span>
                     </div>

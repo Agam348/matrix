@@ -178,11 +178,11 @@ export const WovenCanvas = () => {
 
     // Using AdditiveBlending on dark background for stunning glows
     const material = new THREE.PointsMaterial({
-        size: 0.02,
+        size: 0.016,
         vertexColors: true,
         blending: THREE.AdditiveBlending,
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.45,
     });
 
     const points = new THREE.Points(geometry, material);

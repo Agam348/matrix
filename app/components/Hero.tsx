@@ -185,13 +185,13 @@ export default function Hero() {
                   </span>
                 </h1>
                 
-                <p className="font-space text-sm sm:text-base lg:text-lg text-zinc-200 font-bold tracking-wide max-w-xl mx-auto lg:mx-0 animate-fade-in-up animation-delay-400 leading-snug sm:leading-relaxed">
+                <p className="font-space text-sm sm:text-base lg:text-lg text-zinc-200 font-bold tracking-wide max-w-lg mx-auto lg:mx-0 animate-fade-in-up animation-delay-400 leading-snug sm:leading-relaxed">
                   Building modern digital experiences through code, design and technology.
                 </p>
               </div>
 
               {/* Concise biography intro */}
-              <p className="font-sora text-sm sm:text-base leading-relaxed text-zinc-300 max-w-lg mx-auto lg:mx-0 animate-fade-in-up animation-delay-600">
+              <p className="font-sora text-sm sm:text-base leading-relaxed text-zinc-300 max-w-md mx-auto lg:mx-0 animate-fade-in-up animation-delay-600">
                 I build responsive web and mobile applications with React, Next.js, Flutter and Python. Passionate about AI and solving real-world challenges through user-focused software.
               </p>
 
@@ -200,26 +200,19 @@ export default function Hero() {
                 <button
                   onClick={() => handleScrollTo("experience")}
                   onMouseEnter={() => soundManager.playHoverClick(1000)}
-                  className="h-11 sm:h-12 w-full sm:w-auto px-7 flex items-center justify-center gap-2 border border-zinc-700/80 hover:border-indigo-500/60 bg-zinc-950/70 hover:bg-indigo-950/30 backdrop-blur-sm text-zinc-200 hover:text-white rounded-xl font-space text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.2)] cursor-pointer shrink-0 active:scale-[0.98]"
+                  className="h-11 sm:h-12 w-full sm:w-auto px-7 flex items-center justify-center gap-2.5 border border-zinc-800 hover:border-zinc-600 bg-[#0c0d12]/90 hover:bg-zinc-900 backdrop-blur-sm text-zinc-100 hover:text-white rounded-xl font-space text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 cursor-pointer shrink-0 active:scale-[0.98] shadow-sm"
                 >
-                  <Eye className="w-4 h-4 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
-                  View Experience
+                  <Eye className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors shrink-0" />
+                  <span>VIEW EXPERIENCE</span>
                 </button>
                 
                 <button
                   onClick={openTerminal}
                   onMouseEnter={() => soundManager.playHoverClick(1000)}
-                  className="relative p-[1px] h-11 sm:h-12 w-full sm:w-auto overflow-hidden font-space text-xs font-bold tracking-[0.14em] uppercase cursor-pointer group shrink-0 active:scale-[0.98] rounded-xl"
+                  className="h-11 sm:h-12 w-full sm:w-auto px-7 flex items-center justify-center gap-2.5 border border-cyan-500/80 hover:border-cyan-400 bg-[#0c0d12]/90 hover:bg-zinc-900/90 text-cyan-400 hover:text-cyan-300 rounded-xl font-space text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 cursor-pointer shrink-0 active:scale-[0.98] shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:shadow-[0_0_22px_rgba(6,182,212,0.4)]"
                 >
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-500/60 to-cyan-500/60 group-hover:from-indigo-400 group-hover:to-cyan-400 transition-all duration-300 rounded-xl"
-                  />
-                  <div 
-                    className="relative flex items-center justify-center gap-2 h-full w-full px-7 bg-[#09090b]/95 group-hover:bg-indigo-950/40 transition-all duration-300 rounded-[11px]"
-                  >
-                    <Terminal className="w-4 h-4 text-cyan-400 group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0" />
-                    <span className="text-cyan-400 group-hover:text-white transition-colors duration-300 whitespace-nowrap">Access Terminal</span>
-                  </div>
+                  <span className="font-mono font-bold text-cyan-400 text-sm tracking-tight leading-none">&gt;_</span>
+                  <span className="whitespace-nowrap">ACCESS TERMINAL</span>
                 </button>
               </div>
 
@@ -227,8 +220,6 @@ export default function Hero() {
 
             {/* Right Side: Hanging Draggable Cyber ID Card (Desktop / Large Screens) */}
             <div className="hidden lg:flex lg:col-span-5 w-full h-[400px] xl:h-[450px] items-center justify-center relative select-none overflow-visible">
-              {/* Subtle glow layer behind card */}
-              <div className="absolute w-64 h-64 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none" />
               <HangingIdCard />
             </div>
 
@@ -237,13 +228,13 @@ export default function Hero() {
           {/* Downward Scroll Prompter */}
           <button
             onClick={() => handleScrollTo("about")}
-            className="absolute bottom-4 md:bottom-6 hidden md:flex flex-col items-center gap-2 group cursor-pointer transition-opacity z-10"
+            className="absolute bottom-4 md:bottom-6 hidden md:flex flex-col items-center gap-2 group cursor-pointer transition-all z-10 opacity-90 hover:opacity-100"
           >
-            <span className="font-space text-[9px] font-bold tracking-[0.2em] text-zinc-500 group-hover:text-zinc-300 transition-colors">
+            <span className="font-space text-[9px] font-bold tracking-[0.22em] text-zinc-400 group-hover:text-zinc-200 transition-colors">
               SCROLL TO EXPLORE
             </span>
-            <div className="w-5 h-8 rounded-full border border-zinc-800 group-hover:border-zinc-600 transition-colors flex justify-center p-1.5">
-              <div className="w-1 h-1 rounded-full bg-zinc-500 group-hover:bg-zinc-300 animate-bounce" />
+            <div className="w-5 h-8 rounded-full border border-zinc-700/80 group-hover:border-zinc-400 bg-zinc-950/40 transition-colors flex justify-center p-1.5 shadow-sm">
+              <div className="w-1 h-1.5 rounded-full bg-zinc-300 group-hover:bg-white animate-bounce" />
             </div>
           </button>
 

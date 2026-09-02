@@ -18,6 +18,7 @@ export default function CustomCursor() {
   // Track cursor states: default (ball only), pointer (arrow + circle + ball), grab (hand + circle + ball)
   const cursorStateRef = useRef<"default" | "pointer" | "grab" | "grabbing">("default");
   const isGrabActiveRef = useRef(false);
+  const isInsideRef = useRef(false);
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
@@ -40,6 +41,19 @@ export default function CustomCursor() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
+      
+      // If cursor is within viewport bounds
+      if (
+        e.clientX > 0 &&
+        e.clientY > 0 &&
+        e.clientX < window.innerWidth &&
+        e.clientY < window.innerHeight
+      ) {
+        isInsideRef.current = true;
+      } else {
+        isInsideRef.current = false;
+      }
+
       updateCursorState(e.target as HTMLElement);
     };
 
@@ -76,7 +90,28 @@ export default function CustomCursor() {
     };
 
     const handleMouseOver = (e: MouseEvent) => {
+      isInsideRef.current = true;
       updateCursorState(e.target as HTMLElement);
+    };
+
+    const handleMouseEnter = () => {
+      isInsideRef.current = true;
+    };
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (
+        !e.relatedTarget ||
+        e.clientY <= 0 ||
+        e.clientX <= 0 ||
+        e.clientY >= window.innerHeight ||
+        e.clientX >= window.innerWidth
+      ) {
+        isInsideRef.current = false;
+      }
+    };
+
+    const handleBlur = () => {
+      isInsideRef.current = false;
     };
 
     const handleMouseDown = (e: MouseEvent) => {
@@ -110,6 +145,11 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseover", handleMouseOver, { passive: true });
+    window.addEventListener("mouseenter", handleMouseEnter, { passive: true });
+    window.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    document.documentElement.addEventListener("mouseleave", handleMouseLeave, { passive: true });
+    window.addEventListener("blur", handleBlur);
     window.addEventListener("mousedown", handleMouseDown, { passive: true });
     window.addEventListener("mouseup", handleMouseUp, { passive: true });
 
@@ -118,6 +158,11 @@ export default function CustomCursor() {
       document.documentElement.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("blur", handleBlur);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
     };
@@ -133,6 +178,7 @@ export default function CustomCursor() {
       const mouse = mouseRef.current;
       const trail = trailRef.current;
       const state = cursorStateRef.current;
+      const isInside = isInsideRef.current;
 
       // Smooth trail lag interpolation for the follow-glow
       const dx = mouse.x - trail.x;
@@ -140,16 +186,28 @@ export default function CustomCursor() {
       trail.x += dx * 0.12;
       trail.y += dy * 0.12;
 
-      // 1. Update center dot (ball) - Always visible and follows the mouse
+      // 1. Update center dot (ball)
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%)`;
+        if (!isInside || state === "grab" || state === "grabbing") {
+          dotRef.current.style.opacity = "0";
+          dotRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(0)`;
+        } else {
+          dotRef.current.style.opacity = "1";
+          dotRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(1)`;
+        }
       }
 
       // 2. Update transparent white circle halo for clickable and draggable targets
       if (haloRef.current) {
-        if (state === "pointer" || state === "grab" || state === "grabbing") {
-          const haloScale = state === "grabbing" ? 0.86 : 1;
+        if (!isInside) {
+          haloRef.current.style.opacity = "0";
+          haloRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(0.45)`;
+        } else if (state === "pointer") {
           haloRef.current.style.opacity = "1";
+          haloRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(1)`;
+        } else if (state === "grab" || state === "grabbing") {
+          const haloScale = state === "grabbing" ? 0.75 : 0.9;
+          haloRef.current.style.opacity = "0.45";
           haloRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(${haloScale})`;
         } else {
           haloRef.current.style.opacity = "0";
@@ -157,9 +215,9 @@ export default function CustomCursor() {
         }
       }
 
-      // 3. Update custom arrow icon, with its tip aligned to the pointer position
+      // 3. Update custom arrow icon
       if (arrowRef.current) {
-        if (state === "pointer") {
+        if (isInside && state === "pointer") {
           arrowRef.current.style.opacity = "1";
           arrowRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0)`;
         } else {
@@ -167,19 +225,20 @@ export default function CustomCursor() {
         }
       }
 
-      // 4. Update grab hands: open while hover-ready, closed while actively dragging.
+      // 4. Update grab hands
       if (openHandRef.current) {
-        openHandRef.current.style.opacity = state === "grab" ? "1" : "0";
-        openHandRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(1)`;
+        openHandRef.current.style.opacity = isInside && state === "grab" ? "1" : "0";
+        openHandRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(${state === "grab" ? 1 : 0.7})`;
       }
 
       if (closedHandRef.current) {
-        closedHandRef.current.style.opacity = state === "grabbing" ? "1" : "0";
-        closedHandRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(0.92)`;
+        closedHandRef.current.style.opacity = isInside && state === "grabbing" ? "1" : "0";
+        closedHandRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0) translate(-50%, -50%) scale(${state === "grabbing" ? 0.95 : 0.7})`;
       }
 
       // 5. Update background glow backplate
       if (glowRef.current) {
+        glowRef.current.style.opacity = isInside ? "0.7" : "0";
         glowRef.current.style.transform = `translate3d(${trail.x}px, ${trail.y}px, 0) translate(-50%, -50%)`;
       }
 

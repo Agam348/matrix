@@ -142,13 +142,14 @@ const RADAR_NODES: RadarNode[] = [
     name: "Prisma",
     category: "Backend",
     badge: "Type-Safe ORM",
-    logo: "https://cdn.simpleicons.org/prisma/white",
-    brandColor: "#ffffff",
-    accentGlow: "rgba(255, 255, 255, 0.25)",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
+    brandColor: "#5a67d8",
+    accentGlow: "rgba(90, 103, 216, 0.35)",
     radius: 145,
     angleDeg: 120,
     note: "Managing declarative database models, automated migration rollouts and end-to-end type-safe queries",
     tags: ["Type-Safe Queries", "Migrations", "Schema"],
+    logoClassName: "brightness-0 invert",
   },
   {
     id: "sql",
@@ -181,13 +182,14 @@ const RADAR_NODES: RadarNode[] = [
     name: "Flask",
     category: "Backend",
     badge: "Python Micro-Services",
-    logo: "https://cdn.simpleicons.org/flask/white",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg",
     brandColor: "#ffffff",
     accentGlow: "rgba(255, 255, 255, 0.25)",
     radius: 145,
     angleDeg: 300,
     note: "Building lightweight REST API endpoints, JWT authentication services and backend micro-integrations",
     tags: ["REST APIs", "Microservices", "Auth"],
+    logoClassName: "brightness-0 invert",
   },
 
   // OUTER ORBIT (R = 200px) - Tools, AI & Cloud Platforms
@@ -360,7 +362,7 @@ export default function TechStack() {
                     }
                   }}
                   onMouseLeave={() => setHoveredNode(null)}
-                  className={`group relative flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border transition-all duration-300 ${
+                  className={`group relative flex items-center justify-center w-9.5 h-9.5 sm:w-10.5 sm:h-10.5 rounded-xl border transition-all duration-300 ${
                     isSelected
                       ? "bg-zinc-900 border-indigo-400 scale-125 z-40 shadow-[0_0_25px_rgba(99,102,241,0.6)] cursor-pointer"
                       : "bg-zinc-950/90 border-zinc-800/80 hover:border-zinc-500 hover:scale-115 hover:bg-zinc-900 z-10 cursor-pointer"
@@ -377,15 +379,17 @@ export default function TechStack() {
                     />
                   )}
 
-                  <Image
-                    src={node.logo}
-                    alt={`${node.name} logo`}
-                    width={18}
-                    height={18}
-                    unoptimized
-                    style={{ width: "auto", height: "auto" }}
-                    className={`max-h-4 max-w-4 sm:max-h-5 sm:max-w-5 object-contain ${node.logoClassName ?? ""}`}
-                  />
+                  <div className="w-5 h-5 sm:w-5.5 sm:h-5.5 flex items-center justify-center pointer-events-none">
+                    <Image
+                      src={node.logo}
+                      alt={`${node.name} logo`}
+                      width={22}
+                      height={22}
+                      unoptimized
+                      style={{ width: "auto", height: "auto" }}
+                      className={`max-h-5 max-w-5 sm:max-h-5.5 sm:max-w-5.5 object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] ${node.logoClassName ?? ""}`}
+                    />
+                  </div>
                 </button>
               </div>
             </div>
@@ -427,10 +431,10 @@ export default function TechStack() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex items-center gap-2 self-start md:self-end px-3 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 text-zinc-400 font-space text-[9px] font-bold tracking-wider uppercase"
+            className="flex items-center gap-2 self-start md:self-end px-3 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 text-zinc-400 font-space text-[9.5px] font-bold tracking-wider uppercase"
           >
-            <Radio className="w-3 h-3 text-indigo-400 animate-pulse" />
-            <span className="text-zinc-200">RADAR ACTIVE // {filteredNodes.length} NODES TRACKED</span>
+            <Radio className="w-3 h-3 text-indigo-400" />
+            <span className="text-zinc-200">{filteredNodes.length} Technologies</span>
           </motion.div>
         </div>
 
@@ -489,7 +493,7 @@ export default function TechStack() {
               )}
             </button>
 
-            <span className="font-mono text-[8.5px] text-zinc-500 hidden sm:inline-block">
+            <span className="font-mono text-[8.5px] text-zinc-500 hidden sm:inline-block tracking-wider">
               HOVER TO LOCK
             </span>
           </div>
@@ -500,34 +504,33 @@ export default function TechStack() {
           {/* LEFT: 2D/3D ORBITAL RADAR CONSTELLATION (Desktop/Tablet) */}
           <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[440px] sm:h-[460px] lg:h-[470px] bg-zinc-950/50 border border-zinc-900/80 rounded-2xl p-3 overflow-hidden backdrop-blur-xl shadow-2xl">
             
-            {/* Ambient Radial Spotlight inside Radar */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.08),transparent_65%)] pointer-events-none" />
+            {/* Ambient subtle spotlight inside Radar */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_65%)] pointer-events-none" />
 
             {/* Radar Crosshairs */}
-            <div className="absolute inset-x-0 top-1/2 h-px bg-zinc-900/80 pointer-events-none" />
-            <div className="absolute inset-y-0 left-1/2 w-px bg-zinc-900/80 pointer-events-none" />
+            <div className="absolute inset-x-0 top-1/2 h-px bg-zinc-900 pointer-events-none" />
+            <div className="absolute inset-y-0 left-1/2 w-px bg-zinc-900 pointer-events-none" />
 
             {/* Rotating Radar Scanner Beam */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[410px] h-[410px] rounded-full pointer-events-none animate-spin [animation-duration:16s]">
-              <div className="w-1/2 h-1/2 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-tl-full origin-bottom-right transform rotate-45" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[410px] h-[410px] rounded-full pointer-events-none animate-spin [animation-duration:18s]">
+              <div className="w-1/2 h-1/2 bg-gradient-to-br from-zinc-500/5 to-transparent rounded-tl-full origin-bottom-right transform rotate-45" />
             </div>
 
             {/* Concentric Orbital Rings - Clean Minimalist Paths */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] rounded-full border border-indigo-500/25 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] rounded-full border border-zinc-800/80 pointer-events-none" />
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[290px] h-[290px] rounded-full border border-zinc-800/80 border-dashed pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[290px] h-[290px] rounded-full border border-zinc-800/60 border-dashed pointer-events-none" />
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-zinc-900 pointer-events-none" />
 
             {/* Center Core Node */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-zinc-950 border-2 border-indigo-500/60 shadow-[0_0_25px_rgba(99,102,241,0.4)]">
-              <div className="absolute inset-0 rounded-full bg-indigo-500/20 animate-ping [animation-duration:3s]" />
-              <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-400 mb-0.5" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-zinc-950 border border-zinc-700 shadow-xl">
+              <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-300 mb-0.5" />
               <span className="font-space text-[7.5px] sm:text-[8px] font-black text-white uppercase tracking-wider">
                 CORE
               </span>
-              <span className="font-mono text-[5.5px] sm:text-[6px] text-indigo-400 tracking-widest">
-                SYS_ONLINE
+              <span className="font-space text-[6px] sm:text-[6.5px] text-indigo-400 font-bold tracking-widest">
+                ACTIVE
               </span>
             </div>
 
@@ -541,17 +544,17 @@ export default function TechStack() {
           <div className="lg:col-span-5 flex flex-col">
             <div className="relative w-full rounded-2xl bg-zinc-950/85 border border-zinc-800/80 overflow-hidden shadow-2xl backdrop-blur-xl p-5 sm:p-6 flex flex-col justify-between h-[440px] sm:h-[460px] lg:h-[470px]">
               
-              {/* HUD Header Bar */}
+              {/* Details Header Bar */}
               <div className="flex items-center justify-between border-b border-zinc-900 pb-2.5">
                 <div className="flex items-center gap-2">
-                  <Radar className="w-3.5 h-3.5 text-indigo-400 animate-spin [animation-duration:10s]" />
-                  <span className="font-mono text-[9px] text-zinc-400 uppercase tracking-widest font-bold">
-                    TELEMETRY_HUD // NODE_DATA
+                  <Radar className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="font-space text-[10px] text-zinc-300 uppercase tracking-widest font-bold">
+                    Technology Overview
                   </span>
                 </div>
 
-                <span className="px-2 py-0.5 rounded-full bg-indigo-950/50 border border-indigo-500/30 text-indigo-300 font-mono text-[8px] uppercase font-bold">
-                  {activeNode.category} SECTOR
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-950/50 border border-indigo-500/30 text-indigo-300 font-space text-[8.5px] uppercase font-bold tracking-wider">
+                  {activeNode.category}
                 </span>
               </div>
 
@@ -568,17 +571,17 @@ export default function TechStack() {
                   {/* Title & Brand Icon */}
                   <div className="flex items-center gap-3">
                     <div
-                      className="w-12 h-12 rounded-xl bg-zinc-900 border flex items-center justify-center p-2.5 shadow-inner shrink-0"
+                      className="w-12 h-12 rounded-xl bg-zinc-900 border flex items-center justify-center p-2 shadow-inner shrink-0"
                       style={{ borderColor: activeNode.brandColor }}
                     >
                       <Image
                         src={activeNode.logo}
                         alt={`${activeNode.name} logo`}
-                        width={24}
-                        height={24}
+                        width={28}
+                        height={28}
                         unoptimized
                         style={{ width: "auto", height: "auto" }}
-                        className={`max-h-6 max-w-6 object-contain ${activeNode.logoClassName ?? ""}`}
+                        className={`max-h-7 max-w-7 object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] ${activeNode.logoClassName ?? ""}`}
                       />
                     </div>
 
@@ -589,7 +592,7 @@ export default function TechStack() {
                         </h3>
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                       </div>
-                      <span className="font-mono text-[8.5px] text-indigo-400 font-bold uppercase tracking-wider block">
+                      <span className="font-space text-[9px] text-indigo-400 font-bold uppercase tracking-wider block">
                         {activeNode.badge}
                       </span>
                     </div>
@@ -622,7 +625,7 @@ export default function TechStack() {
                   {/* Tags */}
                   <div className="space-y-2 pt-1 border-t border-zinc-800/80">
                     <span className="text-[9px] font-space font-bold uppercase tracking-widest text-zinc-400 block">
-                      Architectural Capabilities
+                      Core Capabilities
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {activeNode.tags.map((tag) => (
@@ -638,13 +641,13 @@ export default function TechStack() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* HUD Footer */}
-              <div className="pt-2.5 border-t border-zinc-800/80 flex items-center justify-between text-[8.5px] font-mono text-zinc-400 select-none">
-                <span className="flex items-center gap-1.5 font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  SENSOR_LOCK: STABLE
+              {/* Card Footer */}
+              <div className="pt-2.5 border-t border-zinc-800/80 flex items-center justify-between text-[9px] font-space text-zinc-400 select-none">
+                <span className="flex items-center gap-1.5 font-bold text-zinc-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  Production Ready
                 </span>
-                <span className="font-semibold">SYSTEM_ID: MATRIX_RADAR_V4</span>
+                <span className="text-zinc-500 font-medium">Interactive Constellation</span>
               </div>
 
             </div>

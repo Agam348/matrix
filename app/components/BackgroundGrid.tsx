@@ -108,10 +108,6 @@ export default function BackgroundGrid() {
 
   return (
     <div className="fixed inset-0 w-full h-full -z-50 overflow-hidden bg-[#09090b] pointer-events-none">
-      {/* Vercel/Linear style soft ambient radial glow spotlights */}
-      <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full bg-indigo-500/5 blur-[120px]" />
-      <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-zinc-500/5 blur-[150px]" />
-      
       {/* Interlinked Node Web Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 hidden w-full h-full md:block" />
     </div>
