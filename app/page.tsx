@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import BackgroundGrid from "./components/BackgroundGrid";
 import CustomCursor from "./components/CustomCursor";
-import IntroLoader from "./components/IntroLoader";
 import MobileBlockGate from "./components/MobileBlockGate";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 import Hero from "./components/Hero";
@@ -74,8 +73,6 @@ export default function Home() {
 
       {/* 2. Full-Fidelity Desktop & Laptop Portfolio Experience (Rendered on screens >= 1024px) */}
       <div className="hidden lg:flex flex-col items-center w-full">
-        <IntroLoader />
-
         {/* Background Layer */}
         <BackgroundGrid />
 

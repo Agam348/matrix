@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import { Perspective, Highlight } from "@/components/ui/perspective-highlight";
 import { WovenCanvas } from "@/components/ui/woven-light-hero";
-import { Mail, Phone, ExternalLink, Check } from "lucide-react";
+import { Mail, Phone, ExternalLink, Check, ArrowUpRight } from "lucide-react";
 
 interface FormState {
   name: string;
@@ -81,13 +81,13 @@ export default function Contact() {
       if (typeof window !== "undefined") {
         window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       }
-    }, 800);
+    }, 700);
   };
 
   return (
     <section
       id="contact"
-      className="relative w-full py-16 md:py-24 px-6 sm:px-12 rounded-3xl border border-zinc-900/60 bg-zinc-950/20 flex flex-col justify-center items-center overflow-hidden z-0 shadow-2xl"
+      className="relative w-full py-16 md:py-24 px-6 sm:px-12 rounded-3xl border border-zinc-900/60 bg-zinc-950/20 flex flex-col justify-center items-center overflow-hidden z-0 shadow-2xl scroll-mt-24 sm:scroll-mt-28"
     >
       {/* 1. Full-screen WebGL Woven Silk 26,000 Particle Torus Knot Backdrop */}
       <WovenCanvas />
@@ -159,10 +159,10 @@ export default function Contact() {
                       href={lastWhatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-md font-space text-[10px] font-bold tracking-widest cursor-pointer uppercase select-none transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+                      className="inline-flex items-center justify-center gap-2 h-11 px-6 bg-white hover:bg-zinc-200 active:scale-[0.99] text-zinc-950 font-space text-xs font-bold tracking-wider uppercase rounded-xl transition-all duration-200 cursor-pointer shadow-sm"
                     >
-                      <WhatsappIcon className="w-4 h-4" />
-                      Open WhatsApp Directly
+                      <WhatsappIcon className="w-4 h-4 text-[#25D366]" />
+                      <span>Open WhatsApp Directly</span>
                     </a>
                   )}
                   
@@ -174,9 +174,9 @@ export default function Contact() {
                       setLastWhatsappUrl("");
                       soundManager.playBeep(600, 0.1);
                     }}
-                    className="mt-2 px-4 py-2 border border-zinc-800 hover:border-zinc-700 bg-zinc-950/40 text-zinc-400 hover:text-white rounded-md font-space text-[9px] font-bold tracking-widest cursor-pointer uppercase select-none transition-all duration-300"
+                    className="mt-2 px-4 py-2 border border-zinc-800 hover:border-zinc-700 bg-zinc-900/40 text-zinc-400 hover:text-white rounded-lg font-space text-[10px] font-bold tracking-widest cursor-pointer uppercase select-none transition-all duration-300"
                   >
-                    Send Another Message
+                    Send Another Transmission
                   </button>
                 </div>
               ) : (
@@ -229,13 +229,15 @@ export default function Contact() {
                     </div>
                   )}
 
+                  {/* Clean Minimalist Action Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 hover:from-emerald-500 hover:to-teal-500 text-white font-space text-[10px] font-bold tracking-widest rounded-sm transition-all duration-300 cursor-pointer uppercase disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.55)]"
+                    onMouseEnter={() => soundManager.playHoverClick(1000)}
+                    className="w-full h-11 bg-white hover:bg-zinc-200 active:scale-[0.99] text-zinc-950 font-space text-xs font-bold tracking-wider uppercase rounded-xl flex items-center justify-center gap-2.5 transition-all duration-200 cursor-pointer disabled:opacity-50 shadow-sm"
                   >
-                    <WhatsappIcon className="w-4 h-4 shrink-0" />
-                    {isSubmitting ? "Opening WhatsApp..." : "Send via WhatsApp"}
+                    <WhatsappIcon className="w-4 h-4 text-[#25D366]" />
+                    <span>{isSubmitting ? "Opening WhatsApp..." : "Send Message on WhatsApp"}</span>
                   </button>
                 </form>
               )}
@@ -243,29 +245,22 @@ export default function Contact() {
           </Perspective>
         </motion.div>
 
-        {/* Right: Modern Social Dossier - Fully borderless floating tags! */}
+        {/* Right: Modern Social Dossier with glowing hover effects */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          className="md:col-span-5 flex flex-col justify-between gap-4"
+          className="md:col-span-5 flex flex-col justify-between gap-3.5"
         >
           {[
-            {
-              platform: "WhatsApp",
-              id: "+91 83601 03038",
-              link: "https://api.whatsapp.com/send?phone=918360103038&text=Hi%20Agampreet%2C%20I%20came%20across%20your%20portfolio!",
-              desc: "Direct instant encrypted WhatsApp chat.",
-              icon: <WhatsappIcon className="w-4 h-4 text-emerald-400" />,
-              highlight: true,
-            },
             {
               platform: "LinkedIn",
               id: "in/Agam17",
               link: "https://www.linkedin.com/in/Agam17",
               desc: "Professional networking and connections.",
-              icon: <LinkedinIcon className="w-4 h-4 text-indigo-400" />,
+              icon: <LinkedinIcon className="w-4 h-4 text-blue-400" />,
+              tagColor: "text-blue-400",
             },
             {
               platform: "Instagram",
@@ -273,27 +268,31 @@ export default function Contact() {
               link: "https://www.instagram.com/agampreetsingh382/",
               desc: "Direct social photographic media channel.",
               icon: <InstagramIcon className="w-4 h-4 text-pink-400" />,
+              tagColor: "text-pink-400",
             },
             {
               platform: "GitHub",
               id: "github.com/Agam348",
               link: "https://github.com/Agam348",
               desc: "Source code repositories and history log.",
-              icon: <GithubIcon className="w-4 h-4 text-zinc-400" />,
+              icon: <GithubIcon className="w-4 h-4 text-zinc-300" />,
+              tagColor: "text-zinc-400",
             },
             {
               platform: "Email",
               id: "agampreetsingh382@gmail.com",
-              link: "mailto:agampreetsingh382@gmail.com",
+              link: "https://mail.google.com/mail/?view=cm&fs=1&to=agampreetsingh382@gmail.com",
               desc: "Direct corporate electronic messaging.",
               icon: <Mail className="w-4 h-4 text-indigo-400" />,
+              tagColor: "text-indigo-400",
             },
             {
               platform: "Cellular",
               id: "+91 83601 03038",
               link: "tel:+918360103038",
               desc: "Direct cellular voice communications.",
-              icon: <Phone className="w-4 h-4 text-zinc-400" />,
+              icon: <Phone className="w-4 h-4 text-emerald-400" />,
+              tagColor: "text-emerald-400",
             },
           ].map((social) => (
             <a
@@ -302,31 +301,30 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => soundManager.playHoverClick(1000)}
-              className={`group flex flex-col justify-center p-3 border rounded-lg transition-all duration-300 ${
-                social.highlight
-                  ? "border-emerald-500/40 hover:border-emerald-400/60 bg-emerald-950/20 hover:bg-emerald-900/30 hover:shadow-[0_0_25px_rgba(16,185,129,0.15)]"
-                  : "border-zinc-800/50 hover:border-indigo-500/30 bg-zinc-900/10 hover:bg-indigo-950/10 hover:shadow-[0_0_20px_rgba(99,102,241,0.06)]"
-              }`}
+              className="group flex items-center justify-between p-3.5 sm:p-4 rounded-xl bg-zinc-950/70 hover:bg-zinc-900/80 backdrop-blur-md border border-zinc-800/80 hover:border-indigo-500/70 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.22)] transition-all duration-300 hover:-translate-y-0.5"
             >
-              <div className="flex items-center gap-3">
-                <div className="p-1.5 rounded-sm bg-zinc-900 border border-zinc-800 group-hover:border-zinc-700 shrink-0 transition-colors duration-300">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="w-10 h-10 rounded-lg bg-zinc-900/90 border border-zinc-800 group-hover:border-indigo-500/50 flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105 shadow-inner">
                   {social.icon}
                 </div>
-                <div className="space-y-0.5 flex-grow">
+                <div className="min-w-0 space-y-0.5">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-space text-[8px] font-bold text-zinc-500 group-hover:text-zinc-400 tracking-widest uppercase transition-colors">
+                    <span className={`font-space text-[8.5px] font-bold tracking-widest uppercase ${social.tagColor} block`}>
                       {social.platform}
-                    </h3>
-                    <ExternalLink className="w-2.5 h-2.5 text-zinc-600 group-hover:text-zinc-400 transition-colors" />
+                    </span>
                   </div>
-                  <div className="font-space text-xs font-bold text-white group-hover:text-indigo-300 transition-colors duration-300 break-words">
+                  <div className="font-space text-xs sm:text-sm font-bold text-white group-hover:text-indigo-300 transition-colors duration-300 truncate">
                     {social.id}
                   </div>
+                  <p className="font-sora text-[10px] text-zinc-500 group-hover:text-zinc-400 transition-colors truncate">
+                    {social.desc}
+                  </p>
                 </div>
               </div>
-              <p className="font-sora text-[10px] text-zinc-600 group-hover:text-zinc-500 mt-2 pl-9 transition-colors">
-                {social.desc}
-              </p>
+
+              <div className="w-7 h-7 rounded-md bg-zinc-900/60 border border-zinc-800/80 group-hover:border-indigo-500/50 group-hover:bg-indigo-950/40 flex items-center justify-center text-zinc-500 group-hover:text-cyan-300 shrink-0 ml-3 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <ExternalLink className="w-3.5 h-3.5" />
+              </div>
             </a>
           ))}
         </motion.div>
@@ -338,3 +336,4 @@ export default function Contact() {
     </section>
   );
 }
+

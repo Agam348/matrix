@@ -452,10 +452,10 @@ export default function TechStack() {
                     }
                   }}
                   onMouseEnter={() => soundManager.playHoverClick(950)}
-                  className={`px-2.5 py-1 rounded-lg font-space text-[9px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-lg font-space text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     isSelected
                       ? "bg-indigo-600 text-white shadow-[0_0_12px_rgba(99,102,241,0.4)]"
-                      : "text-zinc-400 hover:text-white hover:bg-zinc-900/60"
+                      : "text-zinc-300 hover:text-white hover:bg-zinc-900/80"
                   }`}
                 >
                   {cat}
@@ -596,39 +596,39 @@ export default function TechStack() {
                   </div>
 
                   {/* Architecture & Usage Note */}
-                  <div className="p-3 rounded-lg bg-zinc-900/40 border border-zinc-900">
-                    <p className="font-sora text-[11.5px] text-zinc-300 leading-relaxed">
+                  <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
+                    <p className="font-sora text-xs sm:text-[13px] text-zinc-200 leading-relaxed font-normal">
                       {activeNode.note}
                     </p>
                   </div>
 
                   {/* Radar Telemetry Metrics */}
-                  <div className="grid grid-cols-2 gap-2 font-mono text-[8.5px]">
-                    <div className="p-2 rounded-lg bg-zinc-900/60 border border-zinc-900 space-y-0.5">
-                      <span className="text-zinc-500 uppercase block text-[7.5px]">Orbit Level</span>
-                      <span className="text-zinc-200 font-bold font-space text-[10px]">
-                        {activeNode.radius < 110 ? "Orbit 1" : activeNode.radius < 170 ? "Orbit 2" : "Orbit 3"}
+                  <div className="grid grid-cols-2 gap-2 font-mono text-[9.5px]">
+                    <div className="p-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-0.5">
+                      <span className="text-zinc-400 uppercase block text-[8.5px] font-bold">Orbit Level</span>
+                      <span className="text-zinc-100 font-bold font-space text-xs">
+                        {activeNode.radius < 110 ? "Orbit 1 (Core)" : activeNode.radius < 170 ? "Orbit 2 (Platform)" : "Orbit 3 (Tools)"}
                       </span>
                     </div>
 
-                    <div className="p-2 rounded-lg bg-zinc-900/60 border border-zinc-900 space-y-0.5">
-                      <span className="text-zinc-500 uppercase block text-[7.5px]">Polar Angle</span>
-                      <span className="text-zinc-200 font-bold font-space text-[10px]">
+                    <div className="p-2.5 rounded-xl bg-zinc-900/80 border border-zinc-800 space-y-0.5">
+                      <span className="text-zinc-400 uppercase block text-[8.5px] font-bold">Polar Angle</span>
+                      <span className="text-zinc-100 font-bold font-space text-xs">
                         {activeNode.angleDeg}° Azimuth
                       </span>
                     </div>
                   </div>
 
                   {/* Tags */}
-                  <div className="space-y-1.5 pt-1 border-t border-zinc-900">
-                    <span className="text-[8px] font-space font-bold uppercase tracking-widest text-zinc-500 block">
+                  <div className="space-y-2 pt-1 border-t border-zinc-800/80">
+                    <span className="text-[9px] font-space font-bold uppercase tracking-widest text-zinc-400 block">
                       Architectural Capabilities
                     </span>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {activeNode.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 rounded-md bg-zinc-900 border border-zinc-800 text-[8px] font-mono text-zinc-300 uppercase tracking-wider"
+                          className="px-2.5 py-1 rounded-md bg-zinc-900 border border-zinc-700/80 text-[9.5px] font-mono text-zinc-200 uppercase tracking-wider font-medium"
                         >
                           {tag}
                         </span>
@@ -639,12 +639,12 @@ export default function TechStack() {
               </AnimatePresence>
 
               {/* HUD Footer */}
-              <div className="pt-2 border-t border-zinc-900 flex items-center justify-between text-[7.5px] font-mono text-zinc-500 select-none">
-                <span className="flex items-center gap-1">
-                  <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="pt-2.5 border-t border-zinc-800/80 flex items-center justify-between text-[8.5px] font-mono text-zinc-400 select-none">
+                <span className="flex items-center gap-1.5 font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   SENSOR_LOCK: STABLE
                 </span>
-                <span>SYSTEM_ID: MATRIX_RADAR_V4</span>
+                <span className="font-semibold">SYSTEM_ID: MATRIX_RADAR_V4</span>
               </div>
 
             </div>

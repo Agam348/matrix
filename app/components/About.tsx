@@ -322,7 +322,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="text-zinc-400 text-[clamp(0.75rem,1.2vw,0.95rem)] leading-relaxed font-light mb-6 md:mb-8 max-w-xl"
+            className="text-zinc-300 text-sm sm:text-base leading-relaxed font-normal mb-6 md:mb-8 max-w-xl"
           >
             Pursuing an MTECH FYIP in CSE at GNDU and a BS in Data Science at IIT Madras — merging software engineering with data-driven analysis to build minimal, secure and meaningful tools.
           </motion.p>
@@ -333,12 +333,12 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="flex w-full flex-col sm:w-auto sm:flex-row flex-wrap gap-3 font-space text-[8.5px] font-bold uppercase tracking-[0.2em]"
+            className="flex w-full flex-col sm:w-auto sm:flex-row flex-wrap gap-3 font-space text-xs font-bold uppercase tracking-[0.14em]"
           >
             <button 
               onClick={openCredentials}
               onMouseEnter={() => soundManager.playHoverClick(1000)}
-              className="pointer-events-auto h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-400 active:scale-[0.97] transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)] text-white rounded-sm cursor-pointer select-none font-bold text-[9px] tracking-[0.2em] uppercase"
+              className="pointer-events-auto h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)] text-white rounded-xl cursor-pointer select-none font-bold text-xs tracking-[0.14em] uppercase"
             >
               Education
             </button>
@@ -346,7 +346,7 @@ export default function About() {
             <button 
               onClick={() => handleScrollTo("contact")}
               onMouseEnter={() => soundManager.playHoverClick(1000)}
-              className="pointer-events-auto w-full sm:w-auto bg-zinc-950/40 hover:bg-zinc-900/60 backdrop-blur-sm border border-zinc-600/60 hover:border-zinc-400/80 active:scale-[0.97] transition-all text-zinc-200 hover:text-white px-6 py-3.5 md:px-8 md:py-4 rounded-sm cursor-pointer select-none font-bold"
+              className="pointer-events-auto h-12 w-full sm:w-auto bg-zinc-950/60 hover:bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/80 hover:border-zinc-500 active:scale-[0.97] transition-all text-zinc-200 hover:text-white px-8 rounded-xl cursor-pointer select-none font-bold text-xs tracking-[0.14em] uppercase flex items-center justify-center"
             >
               Contact Me
             </button>
@@ -358,11 +358,11 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/60 bg-zinc-950/40 backdrop-blur-sm py-2.5 px-4 flex items-start md:items-center gap-3 pointer-events-auto overflow-hidden"
+            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/80 bg-zinc-950/60 backdrop-blur-sm py-3 px-4 flex items-center gap-3 pointer-events-auto overflow-hidden rounded-xl"
           >
             {/* Pulse dot */}
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 animate-pulse" />
-            <p className="text-zinc-400 text-[9px] md:text-[11px] font-space font-medium tracking-[0.14em] md:tracking-[0.18em] uppercase whitespace-normal break-words">
+            <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0 animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
+            <p className="text-zinc-200 text-xs sm:text-[13px] font-space font-semibold tracking-[0.12em] uppercase whitespace-normal break-words">
               3x Hackathon Winner&nbsp;&nbsp;|&nbsp;&nbsp;1x International Hackathon Winner
             </p>
           </motion.div>

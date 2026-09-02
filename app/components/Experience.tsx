@@ -33,14 +33,14 @@ const EXPERIENCES_DATA: TimelineEvent[] = [
   {
     organization: "TAlpha",
     shortName: "TAlpha",
-    duration: "Aug 2025 — Present",
+    duration: "Aug 2026 — Present",
     status: "ACTIVE",
     themeColor: "violet",
     glowColor: "rgba(168, 85, 247, 0.2)",
     roles: [
       {
         title: "Junior Developer",
-        year: "Aug 2025 — Present",
+        year: "Aug 2026 — Present",
         desc: [
           "Working as Junior Developer at TAlpha, an institutional-grade mutual fund research and portfolio intelligence startup",
           "Engineering database schemas and type-safe queries using Prisma and PostgreSQL for capital market datasets (AMFI / NSE / BSE)",
@@ -200,16 +200,16 @@ export default function Experience() {
                   }`} />
 
                   <div className="flex flex-col space-y-0.5">
-                    <span className="font-space text-[11px] font-bold tracking-tight">
+                    <span className="font-space text-xs sm:text-sm font-bold tracking-tight">
                       {exp.shortName}
                     </span>
-                    <span className="text-[9px] text-zinc-500 font-mono tracking-wider">
+                    <span className="text-[10px] text-zinc-400 font-mono tracking-wider">
                       {exp.duration.split("—")[0].trim()}
                     </span>
                   </div>
 
                   {isActive && (
-                    <ChevronRight className="hidden md:block w-3.5 h-3.5 ml-auto text-zinc-500" />
+                    <ChevronRight className="hidden md:block w-4 h-4 ml-auto text-zinc-400" />
                   )}
                 </button>
               );
@@ -217,7 +217,7 @@ export default function Experience() {
           </div>
 
           {/* RIGHT DETAILS PANE: Full Node Info */}
-          <div className="flex-1 p-4 md:p-6 overflow-y-auto flex flex-col h-[24rem] md:h-full custom-scrollbar">
+          <div className="flex-1 p-5 md:p-7 overflow-y-auto flex flex-col h-[26rem] md:h-full custom-scrollbar">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -228,32 +228,32 @@ export default function Experience() {
                 className="flex flex-col space-y-5 h-full"
               >
                 {/* Header Node Info */}
-                <div className="border-b border-zinc-900/40 pb-4">
+                <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-2.5">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[9px] text-zinc-500 bg-zinc-900/40 px-2 py-0.5 rounded uppercase tracking-widest border border-zinc-900/60">
+                      <span className="font-mono text-[10px] font-bold text-zinc-300 bg-zinc-900/80 px-2.5 py-1 rounded-md uppercase tracking-widest border border-zinc-800">
                         NODE_0{activeTab + 1}
                       </span>
                       {activeExp.status === "ACTIVE" ? (
-                        <span className="flex items-center gap-1.5 text-[8px] font-mono font-bold tracking-wider text-emerald-400 bg-emerald-950/20 px-2 py-0.5 border border-emerald-500/10 rounded uppercase">
-                          <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping inline-block shrink-0" />
+                        <span className="flex items-center gap-1.5 text-[9.5px] font-mono font-bold tracking-wider text-emerald-400 bg-emerald-950/40 px-2.5 py-1 border border-emerald-500/30 rounded-md uppercase">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping inline-block shrink-0" />
                           STATUS: ONGOING
                         </span>
                       ) : (
-                        <span className="flex items-center gap-1.5 text-[8px] font-mono font-bold tracking-wider text-zinc-400 bg-zinc-900/40 px-2 py-0.5 border border-zinc-800/40 rounded uppercase">
-                          <span className="w-1 h-1 rounded-full bg-zinc-650 inline-block shrink-0" />
+                        <span className="flex items-center gap-1.5 text-[9.5px] font-mono font-bold tracking-wider text-zinc-300 bg-zinc-900/80 px-2.5 py-1 border border-zinc-700/60 rounded-md uppercase">
+                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 inline-block shrink-0" />
                           STATUS: RETRIEVED
                         </span>
                       )}
                     </div>
                     
-                    <div className="flex items-center gap-1 text-[9px] text-zinc-500 font-mono">
-                      <Calendar className="w-3 h-3 text-zinc-650" />
+                    <div className="flex items-center gap-1.5 text-[10.5px] text-zinc-400 font-mono">
+                      <Calendar className="w-3.5 h-3.5 text-zinc-400" />
                       <span>{activeExp.duration}</span>
                     </div>
                   </div>
 
-                  <h3 className="font-space text-base md:text-lg font-bold text-white mt-2 leading-snug">
+                  <h3 className="font-space text-lg sm:text-xl font-extrabold text-white mt-2.5 leading-snug">
                     {activeExp.organization}
                   </h3>
                 </div>
@@ -264,45 +264,45 @@ export default function Experience() {
                     <div 
                       key={role.title} 
                       className={`space-y-3 pb-5 ${
-                        rIndex < activeExp.roles.length - 1 ? "border-b border-zinc-900/40" : ""
+                        rIndex < activeExp.roles.length - 1 ? "border-b border-zinc-800/60" : ""
                       }`}
                     >
                       {/* Role header */}
                       <div className="flex items-center justify-between flex-wrap gap-2">
-                        <div className="flex items-center gap-2">
-                          <div className={`p-1 rounded bg-zinc-900/50 border border-zinc-900 shrink-0 ${
+                        <div className="flex items-center gap-2.5">
+                          <div className={`p-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 shrink-0 ${
                             activeExp.themeColor === "indigo" ? "text-indigo-400" :
                             activeExp.themeColor === "emerald" ? "text-emerald-400" :
                             activeExp.themeColor === "purple" ? "text-purple-400" :
                             "text-cyan-400"
                           }`}>
-                            <Briefcase className="w-3.5 h-3.5" />
+                            <Briefcase className="w-4 h-4" />
                           </div>
-                          <span className="font-space text-xs font-bold text-zinc-200 tracking-wide">
+                          <span className="font-space text-sm sm:text-base font-bold text-white tracking-wide">
                             {role.title}
                           </span>
                         </div>
-                        <span className="font-mono text-[8px] text-zinc-500 bg-zinc-950 px-2 py-0.5 rounded border border-zinc-900/60">
+                        <span className="font-mono text-[9.5px] font-semibold text-zinc-300 bg-zinc-900/90 px-2.5 py-1 rounded-md border border-zinc-800">
                           {role.year}
                         </span>
                       </div>
 
                       {/* Bullet point accomplishments */}
-                      <ul className="space-y-2 pl-1">
+                      <ul className="space-y-2.5 pl-1">
                         {role.desc.map((bullet, bIndex) => (
                           <li 
                             key={bIndex} 
-                            className="flex items-start gap-2 text-zinc-400 font-sora text-[11px] leading-relaxed group"
+                            className="flex items-start gap-2.5 text-zinc-200 font-sora text-xs sm:text-sm leading-relaxed group"
                           >
-                            <span className={`font-mono text-[8px] mt-1 shrink-0 select-none ${
-                              activeExp.themeColor === "indigo" ? "text-indigo-500/50" :
-                              activeExp.themeColor === "emerald" ? "text-emerald-500/50" :
-                              activeExp.themeColor === "purple" ? "text-purple-500/50" :
-                              "text-cyan-500/50"
+                            <span className={`font-mono text-[9px] mt-1 shrink-0 select-none ${
+                              activeExp.themeColor === "indigo" ? "text-indigo-400" :
+                              activeExp.themeColor === "emerald" ? "text-emerald-400" :
+                              activeExp.themeColor === "purple" ? "text-purple-400" :
+                              "text-cyan-400"
                             }`}>
                               [#]
                             </span>
-                            <span className="group-hover:text-zinc-300 transition-colors">
+                            <span className="group-hover:text-white transition-colors">
                               {bullet}
                             </span>
                           </li>
@@ -310,18 +310,18 @@ export default function Experience() {
                       </ul>
 
                       {/* Skill tags block */}
-                      <div className="flex flex-wrap gap-1.5 pt-2">
+                      <div className="flex flex-wrap gap-2 pt-2">
                         {role.skills.map((skill) => {
                           const tagColor = 
-                            activeExp.themeColor === "indigo" ? "border-indigo-500/5 hover:border-indigo-500/20 hover:bg-indigo-950/10 text-indigo-400/80 hover:text-indigo-300" :
-                            activeExp.themeColor === "emerald" ? "border-emerald-500/5 hover:border-emerald-500/20 hover:bg-emerald-950/10 text-emerald-400/80 hover:text-emerald-300" :
-                            activeExp.themeColor === "purple" ? "border-purple-500/5 hover:border-purple-500/20 hover:bg-purple-950/10 text-purple-400/80 hover:text-purple-300" :
-                            "border-cyan-500/5 hover:border-cyan-500/20 hover:bg-cyan-950/10 text-cyan-400/80 hover:text-cyan-300";
+                            activeExp.themeColor === "indigo" ? "border-indigo-500/30 bg-indigo-950/20 text-indigo-300 hover:border-indigo-400 hover:text-white" :
+                            activeExp.themeColor === "emerald" ? "border-emerald-500/30 bg-emerald-950/20 text-emerald-300 hover:border-emerald-400 hover:text-white" :
+                            activeExp.themeColor === "purple" ? "border-purple-500/30 bg-purple-950/20 text-purple-300 hover:border-purple-400 hover:text-white" :
+                            "border-cyan-500/30 bg-cyan-950/20 text-cyan-300 hover:border-cyan-400 hover:text-white";
 
                           return (
                             <span
                               key={skill}
-                              className={`px-2 py-0.5 border bg-zinc-950/40 text-[8px] font-space tracking-wider rounded-md font-bold uppercase transition-all duration-300 shrink-0 ${tagColor}`}
+                              className={`px-2.5 py-1 border text-[10px] font-mono tracking-wider rounded-md font-bold uppercase transition-all duration-300 shrink-0 ${tagColor}`}
                             >
                               {skill}
                             </span>

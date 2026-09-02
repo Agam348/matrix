@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Orbitron, Space_Grotesk, Sora } from "next/font/google";
+import { Oxanium, Space_Grotesk, Plus_Jakarta_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
+const oxanium = Oxanium({
+  variable: "--font-oxanium",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const spaceGrotesk = Space_Grotesk({
@@ -14,10 +20,16 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const sora = Sora({
-  variable: "--font-sora",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -33,20 +45,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${orbitron.variable} ${spaceGrotesk.variable} ${sora.variable} h-full antialiased`}
+      className={`${oxanium.variable} ${syne.variable} ${spaceGrotesk.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#09090b] text-[#f4f4f5] antialiased">
-        {/* Instant zero-flash HTML curtain to prevent any pre-hydration hero bleed */}
-        <div
-          id="intro-preloader-curtain"
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "#000000",
-            zIndex: 99,
-            pointerEvents: "none",
-          }}
-        />
         {children}
       </body>
     </html>

@@ -213,6 +213,44 @@ class AudioSystem {
       osc.stop(now + 0.85);
     } catch {}
   }
+
+  playCurtainReveal() {
+    if (this.isMuted) return;
+    this.initCtx();
+    if (!this.ctx) return;
+
+    try {
+      const now = this.ctx.currentTime;
+      // Warm chord notes (Cinematic velvet stage chord swell)
+      const frequencies = [130.81, 196.00, 261.63, 392.00, 523.25];
+
+      frequencies.forEach((freq, i) => {
+        const osc = this.ctx!.createOscillator();
+        const gain = this.ctx!.createGain();
+        const filter = this.ctx!.createBiquadFilter();
+
+        osc.type = i === 0 ? "triangle" : "sine";
+        osc.frequency.setValueAtTime(freq, now + i * 0.06);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.01, now + 2.2);
+
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(400, now);
+        filter.frequency.exponentialRampToValueAtTime(2400, now + 1.0);
+        filter.frequency.exponentialRampToValueAtTime(500, now + 2.5);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.035 / (i + 1), now + 0.5 + i * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.6);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx!.destination);
+
+        osc.start(now + i * 0.06);
+        osc.stop(now + 2.8);
+      });
+    } catch {}
+  }
 }
 
 export const soundManager = new AudioSystem();

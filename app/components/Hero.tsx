@@ -171,13 +171,6 @@ export default function Hero() {
             {/* Left Side: Premium Text Intro */}
             <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 sm:space-y-6 md:space-y-7 w-full">
               
-              {/* Animated High-tech Status Pill Badge */}
-              <div className="animate-fade-in-down">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/50 border border-indigo-500/30 text-[9px] sm:text-[10px] font-space tracking-[0.2em] font-bold uppercase text-indigo-300 backdrop-blur-sm shadow-[0_0_15px_rgba(99,102,241,0.15)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping shrink-0" />
-                  <span>DOUBLE ACADEMIC PATH</span>
-                </div>
-              </div>
 
               <div className="space-y-3 sm:space-y-4 w-full">
                 {/* Scholar label above name */}
@@ -198,7 +191,7 @@ export default function Hero() {
               </div>
 
               {/* Concise biography intro */}
-              <p className="font-sora text-xs sm:text-sm leading-relaxed text-zinc-400 max-w-md mx-auto lg:mx-0 animate-fade-in-up animation-delay-600">
+              <p className="font-sora text-sm sm:text-base leading-relaxed text-zinc-300 max-w-lg mx-auto lg:mx-0 animate-fade-in-up animation-delay-600">
                 I build responsive web and mobile applications with React, Next.js, Flutter and Python. Passionate about AI and solving real-world challenges through user-focused software.
               </p>
 
@@ -207,24 +200,24 @@ export default function Hero() {
                 <button
                   onClick={() => handleScrollTo("experience")}
                   onMouseEnter={() => soundManager.playHoverClick(1000)}
-                  className="h-11 sm:h-12 w-full sm:w-auto px-7 flex items-center justify-center gap-2 border border-zinc-700/70 hover:border-indigo-500/50 bg-zinc-950/60 hover:bg-indigo-950/20 backdrop-blur-sm text-zinc-300 hover:text-white rounded-lg font-space text-[9px] sm:text-[9.5px] font-extrabold tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.2)] cursor-pointer shrink-0 active:scale-[0.98]"
+                  className="h-11 sm:h-12 w-full sm:w-auto px-7 flex items-center justify-center gap-2 border border-zinc-700/80 hover:border-indigo-500/60 bg-zinc-950/70 hover:bg-indigo-950/30 backdrop-blur-sm text-zinc-200 hover:text-white rounded-xl font-space text-xs font-bold tracking-[0.14em] uppercase transition-all duration-300 hover:shadow-[0_0_18px_rgba(99,102,241,0.2)] cursor-pointer shrink-0 active:scale-[0.98]"
                 >
-                  <Eye className="w-3.5 h-3.5 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
+                  <Eye className="w-4 h-4 text-zinc-400 group-hover:text-indigo-400 transition-colors shrink-0" />
                   View Experience
                 </button>
                 
                 <button
                   onClick={openTerminal}
                   onMouseEnter={() => soundManager.playHoverClick(1000)}
-                  className="relative p-[1px] h-11 sm:h-12 w-full sm:w-auto overflow-hidden font-space text-[9px] sm:text-[9.5px] font-extrabold tracking-[0.2em] uppercase cursor-pointer group shrink-0 active:scale-[0.98] rounded-lg"
+                  className="relative p-[1px] h-11 sm:h-12 w-full sm:w-auto overflow-hidden font-space text-xs font-bold tracking-[0.14em] uppercase cursor-pointer group shrink-0 active:scale-[0.98] rounded-xl"
                 >
                   <div 
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-500/50 to-cyan-500/50 group-hover:from-indigo-400 group-hover:to-cyan-400 transition-all duration-300 rounded-lg"
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-500/60 to-cyan-500/60 group-hover:from-indigo-400 group-hover:to-cyan-400 transition-all duration-300 rounded-xl"
                   />
                   <div 
-                    className="relative flex items-center justify-center gap-2 h-full w-full px-7 bg-[#09090b]/95 group-hover:bg-indigo-950/30 transition-all duration-300 rounded-[7px]"
+                    className="relative flex items-center justify-center gap-2 h-full w-full px-7 bg-[#09090b]/95 group-hover:bg-indigo-950/40 transition-all duration-300 rounded-[11px]"
                   >
-                    <Terminal className="w-3.5 h-3.5 text-cyan-400 group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0" />
+                    <Terminal className="w-4 h-4 text-cyan-400 group-hover:text-white group-hover:scale-110 transition-all duration-300 shrink-0" />
                     <span className="text-cyan-400 group-hover:text-white transition-colors duration-300 whitespace-nowrap">Access Terminal</span>
                   </div>
                 </button>
