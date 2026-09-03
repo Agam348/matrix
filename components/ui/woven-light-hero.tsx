@@ -99,7 +99,7 @@ export const WovenCanvas = () => {
 
   useEffect(() => {
     if (!mountRef.current) return;
-    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
+    if (window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches) return;
 
     const container = mountRef.current;
 

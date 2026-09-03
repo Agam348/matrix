@@ -35,34 +35,35 @@ export default function Home() {
   // Initialize high-performance Lenis smooth scrolling engine on pointer devices.
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    const isMobileWidth = window.matchMedia("(max-width: 1024px)").matches;
+    const isMobileDevice = window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches;
 
-    if (prefersReducedMotion || isCoarsePointer || isMobileWidth) {
+    if (prefersReducedMotion || isMobileDevice) {
       (window as unknown as { lenis: unknown }).lenis = undefined;
       return;
     }
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Premium cubic easeOutExpo easing
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.2,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.5,
     });
 
     (window as unknown as { lenis: unknown }).lenis = lenis;
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       (window as unknown as { lenis: unknown }).lenis = undefined;
     };
@@ -73,11 +74,8 @@ export default function Home() {
       {/* 0. Minimalist Stylish 0-100% Intro Loader with upward lift */}
       <IntroLoader />
 
-      {/* 1. Mobile Experience Gate (Visible strictly on mobile / tablet screens < 1024px) */}
-      <MobileBlockGate />
-
-      {/* 2. Full-Fidelity Desktop & Laptop Portfolio Experience (Rendered on screens >= 1024px) */}
-      <div className="hidden lg:flex flex-col items-center w-full">
+      {/* Main Adaptive Portfolio Experience (Universally accessible across Mobile, Tablet, Laptop, and Desktop) */}
+      <div className="flex flex-col items-center w-full">
         {/* Background Layer */}
         <BackgroundGrid />
 

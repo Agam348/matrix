@@ -501,43 +501,46 @@ export default function TechStack() {
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
           
-          {/* LEFT: 2D/3D ORBITAL RADAR CONSTELLATION (Desktop/Tablet) */}
-          <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[440px] sm:h-[460px] lg:h-[470px] bg-zinc-950/50 border border-zinc-900/80 rounded-2xl p-3 overflow-hidden backdrop-blur-xl shadow-2xl">
+          {/* LEFT: 2D/3D ORBITAL RADAR CONSTELLATION (Desktop/Tablet/Mobile) */}
+          <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[360px] sm:h-[460px] lg:h-[470px] bg-zinc-950/50 border border-zinc-900/80 rounded-2xl p-2 sm:p-3 overflow-hidden backdrop-blur-xl shadow-2xl">
             
             {/* Ambient subtle spotlight inside Radar */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_65%)] pointer-events-none" />
 
-            {/* Radar Crosshairs */}
-            <div className="absolute inset-x-0 top-1/2 h-px bg-zinc-900 pointer-events-none" />
-            <div className="absolute inset-y-0 left-1/2 w-px bg-zinc-900 pointer-events-none" />
+            {/* Radar Stage Container with Adaptive Mobile Scaling */}
+            <div className="relative w-full h-full flex items-center justify-center scale-[0.72] xs:scale-[0.82] sm:scale-90 md:scale-100 origin-center transition-transform pointer-events-auto">
+              {/* Radar Crosshairs */}
+              <div className="absolute inset-x-0 top-1/2 h-px bg-zinc-900 pointer-events-none" />
+              <div className="absolute inset-y-0 left-1/2 w-px bg-zinc-900 pointer-events-none" />
 
-            {/* Rotating Radar Scanner Beam */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[410px] h-[410px] rounded-full pointer-events-none animate-spin [animation-duration:18s]">
-              <div className="w-1/2 h-1/2 bg-gradient-to-br from-zinc-500/5 to-transparent rounded-tl-full origin-bottom-right transform rotate-45" />
+              {/* Rotating Radar Scanner Beam */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[410px] h-[410px] rounded-full pointer-events-none animate-spin [animation-duration:18s]">
+                <div className="w-1/2 h-1/2 bg-gradient-to-br from-zinc-500/5 to-transparent rounded-tl-full origin-bottom-right transform rotate-45" />
+              </div>
+
+              {/* Concentric Orbital Rings - Clean Minimalist Paths */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] rounded-full border border-zinc-800/80 pointer-events-none" />
+
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[290px] h-[290px] rounded-full border border-zinc-800/60 border-dashed pointer-events-none" />
+
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-zinc-900 pointer-events-none" />
+
+              {/* Center Core Node */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-zinc-950 border border-zinc-700 shadow-xl">
+                <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-300 mb-0.5" />
+                <span className="font-space text-[7.5px] sm:text-[8px] font-black text-white uppercase tracking-wider">
+                  CORE
+                </span>
+                <span className="font-space text-[6px] sm:text-[6.5px] text-indigo-400 font-bold tracking-widest">
+                  ACTIVE
+                </span>
+              </div>
+
+              {/* DYNAMIC PLANETARY REVOLVING ORBIT LAYERS */}
+              {renderOrbitGroup(orbit1Nodes)}
+              {renderOrbitGroup(orbit2Nodes)}
+              {renderOrbitGroup(orbit3Nodes)}
             </div>
-
-            {/* Concentric Orbital Rings - Clean Minimalist Paths */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] rounded-full border border-zinc-800/80 pointer-events-none" />
-
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[290px] h-[290px] rounded-full border border-zinc-800/60 border-dashed pointer-events-none" />
-
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-zinc-900 pointer-events-none" />
-
-            {/* Center Core Node */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-zinc-950 border border-zinc-700 shadow-xl">
-              <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-300 mb-0.5" />
-              <span className="font-space text-[7.5px] sm:text-[8px] font-black text-white uppercase tracking-wider">
-                CORE
-              </span>
-              <span className="font-space text-[6px] sm:text-[6.5px] text-indigo-400 font-bold tracking-widest">
-                ACTIVE
-              </span>
-            </div>
-
-            {/* DYNAMIC PLANETARY REVOLVING ORBIT LAYERS */}
-            {renderOrbitGroup(orbit1Nodes)}
-            {renderOrbitGroup(orbit2Nodes)}
-            {renderOrbitGroup(orbit3Nodes)}
 
           </div>
 

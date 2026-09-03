@@ -129,11 +129,11 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
         {/* Top Spacer */}
         <div className="w-full h-2" />
 
-        {/* Upper-Shifted Checklist & Loading Terminal Module (25-30% from top) */}
+        {/* Centered Checklist & Loading Terminal Module */}
         <motion.div 
           animate={isCompleted ? { opacity: 0, y: -40, scale: 0.96 } : { opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.45 }}
-          className="flex flex-col items-start justify-start mt-[18vh] sm:mt-[22vh] md:mt-[24vh] mb-auto w-full max-w-sm sm:max-w-md mx-auto space-y-6 sm:space-y-7 z-10 font-mono"
+          className="flex flex-col items-start justify-center my-auto w-full max-w-sm sm:max-w-md mx-auto space-y-6 sm:space-y-7 z-10 font-mono"
         >
           {/* Header Title */}
           <div className="flex items-center gap-2.5 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase transition-colors duration-300">

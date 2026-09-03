@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { soundManager } from "../lib/sound";
 import AnimatedShaderHero from "@/components/ui/animated-shader-hero";
 import HangingIdCard from "@/components/ui/hanging-id-card";
+import Image from "next/image";
 import { Terminal, X, RefreshCw, Eye } from "lucide-react";
 
 const TERMINAL_LINES = [
@@ -164,39 +165,56 @@ export default function Hero() {
         {/* Overlay section container */}
         <section
           id="home"
-          className="w-full min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center pt-20 pb-12 sm:pt-24 sm:pb-16 px-5 sm:px-8 lg:px-12 overflow-hidden select-none"
+          className="w-full min-h-[calc(100vh-3.5rem)] flex flex-col items-center justify-center pt-14 pb-6 sm:pt-24 sm:pb-16 px-5 sm:px-8 lg:px-12 overflow-hidden select-none"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full z-10 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center w-full z-10 max-w-6xl mx-auto">
             
             {/* Left Side: Premium Text Intro */}
-            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 sm:space-y-6 md:space-y-7 w-full">
+            <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left space-y-4 sm:space-y-5 md:space-y-6 w-full">
               
+              {/* Mobile Compact Profile Avatar (Option 2: Mobile-only, clean circular photo with subtle glow) */}
+              <div className="flex md:hidden relative mb-1 animate-fade-in-up">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 p-0.5 rounded-full bg-gradient-to-tr from-indigo-500/70 via-zinc-700/60 to-cyan-400/70 shadow-[0_0_28px_rgba(99,102,241,0.35)]">
+                  <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-950 border border-zinc-800">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Agampreet Singh"
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                  {/* Subtle active status indicator dot */}
+                  <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#09090b] shadow-sm" />
+                </div>
+              </div>
 
-              <div className="space-y-3 sm:space-y-4 w-full">
+              <div className="space-y-2.5 sm:space-y-3 md:space-y-4 w-full">
                 {/* Scholar label above name */}
                 <p className="font-space text-xs sm:text-sm text-zinc-400 tracking-[0.15em] sm:tracking-[0.18em] uppercase animate-fade-in-up animation-delay-100 font-medium">
                   IIT Madras & Guru Nanak Dev University
                 </p>
                 
-                <h1 className="font-orbitron text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white select-none leading-none animate-fade-in-up animation-delay-200">
+                <h1 className="font-orbitron text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-tight text-white select-none leading-none animate-fade-in-up animation-delay-200">
                   AGAMPREET <br className="hidden sm:inline" />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-200 to-zinc-400">
                     SINGH
                   </span>
                 </h1>
                 
-                <p className="font-space text-sm sm:text-base lg:text-lg text-zinc-200 font-bold tracking-wide max-w-lg mx-auto lg:mx-0 animate-fade-in-up animation-delay-400 leading-snug sm:leading-relaxed">
+                <p className="font-space text-sm sm:text-base lg:text-lg text-zinc-200 font-bold tracking-wide max-w-lg mx-auto md:mx-0 animate-fade-in-up animation-delay-400 leading-snug sm:leading-relaxed">
                   Building modern digital experiences through code, design and technology.
                 </p>
               </div>
 
               {/* Concise biography intro */}
-              <p className="font-sora text-sm sm:text-base leading-relaxed text-zinc-300 max-w-md mx-auto lg:mx-0 animate-fade-in-up animation-delay-600">
+              <p className="font-sora text-sm sm:text-base leading-relaxed text-zinc-300 max-w-md mx-auto md:mx-0 animate-fade-in-up animation-delay-600">
                 I build responsive web and mobile applications with React, Next.js, Flutter and Python. Passionate about AI and solving real-world challenges through user-focused software.
               </p>
 
               {/* Action CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center lg:justify-start w-full sm:w-auto pt-2 animate-fade-in-up animation-delay-800">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center md:justify-start w-full sm:w-auto pt-1 sm:pt-2 animate-fade-in-up animation-delay-800">
                 <button
                   onClick={() => handleScrollTo("experience")}
                   onMouseEnter={() => soundManager.playHoverClick(1000)}
@@ -216,24 +234,51 @@ export default function Hero() {
                 </button>
               </div>
 
+              {/* Mobile Credential Highlights Ribbon (Balances and fills the lower screen void on mobile) */}
+              <div className="grid grid-cols-3 gap-2 w-full pt-3 pb-1 md:hidden animate-fade-in-up animation-delay-900">
+                <div className="flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl bg-zinc-950/70 border border-zinc-800/90 shadow-sm backdrop-blur-md">
+                  <span className="font-orbitron text-sm font-black text-indigo-400">3x</span>
+                  <span className="font-space text-[8.5px] font-bold text-zinc-300 uppercase tracking-wider text-center mt-0.5">
+                    Hackathons
+                  </span>
+                  <span className="text-[7.5px] font-mono text-zinc-500">Won</span>
+                </div>
+
+                <div className="flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl bg-zinc-950/70 border border-zinc-800/90 shadow-sm backdrop-blur-md">
+                  <span className="font-orbitron text-sm font-black text-cyan-400">Dual</span>
+                  <span className="font-space text-[8.5px] font-bold text-zinc-300 uppercase tracking-wider text-center mt-0.5">
+                    Degree
+                  </span>
+                  <span className="text-[7.5px] font-mono text-zinc-500">IITM + GNDU</span>
+                </div>
+
+                <div className="flex flex-col items-center justify-center py-2.5 px-1.5 rounded-xl bg-zinc-950/70 border border-zinc-800/90 shadow-sm backdrop-blur-md">
+                  <span className="font-orbitron text-sm font-black text-emerald-400">Full</span>
+                  <span className="font-space text-[8.5px] font-bold text-zinc-300 uppercase tracking-wider text-center mt-0.5">
+                    Stack & AI
+                  </span>
+                  <span className="text-[7.5px] font-mono text-zinc-500">React • Flutter</span>
+                </div>
+              </div>
+
             </div>
 
-            {/* Right Side: Hanging Draggable Cyber ID Card (Desktop / Large Screens) */}
-            <div className="hidden lg:flex lg:col-span-5 w-full h-[400px] xl:h-[450px] items-center justify-center relative select-none overflow-visible">
+            {/* Right Side: Hanging Draggable Cyber ID Card (Exclusive to Laptops & Desktops) */}
+            <div className="hidden md:flex md:col-span-5 w-full h-[360px] lg:h-[400px] xl:h-[450px] items-center justify-center relative select-none overflow-visible">
               <HangingIdCard />
             </div>
 
           </div>
 
-          {/* Downward Scroll Prompter */}
+          {/* Downward Scroll Prompter (Visible on both mobile & desktop) */}
           <button
             onClick={() => handleScrollTo("about")}
-            className="absolute bottom-4 md:bottom-6 hidden md:flex flex-col items-center gap-2 group cursor-pointer transition-all z-10 opacity-90 hover:opacity-100"
+            className="absolute bottom-2 sm:bottom-4 md:bottom-6 flex flex-col items-center gap-1.5 sm:gap-2 group cursor-pointer transition-all z-10 opacity-90 hover:opacity-100"
           >
-            <span className="font-space text-[9px] font-bold tracking-[0.22em] text-zinc-400 group-hover:text-zinc-200 transition-colors">
+            <span className="font-space text-[8.5px] sm:text-[9px] font-bold tracking-[0.22em] text-zinc-400 group-hover:text-zinc-200 transition-colors">
               SCROLL TO EXPLORE
             </span>
-            <div className="w-5 h-8 rounded-full border border-zinc-700/80 group-hover:border-zinc-400 bg-zinc-950/40 transition-colors flex justify-center p-1.5 shadow-sm">
+            <div className="w-4 h-7 sm:w-5 sm:h-8 rounded-full border border-zinc-700/80 group-hover:border-zinc-400 bg-zinc-950/40 transition-colors flex justify-center p-1 sm:p-1.5 shadow-sm">
               <div className="w-1 h-1.5 rounded-full bg-zinc-300 group-hover:bg-white animate-bounce" />
             </div>
           </button>

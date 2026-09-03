@@ -103,6 +103,15 @@ The portfolio is structured as a calibrated, interactive narrative:
 - **Zero Audio Assets:** 100% procedurally synthesized audio using the native **Web Audio API** (`OscillatorNode`, `GainNode`, `BiquadFilterNode`).
 - Features ambient room drones ($55\text{Hz}$ Low A), dynamic UI clicks, status chirps, error beeps, and high-tech glitch bursts.
 
+### 8. 📱 Adaptive Mobile Architecture & Progressive Enhancement
+- **Universal Responsiveness:** Calibrated across all mobile viewports ($360\text{px}-430\text{px}$), tablets, touchscreen 2-in-1s, and ultra-wide displays.
+- **Dedicated Mobile Cyber Identity:** Clean 80px circular profile portrait with an illuminated gradient halo and live active status dot.
+- **Mobile Highlights Ribbon:** 3 frosted-glass credential cards (`3x Hackathon Wins`, `Dual Degree IITM + GNDU`, `Full Stack & AI`) providing instant authority.
+- **Streamlined About Section:** Side-by-side compact action buttons (`[ Education ]` & `[ Contact Me ]`) with balanced vertical breathing room and an optimized $215\text{px}$ `developer.ts` code snippet window.
+- **Adaptive Radar Constellation:** Automatically applies responsive scaling (`scale-[0.72] sm:scale-90 md:scale-100`) so all 18 tech planets remain fully visible and tap-interactive on narrow phone viewports without horizontal clipping.
+- **Cyber Navigation Drawer:** Glassmorphic mobile menu drawer with tactile sound effects and smooth section navigation.
+- **Zero-Lag Inertial Engine:** Lenis smooth scrolling with scroll-lock hit-testing protection (`.lenis-scrolling * { pointer-events: none }`) on desktop, paired with native 120Hz ProMotion touch acceleration on mobile.
+
 ---
 
 ## 🛠️ Architecture & Tech Stack
@@ -122,6 +131,45 @@ The portfolio is structured as a calibrated, interactive narrative:
 │ • Three.js 0.184 + R3F       │ • GSAP Timeline Utils        │
 │ • Native Web Audio API       │ • Direct DOM Custom Pointer  │
 └──────────────────────────────┴──────────────────────────────┘
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+matrix/
+├── app/
+│   ├── api/
+│   │   └── ngl/route.ts              # Server-side NGL anonymous question proxy
+│   ├── components/
+│   │   ├── About.tsx                 # Bio, 3D code window, side-by-side CTAs & credentials modal
+│   │   ├── Activity.tsx              # GitHub contribution matrix & activity stream
+│   │   ├── AskMeAnything.tsx         # Anonymous terminal input & public Q&A log
+│   │   ├── BackgroundGrid.tsx        # 2D interactive particle mesh backdrop
+│   │   ├── Contact.tsx               # WhatsApp direct gateway, 3D WovenCanvas & social dossier
+│   │   ├── CustomCursor.tsx          # 60/120fps direct-DOM custom pointer system
+│   │   ├── Experience.tsx            # 3D perspective career chronology & hackathons console
+│   │   ├── Hero.tsx                  # Nebula FBM shader, draggable ID card & mobile cyber avatar
+│   │   ├── IntroLoader.tsx           # Centered cyberpunk boot terminal & SVG curtain lift
+│   │   ├── Navbar.tsx                # Floating glass header, sound toggle & mobile drawer
+│   │   ├── Projects.tsx              # Featured engineering projects catalog
+│   │   ├── TechStack.tsx             # 2D/3D orbital radar constellation (MATRIX_RADAR_V4)
+│   │   └── ThreeParticleScene.tsx    # Interactive 3D particle globe
+│   ├── lib/
+│   │   └── sound.ts                  # Web Audio API procedural audio engine
+│   ├── globals.css                   # Tailwind CSS v4 @theme, fonts, keyframes & resets
+│   ├── layout.tsx                    # Root Next.js layout, SEO metadata & font definitions
+│   └── page.tsx                      # Single-page assembly, Lenis engine & layout pipeline
+│
+├── components/
+│   └── ui/
+│       ├── animated-shader-hero.tsx  # WebGL2 FBM nebula shader canvas with mobile conditioning
+│       ├── hanging-id-card.tsx       # Physics-tethered ID card with bezier curve lanyard
+│       ├── container-scroll-animation.tsx # 3D scroll-driven perspective card wrapper
+│       └── woven-lights-canvas.tsx   # Three.js 26,000-particle Torus Knot canvas
+│
+└── public/                           # Logos, verified credential images & vector assets
 ```
 
 ---

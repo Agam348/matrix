@@ -19,7 +19,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
+    if (window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches) return;
 
     const container = containerRef.current;
     const SEPARATION = 150;

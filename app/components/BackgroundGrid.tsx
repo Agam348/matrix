@@ -8,7 +8,7 @@ export default function BackgroundGrid() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
+    if (window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;

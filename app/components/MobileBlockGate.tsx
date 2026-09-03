@@ -15,7 +15,7 @@ export default function MobileBlockGate() {
   };
 
   return (
-    <div className="fixed inset-0 z-[99999] flex lg:hidden flex-col items-center justify-between p-6 sm:p-10 bg-[#09090b] text-zinc-100 select-none overflow-y-auto">
+    <div className="fixed inset-0 z-[99999] flex md:hidden flex-col items-center justify-between p-6 sm:p-10 bg-[#09090b] text-zinc-100 select-none overflow-y-auto">
       {/* Background Cyber Grid Lines & Ambient Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.25),rgba(255,255,255,0))] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b15_1px,transparent_1px),linear-gradient(to_bottom,#18181b15_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />

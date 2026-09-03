@@ -258,7 +258,6 @@ const useShaderBackground = () => {
 
   useEffect(() => {
     if (!canvasRef.current) return;
-    if (window.matchMedia("(max-width: 768px), (pointer: coarse)").matches) return;
 
     const canvas = canvasRef.current;
     const dpr = Math.max(1, 0.5 * window.devicePixelRatio);
@@ -333,16 +332,22 @@ export default function AnimatedShaderHero({
 
   return (
     <div className={`relative w-full min-h-screen overflow-hidden bg-[#09090b] md:bg-black ${className}`}>
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_18%,rgba(79,70,229,0.30),transparent_34%),linear-gradient(180deg,rgba(30,58,138,0.23),rgba(9,9,11,0.97)_68%)] md:hidden" />
+      {/* Mobile Cybernetic Ambient Background: Ethereal grid + dynamic multi-point glows */}
+      <div className="absolute inset-0 z-0 md:hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(99,102,241,0.28),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(6,182,212,0.14),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_80%,rgba(168,85,247,0.10),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:28px_28px] [mask-image:radial-gradient(ellipse_90%_70%_at_50%_35%,#000_60%,transparent_100%)]" />
+      </div>
       {/* 3D WebGL Shader Canvas Background */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 hidden w-full h-full object-cover touch-none z-0 md:block"
+        className="absolute inset-0 block w-full h-full object-cover touch-none z-0"
         style={{ background: "black" }}
       />
       
-      {/* Subtle dark overlay to dim the shader background slightly (only 6% opacity to let more glow shine through) */}
-      <div className="absolute inset-0 bg-[#09090b]/06 pointer-events-none z-0 hidden md:block" />
+      {/* Subtle dark overlay to dim the shader background slightly */}
+      <div className="absolute inset-0 bg-[#09090b]/06 pointer-events-none z-0" />
       
       {/* Content wrapper layered cleanly on top of the shader background */}
       <div className="relative w-full h-full z-10">
@@ -409,9 +414,11 @@ void main(void) {
 		uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.3+.1*uv.x);
 		vec2 p=uv;
 		float d=length(p);
-		col+=.00125/d*(cos(sin(i)*vec3(1.0, 1.8, 2.5))+1.);
 		float b=noise(i+p+bg*1.731);
-		col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
+		if (R.x >= 768.0) {
+			col+=.00125/d*(cos(sin(i)*vec3(1.0, 1.8, 2.5))+1.);
+			col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
+		}
     
 		col=mix(col,vec3(bg*.035, bg*.105, bg*.27),d);
 	}

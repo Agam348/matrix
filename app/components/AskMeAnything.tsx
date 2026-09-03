@@ -94,7 +94,7 @@ export default function AskMeAnything() {
         {/* Section Header */}
         <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-zinc-900 pb-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="hidden sm:flex items-center gap-2 mb-1">
               <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
               <span className="font-space text-[10px] font-bold tracking-[0.22em] text-emerald-400 uppercase">
                 ENCRYPTED INTERFACE

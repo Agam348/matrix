@@ -282,10 +282,10 @@ export default function About() {
       <div className="absolute inset-0 bg-black/40 z-[1] pointer-events-none" />
 
       {/* Content Container (Aligned exactly with portfolio grid margins, full-screen laptop height) */}
-      <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-6 sm:px-12 pb-16 md:pb-36 pt-24 md:pt-32 min-h-0 md:min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 pointer-events-none w-full max-w-7xl mx-auto px-5 sm:px-12 pb-14 md:pb-36 pt-16 sm:pt-24 md:pt-32 min-h-0 md:min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
         
         {/* Left Side: Content Block (Left-anchored text layout matching Sentinel AI typography clamps) */}
-        <div className="lg:col-span-7 w-full flex flex-col items-start text-left pb-4 md:pb-12">
+        <div className="lg:col-span-7 w-full flex flex-col items-start text-left pb-2 md:pb-12">
           
           {/* Staggered Title via viewport triggers */}
           <motion.div 
@@ -307,7 +307,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-            className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-200 to-zinc-300 text-[clamp(1rem,2vw,1.4rem)] font-semibold mb-3 md:mb-6 leading-snug"
+            className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 via-indigo-200 to-zinc-300 text-[clamp(0.95rem,2vw,1.4rem)] font-semibold mb-2.5 md:mb-6 leading-snug"
           >
             Where software engineering meets analytical intelligence.
           </motion.p>
@@ -318,23 +318,23 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            className="text-zinc-300 text-sm sm:text-base leading-relaxed font-normal mb-6 md:mb-8 max-w-xl"
+            className="text-zinc-300 text-xs sm:text-base leading-relaxed font-normal mb-7 sm:mb-8 max-w-xl"
           >
             I&apos;m pursuing a BS in Data Science at IIT Madras and an M.Tech FYIP in CSE at GNDU. I combine software engineering with data-driven thinking to build minimal, secure, and meaningful digital tools.
           </motion.p>
 
-          {/* Interactive CTA Buttons (Staggered Animation) */}
+          {/* Interactive CTA Buttons: Side-by-side flex row on mobile, full desktop sizing */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
-            className="flex w-full flex-col sm:w-auto sm:flex-row flex-wrap gap-3 font-space text-xs font-bold uppercase tracking-[0.14em]"
+            className="flex w-full flex-row sm:w-auto gap-2.5 sm:gap-3 font-space text-[11px] sm:text-xs font-bold uppercase tracking-[0.14em] mb-4 sm:mb-6 lg:mb-0"
           >
             <button 
               onClick={openCredentials}
               onMouseEnter={() => soundManager.playHoverClick(1000)}
-              className="pointer-events-auto h-12 w-full sm:w-auto px-8 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)] text-white rounded-xl cursor-pointer select-none font-bold text-xs tracking-[0.14em] uppercase"
+              className="pointer-events-auto h-11 sm:h-12 flex-1 sm:flex-initial px-5 sm:px-8 flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.97] transition-all duration-300 hover:shadow-[0_0_20px_rgba(99,102,241,0.35)] text-white rounded-xl cursor-pointer select-none font-bold text-[11px] sm:text-xs tracking-[0.12em] uppercase"
             >
               Education
             </button>
@@ -342,19 +342,19 @@ export default function About() {
             <button 
               onClick={() => handleScrollTo("contact")}
               onMouseEnter={() => soundManager.playHoverClick(1000)}
-              className="pointer-events-auto h-12 w-full sm:w-auto bg-zinc-950/60 hover:bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/80 hover:border-zinc-500 active:scale-[0.97] transition-all text-zinc-200 hover:text-white px-8 rounded-xl cursor-pointer select-none font-bold text-xs tracking-[0.14em] uppercase flex items-center justify-center"
+              className="pointer-events-auto h-11 sm:h-12 flex-1 sm:flex-initial bg-zinc-950/60 hover:bg-zinc-900/80 backdrop-blur-sm border border-zinc-700/80 hover:border-zinc-500 active:scale-[0.97] transition-all text-zinc-200 hover:text-white px-5 sm:px-8 rounded-xl cursor-pointer select-none font-bold text-[11px] sm:text-xs tracking-[0.12em] uppercase flex items-center justify-center"
             >
               Contact Me
             </button>
           </motion.div>
 
-          {/* Trust Ticker Bar — independent full-width strip with structural border */}
+          {/* Trust Ticker Bar — Desktop only so mobile stays 100% clean and uncrowded */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.7 }}
-            className="mt-8 md:mt-10 w-full border-t border-b border-zinc-800/80 bg-zinc-950/60 backdrop-blur-sm py-3 px-4 flex items-center gap-3 pointer-events-auto overflow-visible rounded-xl relative"
+            className="hidden lg:flex mt-8 md:mt-10 w-full border-t border-b border-zinc-800/80 bg-zinc-950/60 backdrop-blur-sm py-3 px-4 items-center gap-3 pointer-events-auto overflow-visible rounded-xl relative"
           >
             {/* Pulse dot */}
             <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0 animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
@@ -386,8 +386,8 @@ export default function About() {
         </div>
 
         {/* Right Side: Animated Code Snippet Card */}
-        <div className="lg:col-span-5 w-full flex justify-center lg:justify-end items-center pointer-events-auto">
-          <div className="relative w-full max-w-[480px] h-[420px]">
+        <div className="lg:col-span-5 w-full flex justify-center lg:justify-end items-center pointer-events-auto mt-2 sm:mt-0">
+          <div className="relative w-full max-w-[480px] h-[215px] xs:h-[235px] sm:h-[340px] lg:h-[420px]">
             <motion.div
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
@@ -428,7 +428,7 @@ export default function About() {
               </div>
 
               {/* Code Body */}
-              <div ref={codeBodyRef} className="relative z-10 flex-1 p-5 overflow-y-auto font-mono text-[10px] sm:text-xs leading-relaxed text-zinc-350 whitespace-pre [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-text selection:bg-indigo-950 selection:text-indigo-300 animate-pulse-none">
+              <div ref={codeBodyRef} className="relative z-10 flex-1 p-3.5 sm:p-5 overflow-y-auto font-mono text-[8.5px] xs:text-[9.5px] sm:text-xs leading-relaxed text-zinc-350 whitespace-pre [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden select-text selection:bg-indigo-950 selection:text-indigo-300 animate-pulse-none">
                 {CODE_TOKENS.map((line, lineIdx) => {
                   const lineStart = flatTokens.list.find(t => t.lineIdx === lineIdx)?.start ?? 0;
                   const lineEnd = [...flatTokens.list].reverse().find(t => t.lineIdx === lineIdx)?.end ?? 0;
@@ -440,9 +440,9 @@ export default function About() {
                   if (typedCharCount <= lineStart && lineIdx > 0) return null;
 
                   return (
-                    <div key={lineIdx} className="min-h-[1.5rem] flex items-center whitespace-pre">
+                    <div key={lineIdx} className="min-h-[1.25rem] sm:min-h-[1.5rem] flex items-center whitespace-pre">
                       {/* Line Number */}
-                      <span className="w-6 text-zinc-700 select-none pr-2 text-right text-[8px] sm:text-[10px] shrink-0">
+                      <span className="w-4 sm:w-6 text-zinc-700 select-none pr-1.5 sm:pr-2 text-right text-[7.5px] sm:text-[10px] shrink-0">
                         {lineIdx + 1}
                       </span>
                       
@@ -467,7 +467,7 @@ export default function About() {
                         
                         {/* Blinking Cursor on active line */}
                         {(isActiveLine || (isLastLine && isFinishedTyping)) && (
-                          <span className="w-1.5 h-3.5 bg-[#60A5FA] animate-pulse ml-0.5 inline-block align-middle shadow-[0_0_8px_rgba(96,165,250,0.8)] shrink-0" />
+                          <span className="w-1.5 h-3 sm:h-3.5 bg-[#60A5FA] animate-pulse ml-0.5 inline-block align-middle shadow-[0_0_8px_rgba(96,165,250,0.8)] shrink-0" />
                         )}
                       </span>
                     </div>

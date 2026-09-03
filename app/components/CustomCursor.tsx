@@ -28,10 +28,10 @@ export default function CustomCursor() {
       return;
     }
 
-    const shouldUseNativeCursor = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
+    const isTouchOnlyMobile = window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches;
     let timer: NodeJS.Timeout | undefined;
     
-    if (!shouldUseNativeCursor) {
+    if (!isTouchOnlyMobile) {
       timer = setTimeout(() => {
         setIsVisible(true);
         document.documentElement.classList.add("has-custom-cursor");

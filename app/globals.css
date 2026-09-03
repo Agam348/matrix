@@ -76,6 +76,20 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* Eliminate expensive layout / hover recalculation storms while scrolling */
+.lenis.lenis-scrolling a,
+.lenis.lenis-scrolling button,
+.lenis.lenis-scrolling input,
+.lenis.lenis-scrolling textarea,
+.lenis.lenis-scrolling [role="button"] {
+  pointer-events: none !important;
+}
+
+/* GPU composite layer isolation for fluid scrolling */
+section {
+  transform: translateZ(0);
+}
+
 /* Premium Fluid Entrance Animations */
 .animate-fade-in-up {
   opacity: 0;
