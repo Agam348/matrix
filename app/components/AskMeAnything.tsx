@@ -39,6 +39,7 @@ export default function AskMeAnything() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,8 +57,18 @@ export default function AskMeAnything() {
       const res = await fetch("/api/ngl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: message.trim() }),
+        body: JSON.stringify({ 
+          question: message.trim(),
+          website: honeypot.trim() // Anti-bot honeypot
+        }),
       });
+
+      if (res.status === 429) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMessage(data.error || "Rate limit exceeded. Please wait a minute before sending another message.");
+        soundManager.playBeep(330, 0.2);
+        return;
+      }
 
       if (!res.ok) {
         throw new Error("Transmission error");
@@ -168,6 +179,18 @@ export default function AskMeAnything() {
 
                 {!isSubmitted ? (
                   <form onSubmit={handleSend} className="space-y-4">
+                    {/* Anti-bot invisible honeypot trap */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      className="hidden opacity-0 pointer-events-none absolute -left-[9999px]"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                    />
+
                     <p className="font-space text-xs sm:text-sm text-zinc-300">
                       Got a question? Ask anonymously.
                     </p>
